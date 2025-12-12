@@ -19,8 +19,12 @@ public class InputManager : MonoBehaviour {
         // Movimento
         inputActions.Player.Move.performed += Move_performed;
         inputActions.Player.Move.canceled += Move_canceled;
+        // Sguardo
         inputActions.Player.Look.performed += Look_performed;
         inputActions.Player.Look.canceled += Look_canceled;
+
+        // Interazione
+        inputActions.Player.Interact.performed += Interact_performed;
 
         // Per cambio scena
 
@@ -46,6 +50,10 @@ public class InputManager : MonoBehaviour {
 
     private void Look_canceled(UnityEngine.InputSystem.InputAction.CallbackContext context) {
         look = Vector2.zero;
+    }
+
+    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        Debug.Log("Interazione");
     }
 
     private void OnDisable() {

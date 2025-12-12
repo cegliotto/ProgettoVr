@@ -12,10 +12,12 @@ public class Player : MonoBehaviour {
     public PlayerState playerState;
 
     [HideInInspector] public PlayerController playerController;
+    [HideInInspector] public PlayerInteract playerInteract;
 
     private void Awake() {
 
         playerController = GetComponent<PlayerController>();
+        playerInteract = GetComponent<PlayerInteract>();
 
         // Per gestione cambio scena 
         // Evitare di avere 2 istanze Singleton
