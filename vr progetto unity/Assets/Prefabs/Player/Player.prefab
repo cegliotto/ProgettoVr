@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 8097362677584193342}
   - component: {fileID: 7541193440387841996}
   - component: {fileID: 4972111364967314368}
+  - component: {fileID: 7595978573357452182}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -254,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerState: 0
   playerController: {fileID: 0}
+  playerInteract: {fileID: 0}
 --- !u!114 &4972111364967314368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +272,22 @@ MonoBehaviour:
   playerCameraHolder: {fileID: 0}
   mouseSensitivity: 10
   orientation: {fileID: 1847226831183477898}
+--- !u!114 &7595978573357452182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819120146512710201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b815b2725168214297d0c4281671bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  interactionDistance: 5
+  grabPoint: {fileID: 0}
+  currentGrabbableItem: {fileID: 0}
+  itemFocus: {fileID: 0}
 --- !u!1 &4560726589173354830
 GameObject:
   m_ObjectHideFlags: 0

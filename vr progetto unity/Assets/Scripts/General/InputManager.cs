@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour {
     }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
-        Debug.Log("Interazione");
+        Player.Instance.playerInteract.Interact(); // Richiamo metodo di interazione del player
     }
 
     private void OnDisable() {
