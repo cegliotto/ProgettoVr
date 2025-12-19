@@ -3,6 +3,14 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public static Player Instance; // Singleton
 
+    // Struct contenente le informazioni per il cambio di scena
+    public struct PlayerInfo {
+        public Vector3 playerPosition;
+        public Quaternion playerRotation;
+        public float cameraXRotation;
+        public float cameraYRotation;
+    }
+
     public enum PlayerState { // Stato del player (verificare)
         Idle, // Default
         Movement, // In movimento
@@ -25,6 +33,33 @@ public class Player : MonoBehaviour {
             Instance = this;
             return;
         }
+        //DontDestroyOnLoad(gameObject);
+
         Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
+
+    // Metodi usati per salvare le informazioni per il cambio di scena
+    public PlayerInfo SaveInfo() {
+        return new PlayerInfo {
+            playerPosition = this.transform.position,
+            playerRotation = this.transform.rotation,
+            cameraXRotation = this.playerController.GetCameraXRotation(),
+            cameraYRotation = this.playerController.GetCameraYRotation()
+        };
+    }
+
+    public void LoadInfo(PlayerInfo info) {
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        rb.position = info.playerPosition;
+        rb.rotation = info.playerRotation;
+
+        playerController.SetCameraRotation(info.cameraXRotation, info.cameraYRotation);
+
+        Debug.Log($"[RESTORE] {rb.position}");
     }
 }

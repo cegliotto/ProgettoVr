@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private float speed;
 
-    [SerializeField] private Transform playerCameraHolder;
+    [SerializeField] Transform playerCameraHolder;
     [SerializeField] private float mouseSensitivity;
     [SerializeField] private Transform orientation;
 
@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour {
 
     private float cameraXRotation;
     private float cameraYRotation;
+
+    public float GetCameraXRotation() => cameraXRotation;
+    public float GetCameraYRotation() => cameraYRotation;
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -94,5 +97,13 @@ public class PlayerController : MonoBehaviour {
         else {
             Player.Instance.playerState = Player.PlayerState.Idle;
         }
+    }
+
+    public void SetCameraRotation(float x, float y) {
+        cameraXRotation = x;
+        cameraYRotation = y;
+
+        playerCameraHolder.rotation = Quaternion.Euler(cameraXRotation, cameraYRotation, 0f);
+        orientation.rotation = Quaternion.Euler(0, cameraYRotation, 0);
     }
 }
