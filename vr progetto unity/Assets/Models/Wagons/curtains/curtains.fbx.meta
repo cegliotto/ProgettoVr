@@ -3,7 +3,17 @@ guid: 499d397cf7e46454fb664046e9135943
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: curtain_holder
+    second: {fileID: 2100000, guid: a2f956b726d8f904c884264a694910ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: curtains
+    second: {fileID: 2100000, guid: 07a7a2ebc7c7bbb4a9b015691a6f63c2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
