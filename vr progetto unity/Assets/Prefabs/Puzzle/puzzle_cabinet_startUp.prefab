@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 1090695592730929218}
   - component: {fileID: 8659755394609854753}
   - component: {fileID: 8190488474822401552}
-  - component: {fileID: 8866992763445607297}
   m_Layer: 0
   m_Name: Lock (2)
   m_TagString: Untagged
@@ -196,27 +195,6 @@ MonoBehaviour:
   rotationPerStep: 9
   maxDigit: 40
   dial: {fileID: 8785965934010472376}
---- !u!65 &8866992763445607297
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747287077517108398}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.13613957, y: 0.13613954, z: 0.0052160798}
-  m_Center: {x: 0.00022580853, y: 0.0036900304, z: -0.0018114613}
 --- !u!1 &944888131637833936
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +207,6 @@ GameObject:
   - component: {fileID: 7950133561393555120}
   - component: {fileID: 1871458727686472069}
   - component: {fileID: 7634428142669248474}
-  - component: {fileID: 4333286199309881470}
   m_Layer: 0
   m_Name: Lock (1)
   m_TagString: Untagged
@@ -324,27 +301,6 @@ MonoBehaviour:
   rotationPerStep: 9
   maxDigit: 40
   dial: {fileID: 63316939744851497}
---- !u!65 &4333286199309881470
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944888131637833936}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.13613957, y: 0.13613954, z: 0.0052160798}
-  m_Center: {x: 0.00022604695, y: 0.0036900304, z: -0.0018115209}
 --- !u!1 &1300204833339754593
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +332,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.246, y: -0.75638, z: -4.427}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5982046735639860031}
@@ -779,7 +735,6 @@ GameObject:
   - component: {fileID: 1840098113976233149}
   - component: {fileID: 1311835755468684978}
   - component: {fileID: 233186015612435244}
-  - component: {fileID: 3257679406660995411}
   m_Layer: 0
   m_Name: Lock
   m_TagString: Untagged
@@ -874,27 +829,6 @@ MonoBehaviour:
   rotationPerStep: 9
   maxDigit: 40
   dial: {fileID: 4552939523386369080}
---- !u!65 &3257679406660995411
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7488383591391101040}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.13613957, y: 0.13613954, z: 0.0052160798}
-  m_Center: {x: 0.00022604695, y: 0.0036900304, z: -0.0018115209}
 --- !u!1 &8247530748572756861
 GameObject:
   m_ObjectHideFlags: 0

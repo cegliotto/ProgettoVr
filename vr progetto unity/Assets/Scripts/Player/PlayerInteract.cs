@@ -32,6 +32,7 @@ public class PlayerInteract : MonoBehaviour {
         interactionRay = Camera.main.ScreenPointToRay(centreScreenPosition);
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance)) {
+            Debug.Log(hitInfo.collider.name);
             if (hitInfo.transform.TryGetComponent<IInteractable>(out IInteractable interactableItem)) {
                 itemFocus = hitInfo.transform;
             }

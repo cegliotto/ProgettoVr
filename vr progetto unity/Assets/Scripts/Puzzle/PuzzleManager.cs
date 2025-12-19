@@ -51,13 +51,11 @@ public class PuzzleManager : MonoBehaviour
     }
 
     // A puzzle completato
-    public void CompletePuzzle(/* ScriptableObject reference da passare */) {
+    public void CompletePuzzle() {
         // Per puzzleSafeMultiple
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // inserimento in notebook di item tramite riferimento dello scriptableObject
-        Debug.Log("Aggiornamento notebook");
         // carico scena treno
         SceneManager.sceneLoaded += OnTrainSceneLoadedCompleted; // Sottoscrivo evento -> in modo che quando la scena viene caricata
         
