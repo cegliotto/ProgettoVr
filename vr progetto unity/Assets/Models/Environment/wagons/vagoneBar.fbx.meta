@@ -3,7 +3,12 @@ guid: 696936aba87ceef469420ce95ce4c2f8
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Moquette_bordeaux
+    second: {fileID: 2100000, guid: 091a07e3711db5f4aabe989b83c16273, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
