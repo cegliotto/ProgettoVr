@@ -29,9 +29,28 @@ public class PuzzleManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        SceneManager.LoadScene(puzzleScene, LoadSceneMode.Single); // effettuo il load della scena
+        // caricamento della scena mediante levelLoader per fade-in / fade-out
+        if (LevelLoader.Instance != null)
+            LevelLoader.Instance.LoadNextScene(puzzleScene); // effettuo il load della scena
+        else
+            SceneManager.LoadScene(puzzleScene, LoadSceneMode.Single);
     }
 
+    // A puzzle non completato, utente vuole solo tornare a scena del treno
+    public void ExitFromPuzzle() {
+        // Per puzzleSafeMultiple
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        SceneManager.sceneLoaded += OnTrainSceneLoadedExit;
+
+        if (LevelLoader.Instance != null)
+            LevelLoader.Instance.LoadNextScene(trainSceneName);
+        else
+            SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
+    }
+
+    // A puzzle completato
     public void CompletePuzzle(/* ScriptableObject reference da passare */) {
         // Per puzzleSafeMultiple
         Cursor.lockState = CursorLockMode.Locked;
@@ -40,13 +59,23 @@ public class PuzzleManager : MonoBehaviour
         // inserimento in notebook di item tramite riferimento dello scriptableObject
         Debug.Log("Aggiornamento notebook");
         // carico scena treno
-        SceneManager.sceneLoaded += OnTrainSceneLoaded; // Sottoscrivo evento -> in modo che quando la scena viene caricata
-        // eseguo il metodo specificato
-        SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
+        SceneManager.sceneLoaded += OnTrainSceneLoadedCompleted; // Sottoscrivo evento -> in modo che quando la scena viene caricata
+        
+        // caricamento della scena mediante levelLoader per fade-in / fade-out
+        if(LevelLoader.Instance != null)
+            LevelLoader.Instance.LoadNextScene(trainSceneName);
+        else
+            SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
     }
 
-    private void OnTrainSceneLoaded(Scene arg0, LoadSceneMode arg1) {
-        SceneManager.sceneLoaded -= OnTrainSceneLoaded; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
+    private void OnTrainSceneLoadedExit(Scene arg0, LoadSceneMode arg1) {
+        SceneManager.sceneLoaded -= OnTrainSceneLoadedExit; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
+        // Aggiorno info del plyaer in modo che vada nella posizione prima del caricamento della scena
+        Player.Instance.LoadInfo(savedPlayerInfo);
+    }
+
+    private void OnTrainSceneLoadedCompleted(Scene arg0, LoadSceneMode arg1) {
+        SceneManager.sceneLoaded -= OnTrainSceneLoadedCompleted; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
         // Aggiorno info del plyaer in modo che vada nella posizione prima del caricamento della scena
         Player.Instance.LoadInfo(savedPlayerInfo);
 

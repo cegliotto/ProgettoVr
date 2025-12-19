@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public enum PuzzleType {
-    PuzzleSafe,
+    PuzzleCabinet,
     PuzzleDoor,
     PuzzleNecklace,
 }

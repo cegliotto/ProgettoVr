@@ -1,25 +1,23 @@
 using UnityEngine;
 
 public class SafeDial : MonoBehaviour {
+
     public int CurrentValue { get; private set; }
 
-    [SerializeField] private float rotationPerStep = 9f;
-    [SerializeField] private int modulo = 40;
-
-    private float accumulated; // SIGNED
+    [SerializeField] private float rotationPerStep = 9f; // Step di rotazione per passare a numero successivo
+    [SerializeField] private int maxDigit = 40;
     [SerializeField] private Transform dial;
 
-    public void Rotate(float input) {
-        // input è una rotazione in gradi (positiva o negativa)
-        dial.Rotate(0f, 0f, -input, Space.Self);
+    private float accumulated;
 
-        accumulated += input; // NOT abs
+    public void Rotate(float input) {
+
+        accumulated += input;
 
         while (Mathf.Abs(accumulated) >= rotationPerStep) {
-            int dir = accumulated > 0f ? 1 : -1;
-
-            CurrentValue = (CurrentValue + dir + modulo) % modulo;
-
+            int dir = accumulated > 0f ? 1 : -1; // Direzione di rotazione
+            CurrentValue = (CurrentValue + dir + maxDigit) % maxDigit; // modulo in modo da andare a 39 se valore negativo
+            dial.Rotate(0f, 0f, -dir * rotationPerStep, Space.Self); // rotazione attorno ad asse z locale
             accumulated -= dir * rotationPerStep;
         }
     }

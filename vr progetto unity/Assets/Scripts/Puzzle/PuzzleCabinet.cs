@@ -1,47 +1,55 @@
 using UnityEngine;
 
-public class PuzzleMutlipleSafe : PuzzleBase {
+public class PuzzleCabinet : PuzzleBase {
 
     [SerializeField] private Camera puzzleCamera;
     [SerializeField] private SafeDial[] dials;
-    [SerializeField] private int[] valuesToGuess = { 5, 10, 15 };
+    [SerializeField] private int[] valuesToGuess = { 5, 10, 15 }; // Valori da indovinare
+
+    [SerializeField] private float mouseToDegrees = 0.15f; // sensibilità
+    [SerializeField] private float deadZonePx = 0.5f;      // Per evitare jitter
+    [SerializeField] private float maxDegreesPerFrame = 8f;
 
     private SafeDial activeDial;
-    private bool solved;
 
     private bool isDragging;
     private Vector3 lastMousePos;
 
     void Update() {
         PuzzleBehaviour();
+
+        ExitPuzzle();
     }
 
     protected override void PuzzleBehaviour() {
-        if (solved)
-            return;
-
         SelectDial();
         HandleInput();
         CheckCombination();
     }
 
-    private void SelectDial() {
-        if (isDragging) return; // IMPORTANT
 
-        Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 5f))
+    protected override void ExitPuzzle() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (PuzzleManager.Instance != null) {
+                PuzzleManager.Instance.ExitFromPuzzle();
+            }
+        }
+    }
+
+    private void SelectDial() {
+        if (isDragging) return; // Se sto gia' draggando un dial, non voglio selezionarne uno nuovo
+
+        Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition); // raycast per il selezionamento del dial
+
+        float raycastDistance = 5f;
+        if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance))
             activeDial = hit.collider.GetComponent<SafeDial>();
         else
             activeDial = null;
     }
 
-
-    [SerializeField] private float mouseToDegrees = 0.25f; // sensibilità
-    [SerializeField] private float deadZonePx = 0.5f;      // ignora jitter
-    [SerializeField] private float maxDegreesPerFrame = 8f;
-
     private void HandleInput() {
-        // Inizia drag solo se ho una dial sotto
+        // Il drag inizia solo se si ha un dial sotto il mouse
         if (Input.GetMouseButtonDown(0)) {
             if (activeDial == null) return;
 
@@ -50,6 +58,7 @@ public class PuzzleMutlipleSafe : PuzzleBase {
             return;
         }
 
+        // Quando si smette di premere il bottone del mouse il drag si toglie
         if (Input.GetMouseButtonUp(0)) {
             isDragging = false;
             return;
@@ -57,40 +66,36 @@ public class PuzzleMutlipleSafe : PuzzleBase {
 
         if (!isDragging || activeDial == null)
             return;
-
+        // Rotazione dei dials avviane per spostamento orizzontale del mouse
         float deltaX = Input.mousePosition.x - lastMousePos.x;
 
-        // deadzone anti-jitter
+        // Per evitare jitter
         if (Mathf.Abs(deltaX) < deadZonePx) {
             lastMousePos = Input.mousePosition;
             return;
         }
 
         float rotationInput = deltaX * mouseToDegrees;
-
         // clamp anti-salti grossi
         rotationInput = Mathf.Clamp(rotationInput, -maxDegreesPerFrame, maxDegreesPerFrame);
-
         activeDial.Rotate(rotationInput);
-
         lastMousePos = Input.mousePosition;
 
-        LogCurrentCombination();
+        //LogCurrentCombination(); // debug per capire se cifre sono corrette
     }
 
-
     private void CheckCombination() {
+        // Se la combinazione inserita (valore corrente di ogni dials) combacia con quella richiesta
         for (int i = 0; i < valuesToGuess.Length; i++) {
             if (dials[i].CurrentValue != valuesToGuess[i])
                 return;
         }
-
-        solved = true;
+        // Allora si esegue il metodo in PuzzleManager
         PuzzleCompleted();
     }
 
     protected override void PuzzleCompleted() {
-        Debug.Log("Cassaforte aperta!");
+        Debug.Log("Puzzle completato!");
 
         if (PuzzleManager.Instance != null) {
             PuzzleManager.Instance.CompletePuzzle();
@@ -99,7 +104,7 @@ public class PuzzleMutlipleSafe : PuzzleBase {
 
     private void LogCurrentCombination() {
         string combo = "";
-        foreach (var dial in dials) {
+        foreach (SafeDial dial in dials) {
             combo += dial.CurrentValue + " ";
         }
         Debug.Log($"Combinazione attuale: {combo}");
