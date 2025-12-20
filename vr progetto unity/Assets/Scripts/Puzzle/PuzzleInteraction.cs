@@ -41,5 +41,13 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
             animator.SetTrigger("completed"); // Necessario che animazione si chiami completed in caso
         }
         this.solved = true; // lo segno come completato
+
+        // Una volta completato assegno al puzzle il layer noInteractable
+        // in modo che, ad esempio per la cabinet, il raycast non venga bloccato dalla cabinet quando si cerca
+        // di prendere la borsa
+        int layer = LayerMask.NameToLayer("NoInteractable");
+        if (layer != -1) {
+            gameObject.layer = layer;
+        }
     }
 }

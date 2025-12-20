@@ -9,6 +9,8 @@ public class PlayerInteract : MonoBehaviour {
     [SerializeField] private GrabbableItem currentGrabbableItem;
     [SerializeField] private Transform itemFocus; // item attualmente puntato dal player
 
+    [SerializeField] private LayerMask notInteractableMask;
+
     private void Update() {
         CheckInteraction();
     }
@@ -31,7 +33,11 @@ public class PlayerInteract : MonoBehaviour {
         // Si ottiene raggio che passa dal centro della camera al centro dello schermo ottenuto prima
         interactionRay = Camera.main.ScreenPointToRay(centreScreenPosition);
 
-        if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance)) {
+        int interactableMask = ~notInteractableMask; // Voglio che ci siano alcuni oggetti non interagibili
+        // Che quindi il loro collider deve essere bypassato. Quindi il raycast interagisce con tutti i gameobject
+        // tranne quelli che hanno il layer di tipo "notInteractableMask"
+
+        if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance, interactableMask)) {
             Debug.Log(hitInfo.collider.name);
             if (hitInfo.transform.TryGetComponent<IInteractable>(out IInteractable interactableItem)) {
                 itemFocus = hitInfo.transform;

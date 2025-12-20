@@ -1438,10 +1438,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 15606463560109420, guid: b9650767d8c8df44796d977c4f10a812, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 15606463560109420, guid: b9650767d8c8df44796d977c4f10a812, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.39
       objectReference: {fileID: 0}
@@ -1493,10 +1489,6 @@ PrefabInstance:
       propertyPath: grabPoint
       value: 
       objectReference: {fileID: 1032219038}
-    - target: {fileID: 7595978573357452182, guid: b9650767d8c8df44796d977c4f10a812, type: 3}
-      propertyPath: interactionDistance
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2309,6 +2301,10 @@ PrefabInstance:
     - target: {fileID: 3775489869228002812, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045943359678651004, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
+      propertyPath: notInteractableMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4304,6 +4300,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6970781172068787578, guid: 861ac94143733a547bce370d62999a07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1335958631}
+    - targetCorrespondingSourceObject: {fileID: 6970781172068787578, guid: 861ac94143733a547bce370d62999a07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1335958635}
   m_SourcePrefab: {fileID: 100100000, guid: 861ac94143733a547bce370d62999a07, type: 3}
 --- !u!1 &930524071
 GameObject:
@@ -6668,6 +6667,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.752839, y: 0.2938049, z: 0.5004409}
   m_Center: {x: -0.0053449874, y: -0.036272928, z: 0.03781395}
+--- !u!114 &1335958635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335958627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a2b347f79c43042973f9a9d86f8bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
+  debug: 0
 --- !u!1 &1388795708
 GameObject:
   m_ObjectHideFlags: 0

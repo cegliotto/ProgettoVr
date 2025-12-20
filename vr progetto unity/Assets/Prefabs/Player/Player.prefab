@@ -288,6 +288,9 @@ MonoBehaviour:
   grabPoint: {fileID: 0}
   currentGrabbableItem: {fileID: 0}
   itemFocus: {fileID: 0}
+  notInteractableMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &4560726589173354830
 GameObject:
   m_ObjectHideFlags: 0
