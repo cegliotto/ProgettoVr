@@ -5,6 +5,7 @@ public enum PuzzleType {
     PuzzleDoor,
     PuzzleNecklace,
     PuzzleScrews,
+    PuzzleSeatLever
 }
 
 // Script usato per l'interazione con il player

@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 3667760082347783449}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.773795, y: 0.56508476, z: 3.189193}
-  m_LocalScale: {x: 3.37805, y: 3.37805, z: 3.37805}
+  m_LocalPosition: {x: 0.773795, y: 0.7826824, z: 3.2636805}
+  m_LocalScale: {x: 6.9704995, y: 6.9704995, z: 6.9704995}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6482702528253035620}
@@ -297,8 +297,8 @@ Transform:
   m_GameObject: {fileID: 8672381405370584976}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0.8915087, w: -0.45300362}
-  m_LocalPosition: {x: 0.77605134, y: 0.5624023, z: 3.2055125}
-  m_LocalScale: {x: 3.3780513, y: 3.3780513, z: 3.37805}
+  m_LocalPosition: {x: 0.77605134, y: 0.78, z: 3.28}
+  m_LocalScale: {x: 6.970502, y: 6.970502, z: 6.9704995}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6482702528253035620}
@@ -369,6 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6482702528253035620}
+  - component: {fileID: -5163677358318188895}
   m_Layer: 0
   m_Name: seat_lever
   m_TagString: Untagged
@@ -395,3 +396,19 @@ Transform:
   - {fileID: 2841710061337883924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5163677358318188895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048102775130337441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10cd02efd22bab84e84922e7d7b883ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleSeatLever
+  puzzleCamera: {fileID: 0}
+  lever: {fileID: 0}
+  drawer: {fileID: 0}
+  idleTimeToClose: 2
