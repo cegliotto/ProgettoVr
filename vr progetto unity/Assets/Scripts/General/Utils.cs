@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public static class Utils {
@@ -10,5 +11,23 @@ public static class Utils {
 
     public static void EnableCollision(Collider cl1, Collider cl2) {
         Physics.IgnoreCollision(cl1, cl2, false);
+    }
+
+    public static IEnumerator FadeCanvasGroup(
+        CanvasGroup canvasGroup,
+        float from,
+        float to,
+        float duration
+    ) {
+        float elapsed = 0f;
+        canvasGroup.alpha = from;
+
+        while (elapsed < duration) {
+            elapsed += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(from, to, elapsed / duration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = to;
     }
 }
