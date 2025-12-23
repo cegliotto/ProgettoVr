@@ -42,6 +42,13 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         if(animator != null) { // Se ha un animazione associata al completamento
             animator.SetTrigger("completed"); // Necessario che animazione si chiami completed in caso
         }
+
+        //attivo solo se l'oggetto ha lo script PhysicalUnlock attivato 
+        if(TryGetComponent < PhysicalUnlock> (out PhysicalUnlock unlock))
+        {
+            unlock.Unlock();
+        }
+
         this.solved = true; // lo segno come completato
 
         // Una volta completato assegno al puzzle il layer noInteractable
