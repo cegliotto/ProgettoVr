@@ -6769,6 +6769,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388795708}
   m_Mesh: {fileID: 8457059137029364539, guid: c42f37d787dfe884da0b933aff3ecf96, type: 3}
+--- !u!1 &1424901412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 724391224841691214, guid: 370b16b2b2145d64a9e5f6d745f55174, type: 3}
+  m_PrefabInstance: {fileID: 6057096239806661325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1424901414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424901412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5e5a8765e12894b92afcfd1d15c5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleInteraction
+  puzzleSceneName: PuzzleLockpicking
+  puzzleType: 1
+  solved: 0
 --- !u!1 &1437951161
 GameObject:
   m_ObjectHideFlags: 0
@@ -10435,7 +10455,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 724391224841691214, guid: 370b16b2b2145d64a9e5f6d745f55174, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1424901414}
   m_SourcePrefab: {fileID: 100100000, guid: 370b16b2b2145d64a9e5f6d745f55174, type: 3}
 --- !u!4 &6057096239806661326 stripped
 Transform:
