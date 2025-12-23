@@ -10,12 +10,12 @@ public class ScrewComponent : MonoBehaviour
         if (IsRemoved) return;
 
         clicks++;
-        transform.Rotate(0, 0, 180f); // Mezzo giro
+        transform.Rotate(0, 0, 180f); // mezzo giro
 
-        if (clicks >= 2)
+        if (clicks >= 2) //dopo due click (=2 mezzi giri) 
         {
-            IsRemoved = true;
-            gameObject.SetActive(false); // La vite scompare
+            IsRemoved = true; //la vite è rimossa 
+            gameObject.SetActive(false); // la vite scompare
         }
     }
 }

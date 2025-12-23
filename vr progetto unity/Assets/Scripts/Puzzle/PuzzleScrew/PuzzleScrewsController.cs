@@ -15,21 +15,40 @@ public class PuzzleScrewsController : PuzzleBase
 
     protected override void PuzzleBehaviour()
     {
-        // Selezione vite con Mouse
+        // Ora gestiamo tutto all'interno del click del mouse
         if (Input.GetMouseButtonDown(0))
         {
-            HandleSelection();
-        }
-
-        // Azione con tasto W (come da tua richiesta)
-        if (selectedScrew != null && Input.GetKeyDown(KeyCode.W))
-        {
-            selectedScrew.RotateScrew();
-            CheckCompletion();
+            HandleMouseInteraction();
         }
     }
 
-    private void HandleSelection()
+    private void HandleMouseInteraction()
+    {
+        Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            ScrewComponent clickedScrew = hit.collider.GetComponent<ScrewComponent>();
+
+            if (clickedScrew != null)
+            {
+
+                if (selectedScrew == clickedScrew) //controllo che vite ho selezionato 
+                {
+                    // È la stessa vite quindi ruota
+                    selectedScrew.RotateScrew();
+                    CheckCompletion();
+                }
+                else
+                {
+                    // È una nuova vite: selezionala
+                    selectedScrew = clickedScrew;
+                    Debug.Log("Vite selezionata: " + selectedScrew.name);
+                }
+            }
+        }
+    }
+
+    private void HandleSelection() //verifica che sia stato colpito qualcosa con un collider 
     {
         Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
