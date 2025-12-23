@@ -38,7 +38,7 @@ public class PlayerInteract : MonoBehaviour {
         // tranne quelli che hanno il layer di tipo "notInteractableMask"
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance, interactableMask)) {
-            Debug.Log(hitInfo.collider.name);
+            //Debug.Log(hitInfo.collider.name);
             if (hitInfo.transform.TryGetComponent<IInteractable>(out IInteractable interactableItem)) {
                 itemFocus = hitInfo.transform;
             }
