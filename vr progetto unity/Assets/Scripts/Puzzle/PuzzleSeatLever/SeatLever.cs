@@ -3,28 +3,34 @@ using UnityEngine;
 public class SeatLever : MonoBehaviour
 {
 
-    [SerializeField] private float downAngle = -45f;
-    [SerializeField] private float returnSpeed = 6f;
+    [SerializeField] private float returnSpeed = 2f;   // più basso = più lento
 
-    private bool isPulled;
+    private bool isReturning;
     private Quaternion initialRot;
+    private Quaternion downRot;
+
+    [SerializeField] private float downAngle = 10f;
 
     private void Awake()
     {
         initialRot = transform.localRotation;
+
+        // forza la rotazione in senso "verso il basso"
+        downRot = initialRot * Quaternion.AngleAxis(-downAngle, Vector3.forward);
     }
+
 
     public void Pull()
     {
-        if (isPulled) return;
+        if (isReturning) return;
 
-        isPulled = true;
-        transform.localRotation = Quaternion.Euler(downAngle, 0, 0);
+        transform.localRotation = downRot;
+        isReturning = true;
     }
 
     private void Update()
     {
-        if (!isPulled) return;
+        if (!isReturning) return;
 
         transform.localRotation = Quaternion.Slerp(
             transform.localRotation,
@@ -32,7 +38,10 @@ public class SeatLever : MonoBehaviour
             Time.deltaTime * returnSpeed
         );
 
-        if (Quaternion.Angle(transform.localRotation, initialRot) < 0.5f)
-            isPulled = false;
+        if (Quaternion.Angle(transform.localRotation, initialRot) < 0.1f)
+        {
+            transform.localRotation = initialRot;
+            isReturning = false;
+        }
     }
 }
