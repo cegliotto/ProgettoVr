@@ -47,11 +47,14 @@ public class NotebookManager : MonoBehaviour {
     [SerializeField] private Button test_item;
     [SerializeField] private Button test_notes;
 
+    private Animator anim;
+
     int i = 0;
 
     void Awake() {
         notebookItemsManager = this.GetComponent<NotebookItems>();
         notebookNotesManager = this.GetComponent<NotebookNotes>();
+        anim = GetComponent<Animator>();
         currentPageIndex = 0;
 
         test_item.onClick.AddListener(() => {
@@ -84,12 +87,20 @@ public class NotebookManager : MonoBehaviour {
         if (isTransitioning) return;
         if (currentPageIndex >= pagePairs.Length - 1) return;
 
+        if(anim != null) {
+            anim.SetTrigger("NextPage");
+        }
+
         StartCoroutine(ChangePagePair(currentPageIndex + 1));
     }
 
     private void PreviousPagePair() {
         if (isTransitioning) return;
         if (currentPageIndex <= 0) return;
+
+        if (anim != null) {
+            anim.SetTrigger("PrevPage");
+        }
 
         StartCoroutine(ChangePagePair(currentPageIndex - 1));
     }
