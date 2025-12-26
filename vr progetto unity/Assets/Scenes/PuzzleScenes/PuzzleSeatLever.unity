@@ -94,7 +94,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 21e7551650b9a6a4a88e46e1afd6d9a1, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 8491252a9b6bdfa44870bedfe4969d47, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -193,7 +193,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.8
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -330,11 +330,11 @@ Transform:
   m_GameObject: {fileID: 99709955}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0.46964, y: 1.493, z: 4.2493}
+  m_LocalPosition: {x: -0.030000001, y: 1.493, z: -1.1700001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1775729386}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &99709957
 MonoBehaviour:
@@ -768,7 +768,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.8
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1009,8 +1009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8980b30958fba04388fdb990ebbb764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeatLever
-  downAngle: -45
   returnSpeed: 6
+  downAngle: -45
 --- !u!114 &589408853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,7 +1982,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.8
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2109,7 +2109,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.8
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2391,7 +2391,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.8
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2507,7 +2507,6 @@ Transform:
   m_Children:
   - {fileID: 982366613}
   - {fileID: 2101128657}
-  - {fileID: 99709956}
   - {fileID: 736839249}
   - {fileID: 1101153634}
   - {fileID: 857644303}
@@ -2802,4 +2801,5 @@ SceneRoots:
   - {fileID: 1741262118}
   - {fileID: 1495487185}
   - {fileID: 948232037}
+  - {fileID: 99709956}
   - {fileID: 1775729386}
