@@ -9,11 +9,14 @@ public class SeatLever : MonoBehaviour
     private Quaternion initialRot;
     private Quaternion downRot;
 
-    [SerializeField] private float downAngle = 10f;
+    [SerializeField] private float downAngle = 1f;
 
     private void Awake()
     {
         initialRot = transform.localRotation;
+        Debug.Log("Initial rotation in Euler angles: " + initialRot.eulerAngles);
+
+
 
         // forza la rotazione in senso "verso il basso"
         downRot = initialRot * Quaternion.AngleAxis(-downAngle, Vector3.forward);
@@ -25,6 +28,7 @@ public class SeatLever : MonoBehaviour
         if (isReturning) return;
 
         transform.localRotation = downRot;
+        Debug.Log("Second rotation in Euler angles: " + downRot.eulerAngles);
         isReturning = true;
     }
 

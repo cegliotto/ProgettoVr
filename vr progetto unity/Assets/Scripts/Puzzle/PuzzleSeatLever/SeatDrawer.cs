@@ -9,6 +9,7 @@ public class SeatDrawer : MonoBehaviour
 
     private Vector3 closedPos;
     private float currentOpen;
+    private bool isLockedOpen = false;
 
     private void Awake()
     {
@@ -17,12 +18,19 @@ public class SeatDrawer : MonoBehaviour
 
     public void OpenStep()
     {
+        if (isLockedOpen) return;
         currentOpen = Mathf.Clamp(currentOpen + openStep, 0f, maxOpenDistance);
         UpdatePosition();
+        // Blocca la chiusura se il cassetto è completamente aperto
+        if (currentOpen >= maxOpenDistance)
+        {
+            isLockedOpen = true;
+        }
     }
 
     public void CloseStep(float deltaTime)
     {
+        if (isLockedOpen) return;
         currentOpen = Mathf.Clamp(currentOpen - closeSpeed * deltaTime, 0f, maxOpenDistance);
         UpdatePosition();
     }
