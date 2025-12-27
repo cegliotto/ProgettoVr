@@ -45,3 +45,4 @@ public class SeatDrawer : MonoBehaviour
         transform.localPosition = closedPos - Vector3.right * currentOpen;
     }
 }
+
