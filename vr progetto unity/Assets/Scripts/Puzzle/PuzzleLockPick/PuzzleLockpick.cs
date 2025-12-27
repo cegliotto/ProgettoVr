@@ -263,7 +263,10 @@ public class PuzzleLockpick : PuzzleBase
 
     protected override void PuzzleCompleted()
     {
-        Debug.Log("Lockpick puzzle completed!");
+        if (PuzzleManager.Instance != null)
+        {
+            PuzzleManager.Instance.CompletePuzzle();
+        }
     }
 
     protected override void ExitPuzzle()

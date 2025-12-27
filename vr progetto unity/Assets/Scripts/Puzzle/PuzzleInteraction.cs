@@ -16,12 +16,14 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     [SerializeField] private PuzzleType puzzleType; // Necessario per identificare il puzzle
 
     public bool solved = false;
-    private Animator animator;
+    [SerializeField] private Animator animator;
     public PuzzleType GetPuzzleType() => puzzleType;
 
-    private void Awake() {
-        if(TryGetComponent<Animator>(out Animator anim)){
-            animator = anim;
+    private void Awake()
+    {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
         }
     }
 
