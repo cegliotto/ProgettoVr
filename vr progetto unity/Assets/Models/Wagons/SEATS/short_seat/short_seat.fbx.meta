@@ -3,7 +3,27 @@ guid: 152c0122717306342829b9d71e34c8a6
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatCushion
+    second: {fileID: 2100000, guid: ffc046a4ff330bb4d8de53033d040da9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatFrame
+    second: {fileID: 2100000, guid: 08af86baa6e5d9548921ee00f46b82b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatLeg1
+    second: {fileID: 2100000, guid: 0d534e920a879034f83302f3d4311040, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatLeg2
+    second: {fileID: 2100000, guid: 54435debff010d94eb90f87493d3ef0e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
