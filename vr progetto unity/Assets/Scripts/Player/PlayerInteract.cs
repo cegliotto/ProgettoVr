@@ -1,3 +1,5 @@
+using System;
+using NUnit.Framework;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour {
@@ -27,18 +29,31 @@ public class PlayerInteract : MonoBehaviour {
         }
     }
 
+    GameObject lastObj;
+    string oldLayer = null;
+    bool hasHit = false;
+
     private void CheckInteraction() {
         // si ricava posizione del centro dello schermo
         Vector2 centreScreenPosition = new Vector2(Screen.width / 2, Screen.height / 2);
         // Si ottiene raggio che passa dal centro della camera al centro dello schermo ottenuto prima
         interactionRay = Camera.main.ScreenPointToRay(centreScreenPosition);
-
         int interactableMask = ~notInteractableMask; // Voglio che ci siano alcuni oggetti non interagibili
         // Che quindi il loro collider deve essere bypassato. Quindi il raycast interagisce con tutti i gameobject
         // tranne quelli che hanno il layer di tipo "notInteractableMask"
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance, interactableMask)) {
-            //Debug.Log(hitInfo.collider.name);
+            
+            if (!hasHit)
+            {
+                hasHit = true;
+                oldLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
+                Debug.Log(oldLayer);
+                lastObj = hitInfo.collider.gameObject;
+                hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
+            }
+
+
             if (hitInfo.transform.TryGetComponent<IInteractable>(out IInteractable interactableItem)) {
                 itemFocus = hitInfo.transform;
             }
@@ -48,6 +63,12 @@ public class PlayerInteract : MonoBehaviour {
         }
         else {
             itemFocus = null;
+            hasHit = false;
+            if(oldLayer != null && lastObj != null)
+            {
+                
+                lastObj.layer = LayerMask.NameToLayer(oldLayer);
+            }
         }
     }
 
