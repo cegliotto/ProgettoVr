@@ -3,7 +3,37 @@ guid: e56a331078d32bc4983fee1d2882a1e5
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: c50517dc9d1775b43ab1314447258e3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn2
+    second: {fileID: 2100000, guid: 853fd4db3ba5ed043ad01311864358f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatCushion
+    second: {fileID: 2100000, guid: 83f94dfd33874c94b9288b48b78f4f92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatFrame
+    second: {fileID: 2100000, guid: 608c9f3643c1041429e260fe449cb3e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatLeg1
+    second: {fileID: 2100000, guid: 869b5c1493fcb3c418e1ab4efa7f66e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: seatLeg2
+    second: {fileID: 2100000, guid: b0fd722f6cfd34d458fe5f0418a9e57e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

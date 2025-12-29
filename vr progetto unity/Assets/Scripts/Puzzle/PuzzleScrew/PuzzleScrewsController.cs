@@ -27,36 +27,28 @@ public class PuzzleScrewsController : PuzzleBase
         Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
+            // Debug per vedere cosa stai colpendo effettivamente
+            Debug.Log("Ho colpito: " + hit.collider.gameObject.name);
+
             ScrewComponent clickedScrew = hit.collider.GetComponent<ScrewComponent>();
 
             if (clickedScrew != null)
             {
-
-                if (selectedScrew == clickedScrew) //controllo che vite ho selezionato 
+                // Se clicchi una vite diversa, la selezioni
+                if (selectedScrew != clickedScrew)
                 {
-                    // È la stessa vite quindi ruota
-                    selectedScrew.RotateScrew();
-                    CheckCompletion();
-                }
-                else
-                {
-                    // È una nuova vite: selezionala
                     selectedScrew = clickedScrew;
-                    Debug.Log("Vite selezionata: " + selectedScrew.name);
+                    Debug.Log("Nuova vite selezionata: " + selectedScrew.name);
                 }
+
+                // Applica la rotazione (sia se è appena stata selezionata, sia se era già selezionata)
+                selectedScrew.RotateScrew();
+                CheckCompletion();
             }
         }
     }
 
-    private void HandleSelection() //verifica che sia stato colpito qualcosa con un collider 
-    {
-        Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            selectedScrew = hit.collider.GetComponent<ScrewComponent>();
-        }
-    }
-
+   
     private void CheckCompletion()
     {
         foreach (var s in screws)

@@ -3,7 +3,12 @@ guid: 68f6f4fe8cd7c864fb60b16570a7f5d0
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Top_Hat_MH
+    second: {fileID: 2100000, guid: 703cea6674345bd458f7b289c2df31cf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
