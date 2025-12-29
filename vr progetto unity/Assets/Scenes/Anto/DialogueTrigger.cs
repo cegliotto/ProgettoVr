@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour, IInteractable
 {
     public List<string> dialogue;
-    void OnTriggerEnter(Collider other)
+
+    PlayerInteract playerInteract;
+    public void OnInteract(PlayerInteract playerInteract)
     {
         if(dialogue.Count > 0)
         {
-            UiManager.Instance.StartDialogue(dialogue);
+            UiManager.Instance.nextDialogue(dialogue);
         }
+        
     }
 }

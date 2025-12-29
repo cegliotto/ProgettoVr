@@ -34,7 +34,7 @@ public class UiManager : MonoBehaviour
             if (counter <= 0f)
             {
                 Debug.Log("pro");
-                nextDialogue();
+                //nextDialogue();
                 counter = 2f;
             }
         }
@@ -58,19 +58,24 @@ public class UiManager : MonoBehaviour
 
     }
 
-    void nextDialogue()
+    public void nextDialogue(List<string> dialogue)
     {
-        if(currentDialogueIndex < currentDialogue.Count -1)
+        DialogueBox.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        currentDialogue = dialogue;
+
+        //dialogueTextMesh.text = currentDialogue[0];
+
+        if(currentDialogueIndex < currentDialogue.Count)
         {
-            currentDialogueIndex++;
             dialogueTextMesh.text = currentDialogue[currentDialogueIndex];
+            currentDialogueIndex++;
         }
         else
         {
             Debug.Log("end");
             endDialogue();
         }
-
     }
 
     void endDialogue()

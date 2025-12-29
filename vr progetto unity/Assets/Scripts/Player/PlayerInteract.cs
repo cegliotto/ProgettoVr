@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ public class PlayerInteract : MonoBehaviour {
     }
 
     GameObject lastObj;
-    string oldLayer = null;
+    Queue<string> oldLayer = new Queue<string>();
     bool hasHit = false;
 
     private void CheckInteraction() {
@@ -45,12 +46,21 @@ public class PlayerInteract : MonoBehaviour {
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance, interactableMask)) {
             
             if (!hasHit)
-            {
+            {   //la prima volta che becca un oggetto cambia il layer in modo da mostrare l'outline
                 hasHit = true;
-                oldLayer = LayerMask.LayerToName(hitInfo.collider.gameObject.layer);
-                Debug.Log(oldLayer);
+                
                 lastObj = hitInfo.collider.gameObject;
+                
+                //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
+                oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
                 hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
+                if (hitInfo.transform.childCount > 0)
+                {
+                    foreach (Transform child in hitInfo.transform){
+                        oldLayer.Enqueue(LayerMask.LayerToName(child.gameObject.layer));
+                        child.gameObject.layer = LayerMask.NameToLayer("OutLine");
+                    }                    
+                }
             }
 
 
@@ -63,11 +73,20 @@ public class PlayerInteract : MonoBehaviour {
         }
         else {
             itemFocus = null;
+            //probabilmente has hit non serve ma il codice è più leggibile
             hasHit = false;
-            if(oldLayer != null && lastObj != null)
+            if (lastObj != null && oldLayer.Count > 0)
             {
-                
-                lastObj.layer = LayerMask.NameToLayer(oldLayer);
+                //restituisce all'oggetto e tutti i figli i layer precedenti
+                lastObj.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
+                if (lastObj.transform.childCount > 0)
+                {
+                    foreach (Transform child in lastObj.transform){
+                        child.gameObject.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
+                    }                    
+                }
+                lastObj = null;
+                oldLayer.Clear();
             }
         }
     }
