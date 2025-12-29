@@ -45,6 +45,7 @@ public class PlayerInteract : MonoBehaviour {
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance, interactableMask)) {
             
+            //if (!hasHit &&  hitInfo.collider.gameObject ha interactable)
             if (!hasHit)
             {   //la prima volta che becca un oggetto cambia il layer in modo da mostrare l'outline
                 hasHit = true;
