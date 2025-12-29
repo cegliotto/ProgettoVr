@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public enum PuzzleType {
     PuzzleCabinet,
     PuzzleDoor,
@@ -14,6 +15,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     [Tooltip("Nome della scena da carica per far partire il puzzle specifico")]
     [SerializeField] private string puzzleSceneName;
     [SerializeField] private PuzzleType puzzleType; // Necessario per identificare il puzzle
+    
 
     public bool solved = false;
     [SerializeField] private Animator animator;
