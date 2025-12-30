@@ -70,23 +70,6 @@ public class PuzzleManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnTrainSceneLoadedExit; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
         // Aggiorno info del plyaer in modo che vada nella posizione prima del caricamento della scena
         Player.Instance.LoadInfo(savedPlayerInfo);
-
-        PuzzleInteraction[] puzzles = FindObjectsByType<PuzzleInteraction>(FindObjectsSortMode.None); 
-
-        foreach (PuzzleInteraction puzzle in puzzles)
-        {
-            if (puzzle.GetPuzzleType() == currentPuzzle)
-            {
-                // Esegue l'animazione standard 
-                puzzle.StartSolvedAnimation(); //
-
-                // Sblocca la fisica solo se il componente esiste:  se non c'è PhysicalUnlock, non fa nulla
-                if (puzzle.TryGetComponent<PhysicalUnlock>(out PhysicalUnlock unlocker))
-                {
-                    unlocker.Unlock(); //
-                }
-            }
-        }
     }
 
     private void OnTrainSceneLoadedCompleted(Scene arg0, LoadSceneMode arg1) {

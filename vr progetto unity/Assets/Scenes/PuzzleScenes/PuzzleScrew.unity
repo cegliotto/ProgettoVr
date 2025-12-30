@@ -468,6 +468,20 @@ CapsuleCollider:
   m_Height: 0.043319404
   m_Direction: 1
   m_Center: {x: -0.22265807, y: 0.43234816, z: 1.4589657}
+--- !u!114 &307300010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307300005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61c43d18e3ce3b43b4659333edc68f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewComponent
+  duration: 0.3
+  moveStep: 0.02
 --- !u!1001 &363959231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,6 +541,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6261799339544876827, guid: b0c9af621abb11248b97fadd284da848, type: 3}
       insertIndex: -1
       addedObject: {fileID: 307300006}
+    - targetCorrespondingSourceObject: {fileID: 6261799339544876827, guid: b0c9af621abb11248b97fadd284da848, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 307300010}
   m_SourcePrefab: {fileID: 100100000, guid: b0c9af621abb11248b97fadd284da848, type: 3}
 --- !u!1001 &567234205
 PrefabInstance:
@@ -644,7 +661,67 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6261799339544876827, guid: b0c9af621abb11248b97fadd284da848, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1623084334}
+    - targetCorrespondingSourceObject: {fileID: 6261799339544876827, guid: b0c9af621abb11248b97fadd284da848, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1623084338}
   m_SourcePrefab: {fileID: 100100000, guid: b0c9af621abb11248b97fadd284da848, type: 3}
+--- !u!1001 &673955371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.93419
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.98355
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.57113
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 60070202471682024, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876496858704996697, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
 --- !u!1001 &774407458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -704,6 +781,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6261799339544876827, guid: b0c9af621abb11248b97fadd284da848, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2105414436}
+    - targetCorrespondingSourceObject: {fileID: 6261799339544876827, guid: b0c9af621abb11248b97fadd284da848, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2105414440}
   m_SourcePrefab: {fileID: 100100000, guid: b0c9af621abb11248b97fadd284da848, type: 3}
 --- !u!1001 &794132650
 PrefabInstance:
@@ -1128,6 +1208,20 @@ CapsuleCollider:
   m_Height: 0.04760611
   m_Direction: 1
   m_Center: {x: -0.22360699, y: 0.43449152, z: 1.4605472}
+--- !u!114 &1623084338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623084333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61c43d18e3ce3b43b4659333edc68f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewComponent
+  duration: 0.3
+  moveStep: 0.02
 --- !u!1001 &1743107797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1408,9 +1502,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleScrewsController
   puzzleCamera: {fileID: 31003829}
   screws:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 307300010}
+  - {fileID: 2105414440}
+  - {fileID: 1623084338}
 --- !u!4 &2020816209
 Transform:
   m_ObjectHideFlags: 0
@@ -1454,6 +1548,20 @@ CapsuleCollider:
   m_Height: 0.043809116
   m_Direction: 1
   m_Center: {x: -0.22197461, y: 0.43259302, z: 1.4624923}
+--- !u!114 &2105414440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105414435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61c43d18e3ce3b43b4659333edc68f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewComponent
+  duration: 0.3
+  moveStep: 0.02
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1472,3 +1580,4 @@ SceneRoots:
   - {fileID: 774407458}
   - {fileID: 794132650}
   - {fileID: 1122138950}
+  - {fileID: 673955371}

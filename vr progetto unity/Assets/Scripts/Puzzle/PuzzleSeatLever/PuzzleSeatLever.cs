@@ -27,6 +27,7 @@ public class PuzzleSeatLever : PuzzleBase
         HandleInput();
         HandleDrawerAutoClose();
         CheckCompletion();
+        ExitPuzzle();
     }
 
 
