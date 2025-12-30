@@ -271,7 +271,7 @@ public class PuzzleLockpick : PuzzleBase
 
     protected override void ExitPuzzle()
     {
-        Debug.Log("Exit lockpick puzzle");
+        PuzzleManager.Instance.ExitFromPuzzle();
     }
 
     public void SetZone(Collider other)
