@@ -41,25 +41,30 @@ public class PlayerInteract : MonoBehaviour {
         interactionRay = Camera.main.ScreenPointToRay(centreScreenPosition);
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance)) {
-
-            // Debug.Log("Ho colpito: " + hitInfo.collider.name);
-
+            
+            if (hitInfo.collider.gameObject != lastObj){outlineCleanup();}
             //if (!hasHit &&  hitInfo.collider.gameObject ha interactable)
             if (!hasHit)
             {   //la prima volta che becca un oggetto cambia il layer in modo da mostrare l'outline
                 hasHit = true;
                 
                 lastObj = hitInfo.collider.gameObject;
-                
-                //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
-                oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
-                hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
-                if (hitInfo.transform.childCount > 0)
+                if (lastObj.GetComponent<GrabbableItem>() != null || 
+                    lastObj.GetComponent<PickUpItem>() != null || 
+                    lastObj.GetComponent<DialogueTrigger>() != null ||
+                    lastObj.GetComponent<PuzzleInteraction>() != null)
                 {
-                    foreach (Transform child in hitInfo.transform){
-                        oldLayer.Enqueue(LayerMask.LayerToName(child.gameObject.layer));
-                        child.gameObject.layer = LayerMask.NameToLayer("OutLine");
-                    }                    
+                    print("identified");
+                    //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
+                    oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
+                    hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
+                    if (hitInfo.transform.childCount > 0)
+                    {
+                        foreach (Transform child in hitInfo.transform){
+                            oldLayer.Enqueue(LayerMask.LayerToName(child.gameObject.layer));
+                            child.gameObject.layer = LayerMask.NameToLayer("OutLine");
+                        }                    
+                    }
                 }
             }
 
@@ -73,22 +78,29 @@ public class PlayerInteract : MonoBehaviour {
         }
         else {
             itemFocus = null;
-            //probabilmente has hit non serve ma il codice è più leggibile
-            hasHit = false;
-            if (lastObj != null && oldLayer.Count > 0)
-            {
-                //restituisce all'oggetto e tutti i figli i layer precedenti
-                lastObj.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
-                if (lastObj.transform.childCount > 0)
-                {
-                    foreach (Transform child in lastObj.transform){
-                        child.gameObject.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
-                    }                    
-                }
-                lastObj = null;
-                oldLayer.Clear();
-            }
+            outlineCleanup();
         }
+    }
+
+    public void outlineCleanup()
+    {
+        //probabilmente has hit non serve ma il codice è più leggibile
+        hasHit = false;
+        if (lastObj != null && oldLayer.Count > 0)
+        {
+            //restituisce all'oggetto e tutti i figli i layer precedenti
+            lastObj.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
+            if (lastObj.transform.childCount > 0)
+            {
+                foreach (Transform child in lastObj.transform){
+                    child.gameObject.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
+                }                    
+            }
+            //rimuove riferimento all'oggetto e 
+            lastObj = null;
+            oldLayer.Clear();
+        }
+        
     }
 
     public void TryGrab(GrabbableItem obj) {

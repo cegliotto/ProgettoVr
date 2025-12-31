@@ -58,7 +58,7 @@ public class UiManager : MonoBehaviour
 
     }
 
-    public void nextDialogue(List<string> dialogue)
+    public int nextDialogue(List<string> dialogue , int globalDialogueIndex)
     {
         DialogueBox.gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -73,9 +73,11 @@ public class UiManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("end");
+            Time.timeScale = 1f;
             endDialogue();
+            globalDialogueIndex++;
         }
+        return globalDialogueIndex;
     }
 
     void endDialogue()
