@@ -5,14 +5,23 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour, IInteractable
 {
-    public List<string> dialogue;
+    [System.Serializable]
+    public class Dialogo
+    {
+        //public string nomeDialogo; // opzionale, per identificare il dialogo
+        public List<string> frasi;
+    }
+    public List<Dialogo> dialogue;
+    private int index = 0;
 
     PlayerInteract playerInteract;
     public void OnInteract(PlayerInteract playerInteract)
     {
         if(dialogue.Count > 0)
         {
-            UiManager.Instance.nextDialogue(dialogue);
+            Time.timeScale = 0f;
+            index = UiManager.Instance.nextDialogue(dialogue[index].frasi, index);
+            if (index > dialogue.Count - 1){ index = dialogue.Count - 1; }
         }
         
     }
