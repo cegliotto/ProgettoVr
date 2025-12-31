@@ -55,10 +55,10 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
 
         this.solved = true; // lo segno come completato
 
-        // Una volta completato assegno al puzzle il layer noInteractable
+        // Una volta completato assegno al puzzle il layer Ignore Raycast
         // in modo che, ad esempio per la cabinet, il raycast non venga bloccato dalla cabinet quando si cerca
         // di prendere la borsa
-        int layer = LayerMask.NameToLayer("NoInteractable");
+        int layer = LayerMask.NameToLayer("Ignore Raycast");
         if (layer != -1) {
             gameObject.layer = layer;
         }

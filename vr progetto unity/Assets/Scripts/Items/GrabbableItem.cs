@@ -23,7 +23,7 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
     [SerializeField] private bool debug; // per disattivare o meno visualizzazione dei commentii
     private Transform objectGrabPointTransform; // Posizione di grab -> assegnato per ora come child della camera nella Scena
 
-    [SerializeField] private float itemLerpSpeed; // Velocita' di spostamento durante il grab "peso dell'oggetto"
+    [SerializeField] private float itemLerpSpeed = 20f; // Velocita' di spostamento durante il grab "peso dell'oggetto"
 
     private Rigidbody rb;
 

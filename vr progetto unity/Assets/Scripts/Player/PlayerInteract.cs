@@ -39,11 +39,8 @@ public class PlayerInteract : MonoBehaviour {
         Vector2 centreScreenPosition = new Vector2(Screen.width / 2, Screen.height / 2);
         // Si ottiene raggio che passa dal centro della camera al centro dello schermo ottenuto prima
         interactionRay = Camera.main.ScreenPointToRay(centreScreenPosition);
-        int interactableMask = ~notInteractableMask; // Voglio che ci siano alcuni oggetti non interagibili
-        // Che quindi il loro collider deve essere bypassato. Quindi il raycast interagisce con tutti i gameobject
-        // tranne quelli che hanno il layer di tipo "notInteractableMask"
 
-        if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance, interactableMask)) {
+        if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance)) {
 
             Debug.Log("Ho colpito: " + hitInfo.collider.name);
 
