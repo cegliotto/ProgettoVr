@@ -67,16 +67,33 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         if (debug) Debug.Log("Released : " + this.gameObject.name);
     }
 
+
+    // Variabili interne per salvare lo stato originale dell'oggetto grabbable
+    private float _originalLinearDamping;
+    private float _originalAngularDamping;
+    float originalMass;
+    private RigidbodyInterpolation _originalInterpolation;
+
     public void GrabWithJoint(Transform grabPoint) {
-        // Aggiungere Release() automatico quando distanza tra Anchor e oggetto supera certa soglia!
+        originalMass = rb.mass;
+        rb.mass = 0.1f; // Massa leggera per non spingere via oggetti pesanti
 
         rb.useGravity = false;
 
-        // ignora collisioni col player
-        Utils.DisableCollision(
-            GetComponent<Collider>(),
-            Player.Instance.GetComponent<Collider>()
-        );
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        rb.freezeRotation = false;
+
+        _originalInterpolation = rb.interpolation;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
+        _originalLinearDamping = rb.linearDamping;
+        _originalAngularDamping = rb.angularDamping;
+
+
+        rb.linearDamping = 20f;  
+        rb.angularDamping = 20f; 
+
+        Utils.DisableCollision(GetComponent<Collider>(), Player.Instance.GetComponent<Collider>());
 
         Rigidbody anchorRb = grabPoint.GetComponent<Rigidbody>();
         if (!anchorRb) {
@@ -86,20 +103,36 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
 
         grabJoint = gameObject.AddComponent<ConfigurableJoint>();
         grabJoint.connectedBody = anchorRb;
-
         grabJoint.autoConfigureConnectedAnchor = false;
         grabJoint.anchor = Vector3.zero;
         grabJoint.connectedAnchor = Vector3.zero;
 
-        grabJoint.xMotion = ConfigurableJointMotion.Locked;
-        grabJoint.yMotion = ConfigurableJointMotion.Locked;
-        grabJoint.zMotion = ConfigurableJointMotion.Locked;
+        grabJoint.projectionMode = JointProjectionMode.None;
 
-        grabJoint.angularXMotion = ConfigurableJointMotion.Locked;
-        grabJoint.angularYMotion = ConfigurableJointMotion.Locked;
-        grabJoint.angularZMotion = ConfigurableJointMotion.Locked;
+        grabJoint.xMotion = ConfigurableJointMotion.Limited;
+        grabJoint.yMotion = ConfigurableJointMotion.Limited;
+        grabJoint.zMotion = ConfigurableJointMotion.Limited;
 
-        rb.freezeRotation = true;
+        grabJoint.linearLimit = new SoftJointLimit { limit = 0.001f };
+
+        grabJoint.linearLimitSpring = new SoftJointLimitSpring {
+            spring = 200f,
+            damper = 20f
+        };
+
+        grabJoint.angularXMotion = ConfigurableJointMotion.Free;
+        grabJoint.angularYMotion = ConfigurableJointMotion.Free;
+        grabJoint.angularZMotion = ConfigurableJointMotion.Free;
+
+        grabJoint.rotationDriveMode = RotationDriveMode.Slerp;
+
+        grabJoint.slerpDrive = new JointDrive {
+            positionSpring = 3000f, 
+            positionDamper = 100f, 
+            maximumForce = Mathf.Infinity
+        };
+
+        if (debug) Debug.Log($"GRABBED: {name}");
     }
 
     public void ReleaseWithJoint() {
@@ -109,15 +142,18 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         }
 
         rb.useGravity = true;
+        rb.mass = originalMass;
+
+        rb.interpolation = _originalInterpolation;
+        rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+
+        rb.linearDamping = _originalLinearDamping;
+        rb.angularDamping = _originalAngularDamping;
+
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        rb.freezeRotation = false;
-
-        Utils.EnableCollision(
-            GetComponent<Collider>(),
-            Player.Instance.GetComponent<Collider>()
-        );
+        Utils.EnableCollision(GetComponent<Collider>(), Player.Instance.GetComponent<Collider>());
 
         if (debug) Debug.Log("Released : " + gameObject.name);
     }

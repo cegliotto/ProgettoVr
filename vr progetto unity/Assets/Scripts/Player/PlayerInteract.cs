@@ -42,7 +42,7 @@ public class PlayerInteract : MonoBehaviour {
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance)) {
 
-            Debug.Log("Ho colpito: " + hitInfo.collider.name);
+            // Debug.Log("Ho colpito: " + hitInfo.collider.name);
 
             //if (!hasHit &&  hitInfo.collider.gameObject ha interactable)
             if (!hasHit)
