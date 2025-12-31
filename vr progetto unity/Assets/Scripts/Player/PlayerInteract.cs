@@ -44,7 +44,9 @@ public class PlayerInteract : MonoBehaviour {
         // tranne quelli che hanno il layer di tipo "notInteractableMask"
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance, interactableMask)) {
-            
+
+            Debug.Log("Ho colpito: " + hitInfo.collider.name);
+
             //if (!hasHit &&  hitInfo.collider.gameObject ha interactable)
             if (!hasHit)
             {   //la prima volta che becca un oggetto cambia il layer in modo da mostrare l'outline
@@ -100,7 +102,7 @@ public class PlayerInteract : MonoBehaviour {
             // controllo se posso rilasciare
             
             // rilascio
-            obj.Release();
+            obj.ReleaseWithJoint();
             currentGrabbableItem = null;
 
             // cambio FSM player?
@@ -109,7 +111,7 @@ public class PlayerInteract : MonoBehaviour {
         }
 
         // prendo oggetto e lo assegno alla variabile
-        obj.Grab(grabPoint);
+        obj.GrabWithJoint(grabPoint);
         currentGrabbableItem = obj;
         // cambio FSM player?
     }

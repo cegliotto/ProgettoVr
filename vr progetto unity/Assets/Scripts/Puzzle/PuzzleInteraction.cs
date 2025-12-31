@@ -60,7 +60,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         // di prendere la borsa
         int layer = LayerMask.NameToLayer("NoInteractable");
         if (layer != -1) {
-            //gameObject.layer = layer;
+            gameObject.layer = layer;
         }
     }
 }

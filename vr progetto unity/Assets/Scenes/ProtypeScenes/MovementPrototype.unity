@@ -524,11 +524,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 1
   itemLerpSpeed: 10
---- !u!1 &177850436 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4799094498605214717, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
-  m_PrefabInstance: {fileID: 4707818381682584836}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &198149438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,33 +1448,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8450928795695430306, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
   m_PrefabInstance: {fileID: 4707818381682584836}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &1582979945
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177850436}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 15
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!1 &1623330048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,10 +2105,6 @@ PrefabInstance:
       propertyPath: cameraPosition
       value: 
       objectReference: {fileID: 359849819}
-    - target: {fileID: 4799094498605214717, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5472601334787233564, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2188,10 +2152,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4799094498605214717, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1582979945}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

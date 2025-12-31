@@ -67,7 +67,7 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         if (debug) Debug.Log("Released : " + this.gameObject.name);
     }
 
-    private void GrabWithJoint(Transform grabPoint) {
+    public void GrabWithJoint(Transform grabPoint) {
         // Aggiungere Release() automatico quando distanza tra Anchor e oggetto supera certa soglia!
 
         rb.useGravity = false;
