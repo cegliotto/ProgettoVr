@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
         if (Cursor.lockState == CursorLockMode.None)
             return;
 
-        if (Player.Instance.playerState == Player.PlayerState.Puzzle) {
+        if (Player.Instance.playerState == Player.PlayerState.Pause) {
             return; // In modo che il player non possa muovere la camera se e' in puzzle (in dialog si, quindi non lo metto qui)
         }
 
@@ -74,8 +74,10 @@ public class PlayerController : MonoBehaviour {
         if (rb == null) return;
 
 
-        if (Player.Instance.playerState == Player.PlayerState.Puzzle ||
+        if (Player.Instance.playerState == Player.PlayerState.Pause ||
             Player.Instance.playerState == Player.PlayerState.Dialog) {
+            movementDirection = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
             return; // In modo che il player non possa muoversi se e' in puzzle o dialog
         }
 

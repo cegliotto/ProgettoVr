@@ -14,11 +14,18 @@ public class PlayerInteract : MonoBehaviour {
 
     [SerializeField] private LayerMask notInteractableMask;
 
+    public bool IsGrabbing() => currentGrabbableItem != null;
+
     private void Update() {
         CheckInteraction();
     }
 
     public void Interact() { // Se ho premuto il tasto di interazione
+        if(Player.Instance.playerState == Player.PlayerState.Dialog ||
+            Player.Instance.playerState == Player.PlayerState.Pause) {
+            return;
+        }
+
         if(currentGrabbableItem == null) { // Se non ho nessun oggetto in mano
             if(itemFocus != null) { // controllo se mi sto focalizzando su un oggetto
                 // Debug.Log($"interagendo con{itemFocus.name}");
