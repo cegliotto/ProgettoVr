@@ -5,6 +5,9 @@ public class SeatLever : MonoBehaviour
 {
     [SerializeField] private float returnSpeed = 2f;
     [SerializeField] private float downAngle = 1f;
+    [SerializeField] private AudioSource leverAudio;
+    [SerializeField] private AudioClip leverClick;
+
 
     private bool isReturning;
     private Quaternion initialRot;
@@ -25,6 +28,8 @@ public class SeatLever : MonoBehaviour
 
         transform.localRotation = downRot;
         isReturning = true;
+        if (leverAudio && leverClick)
+            leverAudio.PlayOneShot(leverClick);
         // UNA SOLA NOTIFICA PER PULL
         OnLeverPulled?.Invoke();
     }
