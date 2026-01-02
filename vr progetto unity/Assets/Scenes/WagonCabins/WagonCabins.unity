@@ -613,6 +613,9 @@ MonoBehaviour:
   maxOpenDistance: 0.4
   openStep: 0.05
   closeSpeed: 0.15
+  drawerAudio: {fileID: 0}
+  drawerSlide: {fileID: 0}
+  soundStartOffset: 0.5
 --- !u!4 &210183006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1437950729384122044, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
@@ -4939,6 +4942,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeatLever
   returnSpeed: 6
   downAngle: -45
+  leverAudio: {fileID: 0}
+  leverClick: {fileID: 0}
 --- !u!1 &1191817085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,7 +7803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 174310115741842219, guid: 4ee2e9147bcfd054eb24ef72528fe1ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6346170106590780531, guid: 4ee2e9147bcfd054eb24ef72528fe1ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7806,7 +7811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6346170106590780531, guid: 4ee2e9147bcfd054eb24ef72528fe1ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.839
+      value: -0.774
       objectReference: {fileID: 0}
     - target: {fileID: 6346170106590780531, guid: 4ee2e9147bcfd054eb24ef72528fe1ca, type: 3}
       propertyPath: m_LocalPosition.z
