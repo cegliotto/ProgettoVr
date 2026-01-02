@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
         Idle, // Default
         Movement, // In movimento
         Dialog, // Entra in dialogo -> voglio poter muovere la camera ma non far camminare
-        Puzzle, // Non devo poter far muovere camera o camminare dallo script di playerController
+        Pause, // Non devo poter far muovere camera o camminare dallo script di playerController
     }
     public PlayerState playerState;
 
