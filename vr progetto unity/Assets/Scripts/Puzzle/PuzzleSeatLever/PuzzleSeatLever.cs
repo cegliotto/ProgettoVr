@@ -65,7 +65,7 @@ public class PuzzleSeatLever : PuzzleBase
             isClicking = true;
 
             activeLever.Pull();
-            drawer.OpenStep();
+            //drawer.OpenStep(); TOLTO PERCHè IL CASSETTO VIENE GESTITO DALLA LEVA E NON PIù DALL'INPUT DIRETTAMENTE
             lastPullTime = Time.time;
             return;
         }
