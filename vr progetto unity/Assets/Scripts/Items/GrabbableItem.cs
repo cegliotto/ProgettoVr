@@ -37,7 +37,7 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
     }
 
     public void Grab(Transform grabPoint) { // Richiamato in PlayerInteract
-        if (debug) Debug.Log("Grabbed : " + this.gameObject.name);
+        if (debug) Debug.Log($"Grabbed : {gameObject.name} in {grabPoint.gameObject.name}");
         // rb.isKinematic = true;
         rb.useGravity = false; // disattivo gravita' (metodo isKinematic = false)
 

@@ -12,8 +12,6 @@ public class PlayerInteract : MonoBehaviour {
     [SerializeField] private GrabbableItem currentGrabbableItem;
     [SerializeField] private Transform itemFocus; // item attualmente puntato dal player
 
-    [SerializeField] private LayerMask notInteractableMask;
-
     public bool IsGrabbing() => currentGrabbableItem != null;
 
     private void Update() {
@@ -112,7 +110,6 @@ public class PlayerInteract : MonoBehaviour {
 
     public void TryGrab(GrabbableItem obj) {
         // check su currentstate qui se non puo' grabbare in certe situzioni
-
         if (currentGrabbableItem != null) { // Se ho gia' qualcosa
 
             // controllo se posso rilasciare

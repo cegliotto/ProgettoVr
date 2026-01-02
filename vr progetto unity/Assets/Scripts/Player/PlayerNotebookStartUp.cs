@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerNotebookStartUp : MonoBehaviour {
     [SerializeField] private Transform notebookHolder; // GameObject che contiene notebook e camera relativa
-    [SerializeField] private Transform orientation;
     
     // Update is called once per frame
     void Update() {

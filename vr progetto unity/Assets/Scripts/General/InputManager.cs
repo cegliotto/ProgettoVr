@@ -12,6 +12,13 @@ public class InputManager : MonoBehaviour {
     public Vector2 GetMouse() => look;
 
     private void Awake() {
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         inputActions = new InputSystem_Actions();
 
         inputActions.Player.Enable(); // Inizializzazione sistema di input relativo al Player
@@ -25,15 +32,6 @@ public class InputManager : MonoBehaviour {
 
         // Interazione
         inputActions.Player.Interact.performed += Interact_performed;
-
-        // Per cambio scena
-
-        if (Instance == null) {
-            Instance = this;
-            return;
-        }
-
-        Destroy(gameObject);
     }
 
     private void Move_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
@@ -58,5 +56,19 @@ public class InputManager : MonoBehaviour {
 
     private void OnDisable() {
         inputActions.Player.Disable();
+    }
+
+    private void OnDestroy() {
+        if (inputActions != null) {
+            inputActions.Player.Move.performed -= Move_performed;
+            inputActions.Player.Move.canceled -= Move_canceled;
+
+            inputActions.Player.Look.performed -= Look_performed;
+            inputActions.Player.Look.canceled -= Look_canceled;
+
+            inputActions.Player.Interact.performed -= Interact_performed;
+
+            inputActions.Player.Disable();
+        }
     }
 }
