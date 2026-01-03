@@ -15,6 +15,11 @@ public class PuzzleCabinet : PuzzleBase {
     private bool isDragging;
     private Vector3 lastMousePos;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip safeOpening;
+
+    private bool puzzleSolved;
+
     void Update() {
         PuzzleBehaviour();
 
@@ -85,17 +90,25 @@ public class PuzzleCabinet : PuzzleBase {
     }
 
     private void CheckCombination() {
+        if (puzzleSolved) return;
+
         // Se la combinazione inserita (valore corrente di ogni dials) combacia con quella richiesta
         for (int i = 0; i < valuesToGuess.Length; i++) {
             if (dials[i].CurrentValue != valuesToGuess[i])
                 return;
         }
+
+        puzzleSolved = true;
         // Allora si esegue il metodo in PuzzleManager
         PuzzleCompleted();
     }
 
     protected override void PuzzleCompleted() {
         Debug.Log("Puzzle completato!");
+
+        if(audioSource != null && safeOpening != null) {
+            audioSource.PlayOneShot(safeOpening);
+        }
 
         if (PuzzleManager.Instance != null) {
             PuzzleManager.Instance.CompletePuzzle();
