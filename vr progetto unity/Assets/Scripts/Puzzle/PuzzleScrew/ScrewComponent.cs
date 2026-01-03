@@ -1,53 +1,74 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ScrewComponent : MonoBehaviour {
+public class ScrewComponent : MonoBehaviour
+{
 
-    [SerializeField] private float duration = 0.3f; // durata dell'animazione
-    [SerializeField] private float moveStep = 0.02f; // Quanto sale per ogni click
+    [SerializeField] private float duration = 0.3f;
+    [SerializeField] private float moveStep = 0.02f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip screwRotateClip;
+    [SerializeField] private AudioClip screwRemovedClip;
 
     private int clicks = 0;
-
-    private bool isAnimating = false; // vedi giu' per uso
-    private Vector3 center; // centro della vite, serve per rotazione corretta (vedi giu')
+    private bool isAnimating = false;
+    private Vector3 center;
 
     public bool IsRemoved { get; private set; }
 
-    void Start() {
-        // Il centro della vite, per il fatto che il pivot non coincide con il centro, lo prendo dalla mesh
-        // Quindi poi devo ruotare attorno a questo centro, fare Rotate() non va bene, visto che farei attorno al pivot
+    void Start()
+    {
         center = GetComponent<Renderer>().bounds.center;
+
+        if (audioSource != null)
+        {
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+        }
     }
 
-    public void RotateScrew() {
-        if (isAnimating || IsRemoved) return; // In modo che non posso cliccare nuovamente se si sta gia' muovendo
+    public void RotateScrew()
+    {
+        if (isAnimating || IsRemoved) return;
 
         clicks++;
 
-        // Ad ogni click ruoto e si muove verso l'alto la vite
-        StartCoroutine(RotateAndLift(180f, moveStep)); // Coroutine per animazione
-
+        // --- GESTIONE AUDIO ---
         if (clicks >= 2)
-            IsRemoved = true; // la vite è stata completamente svitata
+        {
+            IsRemoved = true;
+            if (audioSource && screwRemovedClip)
+                audioSource.PlayOneShot(screwRemovedClip);
+        }
+        else
+        {
+            if (audioSource && screwRotateClip)
+                audioSource.PlayOneShot(screwRotateClip);
+        }
+
+        // --- AVVIO ANIMAZIONE (Chiamata UNA sola volta) ---
+        StartCoroutine(RotateAndLift(180f, moveStep));
     }
 
-    IEnumerator RotateAndLift(float angleTotal, float liftAmount) {
-        isAnimating = true; // Animazione iniziata
+    IEnumerator RotateAndLift(float angleTotal, float liftAmount)
+    {
+        isAnimating = true;
 
-        float angle = 0f; // angolo attuale di rotazione
-        float moved = 0f; // spostamento attuale
+        float angle = 0f;
+        float moved = 0f;
 
-        while (angle < angleTotal) {
-            // calcolo angolo di rotazione attuale e spostamento
+        while (angle < angleTotal)
+        {
             float stepAngle = (angleTotal / duration) * Time.deltaTime;
             float stepLift = (liftAmount / duration) * Time.deltaTime;
 
-            // Per evitare di sforare
             if (angle + stepAngle > angleTotal)
                 stepAngle = angleTotal - angle;
 
-            transform.RotateAround(center, Vector3.up, stepAngle); // Rotazione della vite
-            transform.Translate(Vector3.up * stepLift, Space.Self); // Salita della vite
+            transform.RotateAround(center, Vector3.up, stepAngle);
+            transform.Translate(Vector3.up * stepLift, Space.Self);
 
             angle += stepAngle;
             moved += stepLift;
@@ -55,10 +76,13 @@ public class ScrewComponent : MonoBehaviour {
             yield return null;
         }
 
-        isAnimating = false; // Animazione finita
+        isAnimating = false;
 
-        // Se ho finito l'animazione ed e' il secondo click -> rimozione
         if (IsRemoved)
+        {
+            // Aspetta un istante per far finire il suono prima di disattivare l'oggetto
+            yield return new WaitForSeconds(0.2f); // Leggermente aumentato per sicurezza
             gameObject.SetActive(false);
+        }
     }
 }
