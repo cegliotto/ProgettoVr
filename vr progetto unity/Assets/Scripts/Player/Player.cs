@@ -22,6 +22,8 @@ public class Player : MonoBehaviour {
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public PlayerInteract playerInteract;
 
+    public Transform notebookHolder;
+
     private void Awake() {
 
         playerController = GetComponent<PlayerController>();

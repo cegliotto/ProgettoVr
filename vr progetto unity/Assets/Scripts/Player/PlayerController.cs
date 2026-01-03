@@ -34,18 +34,19 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update() {
+        if (Player.Instance.playerState == Player.PlayerState.Pause) {
+            return; // In modo che il player non possa muovere la camera se e' in puzzle (in dialog si, quindi non lo metto qui)
+        }
+
         // Gestione cursore
         UpdateCursor();
 
         if (Cursor.lockState == CursorLockMode.None)
             return;
-
-        if (Player.Instance.playerState == Player.PlayerState.Pause) {
-            return; // In modo che il player non possa muovere la camera se e' in puzzle (in dialog si, quindi non lo metto qui)
-        }
 
         // Lettura input in update
         // Movimento dipende da dove sta guardando

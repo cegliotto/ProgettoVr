@@ -41,19 +41,19 @@ public class NotebookManager : MonoBehaviour {
 
     private int currentPageIndex;
 
-    [HideInInspector] public NotebookItems notebookItemsManager;
-    [HideInInspector] public NotebookNotes notebookNotesManager;
+    public NotebookItems notebookItemsManager;
+    public NotebookNotes notebookNotesManager;
 
     [SerializeField] private Button test_item;
     [SerializeField] private Button test_notes;
+
+    [SerializeField] private Transform notebookHolder;
 
     private Animator anim;
 
     int i = 0;
 
     void Awake() {
-        notebookItemsManager = this.GetComponent<NotebookItems>();
-        notebookNotesManager = this.GetComponent<NotebookNotes>();
         anim = GetComponent<Animator>();
         currentPageIndex = 0;
 
@@ -81,6 +81,13 @@ public class NotebookManager : MonoBehaviour {
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // per non distruggerlo al cambio di scena
+    }
+
+    private void Update() {
+        if (Player.Instance != null) {
+            this.notebookHolder.transform.position = Player.Instance.notebookHolder.transform.position;
+            this.notebookHolder.transform.rotation = Player.Instance.notebookHolder.transform.rotation;
+        }
     }
 
     private void NextPagePair() {
