@@ -59,7 +59,6 @@ public class PlayerInteract : MonoBehaviour {
                     lastObj.GetComponent<DialogueTrigger>() != null ||
                     lastObj.GetComponent<PuzzleInteraction>() != null)
                 {
-                    print("identified");
                     //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
                     oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
                     hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");

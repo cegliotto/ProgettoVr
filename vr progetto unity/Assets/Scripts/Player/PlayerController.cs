@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();
-
+        source = GetComponent<AudioSource>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -93,12 +93,15 @@ public class PlayerController : MonoBehaviour {
             Cursor.lockState = CursorLockMode.None;
     }
 
+    AudioSource source;
     private void UpdateMovementState() { // Aggiornamento FSM player
         if(movementDirection != Vector3.zero) {
             Player.Instance.playerState = Player.PlayerState.Movement;
+            if(!source.isPlaying){ source.Play(); }
         }
         else {
             Player.Instance.playerState = Player.PlayerState.Idle;
+            source.Stop();
         }
     }
 

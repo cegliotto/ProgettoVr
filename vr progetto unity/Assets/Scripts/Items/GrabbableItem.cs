@@ -25,11 +25,13 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
 
     [SerializeField] private float itemLerpSpeed = 20f; // Velocita' di spostamento durante il grab "peso dell'oggetto"
 
+    [SerializeField] AudioSource source;
     private Rigidbody rb;
 
     private ConfigurableJoint grabJoint; // Per trasporto con configurableJoint
     private void Awake() {
         rb = this.GetComponent<Rigidbody>();
+        source = GetComponent<AudioSource>();
     }
 
     public void OnInteract(PlayerInteract playerInteract) { // Quando il player ha premuto tasto di intearzione
@@ -156,5 +158,14 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         Utils.EnableCollision(GetComponent<Collider>(), Player.Instance.GetComponent<Collider>());
 
         if (debug) Debug.Log("Released : " + gameObject.name);
+    }
+
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if(source !=null && !source.isPlaying)
+        {
+            source.Play();
+        }
     }
 }
