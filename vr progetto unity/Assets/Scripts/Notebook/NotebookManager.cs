@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,6 +54,8 @@ public class NotebookManager : MonoBehaviour {
     private Animator anim;
 
     int i = 0;
+
+    private List<ItemType> itemsPickedUp = new List<ItemType>();
 
     void Awake() {
         anim = GetComponent<Animator>();
@@ -150,4 +154,11 @@ public class NotebookManager : MonoBehaviour {
         fromPair.HidePair();
     }
 
+    public void AddItem(ItemType new_item) {
+        itemsPickedUp.Add(new_item);
+    }
+
+    public bool AlreadyPickedUp(ItemType item) {
+        return itemsPickedUp.Contains(item);
+    }
 }

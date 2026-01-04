@@ -36,6 +36,11 @@ public class NotebookItems : MonoBehaviour {
             AnnotateNewItem(item);
         }
 
+        // lo aggiungo alla lista degli oggetti raccolti
+        if(NotebookManager.Instance != null) {
+            NotebookManager.Instance.AddItem(item);
+        }
+
         // animazione per fade
         StartCoroutine(Utils.FadeCanvasGroup(cg, cg.alpha, 1f, fadeDuration));
     }

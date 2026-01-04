@@ -2587,6 +2587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &407431567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2793,6 +2794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &418027294
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2961,6 +2963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!1001 &470917183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4051,6 +4054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &719594427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4540,6 +4544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &806530024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4729,6 +4734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &851061549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5397,6 +5403,64 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4425431261487568214, guid: b0c9af621abb11248b97fadd284da848, type: 3}
   m_PrefabInstance: {fileID: 939933160}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &943850115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 943850116}
+  - component: {fileID: 943850118}
+  - component: {fileID: 943850117}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &943850116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943850115}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &943850117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943850115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d52545930901a4ab4c6821ca80c502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
+  trainSceneName: WagonBag
+--- !u!114 &943850118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943850115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51330789e36ca594b9851fc50ea25846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputManager
 --- !u!1001 &963050053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6576,6 +6640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1158111043
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7639,6 +7704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1254544944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8059,6 +8125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1295673500
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8539,6 +8606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1369317896
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8580,6 +8648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1369317898
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8621,6 +8690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!1 &1371335676
 GameObject:
   m_ObjectHideFlags: 0
@@ -9149,6 +9219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!1001 &1415659507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9798,6 +9869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1533536734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10723,6 +10795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1692499366
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10855,6 +10928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1719284292
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10988,6 +11062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!114 &1732879607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11002,6 +11077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1732879608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11225,6 +11301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1785230166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11474,6 +11551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1824248645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11712,6 +11790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &1866222763
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12856,6 +12935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &2078937132
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13371,6 +13451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!54 &2147339723
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13886,6 +13967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7025368922558704569, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7745299484515414091, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       propertyPath: m_Name
       value: nightTable
@@ -13922,6 +14007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
 --- !u!1001 &4965639111881850670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14158,3 +14244,4 @@ SceneRoots:
   - {fileID: 1107524091}
   - {fileID: 465367971}
   - {fileID: 1089599552}
+  - {fileID: 943850116}

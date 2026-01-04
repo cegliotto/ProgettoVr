@@ -10,8 +10,10 @@ public class PuzzleManager : MonoBehaviour
     private Player.PlayerInfo savedPlayerInfo; // Informazioni di posizione e orientamento del player per il cambio di scena
 
     private PuzzleType currentPuzzle;
-    private void Awake() {
 
+    private List<PuzzleType> solvedPuzzles; // Lista che contiene SOLO i puzzle risolti
+
+    private void Awake() {
         if(Instance != null) { // Se c'e' gia' istanza 
             Destroy(gameObject);
             return;
@@ -19,6 +21,8 @@ public class PuzzleManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // per non distruggerlo al cambio di scena
+
+        solvedPuzzles = new List<PuzzleType>();
     }
 
     public void StartPuzzle(string puzzleScene, PuzzleType puzzle) { // Richiamata in puzzleInteraction, dove passo il nome della scena
@@ -56,6 +60,14 @@ public class PuzzleManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // imposto il currentPuzzle come solved
+        if (!solvedPuzzles.Contains(currentPuzzle)) {
+            solvedPuzzles.Add(currentPuzzle);
+        }
+        else {
+            Debug.LogWarning("NON DOVREI POTER COMPLETARE LO STESSO PUZZLE 2 VOLTE");
+        }
+
         // carico scena treno
         SceneManager.sceneLoaded += OnTrainSceneLoadedCompleted; // Sottoscrivo evento -> in modo che quando la scena viene caricata
         
@@ -86,5 +98,9 @@ public class PuzzleManager : MonoBehaviour
                 puzzle.StartSolvedAnimation();
             }
         }
+    }
+
+    public bool isPuzzleSolved(PuzzleType puzzleToCheck) {
+        return solvedPuzzles.Contains(puzzleToCheck);
     }
 }

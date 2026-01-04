@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2434792971799905649
 Transform:
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8305760986120321333}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.8206618, z: -0, w: 0.5714143}
+  m_LocalRotation: {x: 0, y: 0.82066077, z: 0, w: 0.5714157}
   m_LocalPosition: {x: -0.38691998, y: -0.58368003, z: -8.32912}
   m_LocalScale: {x: 0.70000005, y: 0.7, z: 0.70000005}
   m_ConstrainProportionsScale: 0
@@ -127,3 +127,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   debug: 0
+  itemType: 1

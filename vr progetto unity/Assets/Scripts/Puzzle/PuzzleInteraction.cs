@@ -29,6 +29,14 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         }
     }
 
+    private void Start() {
+        if (PuzzleManager.Instance != null) {
+            if (PuzzleManager.Instance.isPuzzleSolved(this.puzzleType)) { // Se puzzle e' gia' risolto
+                StartSolvedAnimation(); // Imposto come risolto
+            }
+        }
+    }
+
     public void OnInteract(PlayerInteract playerInteract) {
         if (solved) return;
 
@@ -54,6 +62,8 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         }
 
         this.solved = true; // lo segno come completato
+
+        if (puzzleType == PuzzleType.PuzzleScrews) return; // La nightTable deve essere spostabile
 
         // Una volta completato assegno al puzzle il layer Ignore Raycast
         // in modo che, ad esempio per la cabinet, il raycast non venga bloccato dalla cabinet quando si cerca
