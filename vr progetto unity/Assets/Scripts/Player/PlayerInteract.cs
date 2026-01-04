@@ -38,6 +38,7 @@ public class PlayerInteract : MonoBehaviour {
     GameObject lastObj;
     Queue<string> oldLayer = new Queue<string>();
     bool hasHit = false;
+    [SerializeField] Material outlineMat;
 
     private void CheckInteraction() {
         // si ricava posizione del centro dello schermo
@@ -54,6 +55,16 @@ public class PlayerInteract : MonoBehaviour {
                 hasHit = true;
                 
                 lastObj = hitInfo.collider.gameObject;
+
+                MeshFilter mf = lastObj.GetComponent<MeshFilter>();
+                if (mf != null)
+                {
+                    // Vector3 center = mf.mesh.bounds.center; // object space
+                    // outlineMat.SetVector("pivot", center);
+                    Vector3 worldCenter = CalculateCombinedCenter(lastObj);
+                    outlineMat.SetVector("pivot", worldCenter);
+                }
+
                 if (lastObj.GetComponent<GrabbableItem>() != null || 
                     lastObj.GetComponent<PickUpItem>() != null || 
                     lastObj.GetComponent<DialogueTrigger>() != null ||
@@ -132,4 +143,20 @@ public class PlayerInteract : MonoBehaviour {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(interactionRay);
     }
+    Vector3 CalculateCombinedCenter(GameObject root)
+    {           
+        Renderer[] renderers = root.GetComponentsInChildren<Renderer>();
+
+        if (renderers.Length == 0)
+            return root.transform.position;
+
+        Bounds combinedBounds = renderers[0].bounds;
+
+        for (int i = 1; i < renderers.Length; i++)
+        {
+            combinedBounds.Encapsulate(renderers[i].bounds);
+        }
+
+        return combinedBounds.center;
+    }                                      
 }
