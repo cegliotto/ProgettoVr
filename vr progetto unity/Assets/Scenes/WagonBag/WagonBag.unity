@@ -5403,64 +5403,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4425431261487568214, guid: b0c9af621abb11248b97fadd284da848, type: 3}
   m_PrefabInstance: {fileID: 939933160}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &943850115
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 943850116}
-  - component: {fileID: 943850118}
-  - component: {fileID: 943850117}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &943850116
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943850115}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &943850117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943850115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5d52545930901a4ab4c6821ca80c502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
-  trainSceneName: WagonBag
---- !u!114 &943850118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943850115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51330789e36ca594b9851fc50ea25846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
 --- !u!1001 &963050053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14070,6 +14012,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2396183581982197452, guid: de490caeb8070e7419dc7cb957722ac1, type: 3}
   m_PrefabInstance: {fileID: 4965639111881850670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6384901001899108110
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275717183662812708, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: trainSceneName
+      value: WagonBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340168149892473685, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_Name
+      value: 'GameManager '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
 --- !u!1001 &6460042371883358366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14244,4 +14247,4 @@ SceneRoots:
   - {fileID: 1107524091}
   - {fileID: 465367971}
   - {fileID: 1089599552}
-  - {fileID: 943850116}
+  - {fileID: 6384901001899108110}

@@ -1726,6 +1726,67 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15785262, y: 0.3513826, z: 0.14224833}
   m_Center: {x: -0.07790509, y: 0.12748852, z: 0.0017344542}
+--- !u!1001 &461454307
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.86945
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.21512
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.7305
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275717183662812708, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: trainSceneName
+      value: WagonStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340168149892473685, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_Name
+      value: 'GameManager '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
 --- !u!1 &483688069
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,64 +3289,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1 &979652890
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 979652893}
-  - component: {fileID: 979652892}
-  - component: {fileID: 979652891}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &979652891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979652890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5d52545930901a4ab4c6821ca80c502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
-  trainSceneName: WagonStart
---- !u!114 &979652892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979652890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51330789e36ca594b9851fc50ea25846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
---- !u!4 &979652893
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979652890}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &990462672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7255,4 +7258,4 @@ SceneRoots:
   - {fileID: 1874290157}
   - {fileID: 1073406164}
   - {fileID: 1422868202}
-  - {fileID: 979652893}
+  - {fileID: 461454307}

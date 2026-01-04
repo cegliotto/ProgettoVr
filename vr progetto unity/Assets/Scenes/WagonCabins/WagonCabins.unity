@@ -1420,6 +1420,67 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2368602906159382344, guid: 237d1ac3de19c264bad502089fba8816, type: 3}
   m_PrefabInstance: {fileID: 1309583838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &502370325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.86945
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.21512
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.7305
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784142706762432742, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275717183662812708, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: trainSceneName
+      value: WagonCabins
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340168149892473685, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: m_Name
+      value: 'GameManager '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
 --- !u!1001 &515735797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2614,6 +2675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   debug: 0
+  itemType: 0
 --- !u!65 &731929016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7125,6 +7187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   debug: 0
+  itemType: 0
 --- !u!1 &1639404762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3728584049237746136, guid: f6026e49748e8814ea8d3e99a49285e6, type: 3}
@@ -7300,64 +7363,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.62973386, y: 0.05986085, z: 1.9703298}
   m_Center: {x: -0.02606627, y: -0.04059402, z: 0.000001939605}
---- !u!1 &1686802737
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1686802740}
-  - component: {fileID: 1686802739}
-  - component: {fileID: 1686802738}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1686802738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686802737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5d52545930901a4ab4c6821ca80c502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
-  trainSceneName: WagonCabins
---- !u!114 &1686802739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686802737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51330789e36ca594b9851fc50ea25846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
---- !u!4 &1686802740
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686802737}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1693707763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8862,7 +8867,7 @@ SceneRoots:
   - {fileID: 718484167}
   - {fileID: 1461742426}
   - {fileID: 1854454762}
-  - {fileID: 1686802740}
   - {fileID: 1512550298}
   - {fileID: 768421563}
   - {fileID: 1873134029}
+  - {fileID: 502370325}

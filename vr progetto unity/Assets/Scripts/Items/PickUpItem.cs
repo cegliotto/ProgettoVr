@@ -20,7 +20,8 @@ public class PickUpItem : MonoBehaviour, IInteractable {
             Debug.Log($"Raccolto oggetto : {gameObject.name}");
         }
         // Aggiunta in Notebook
-        NotebookManager.Instance.notebookItemsManager.OnItemPickedUp(this.itemType);
+        if(NotebookManager.Instance != null)
+            NotebookManager.Instance.notebookItemsManager.OnItemPickedUp(this.itemType);
 
         // Suono di raccolta
 
