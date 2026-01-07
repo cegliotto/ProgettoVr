@@ -3599,6 +3599,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5773841551948891939, guid: 218d2ec084ccc124ea5bcabf0745663f, type: 3}
   m_PrefabInstance: {fileID: 1091160446}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1120634252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1120634254}
+  - component: {fileID: 1120634253}
+  m_Layer: 0
+  m_Name: Decal Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1120634253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120634252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 44858e73d4f8a254d961a7f2ecab7fc0, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!4 &1120634254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120634252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6971453, y: 0.19479321, z: -0.18567348, w: 0.664507}
+  m_LocalPosition: {x: 0.307, y: 0.147, z: -2.663}
+  m_LocalScale: {x: 1.4185023, y: 0.99208635, z: 1.4185023}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 92.746, y: 0, z: -31.223022}
 --- !u!1001 &1121582123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7259,3 +7319,4 @@ SceneRoots:
   - {fileID: 1073406164}
   - {fileID: 1422868202}
   - {fileID: 461454307}
+  - {fileID: 1120634254}

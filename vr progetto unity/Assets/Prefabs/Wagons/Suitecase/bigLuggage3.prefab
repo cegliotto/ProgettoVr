@@ -117,7 +117,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &76826525516956994
 BoxCollider:
@@ -154,3 +154,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   debug: 0
   itemLerpSpeed: 20
+  source: {fileID: 0}
