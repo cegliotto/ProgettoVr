@@ -117,12 +117,12 @@ Transform:
   m_GameObject: {fileID: 747287077517108398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.236, y: 0.482, z: 0.392}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.055984743, y: 0.45000014, z: 0.0034068525}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8785965934010472376}
-  m_Father: {fileID: 3775489869228002812}
+  m_Father: {fileID: 1204173697198471945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1090695592730929218
 MeshFilter:
@@ -195,6 +195,8 @@ MonoBehaviour:
   rotationPerStep: 9
   maxDigit: 40
   dial: {fileID: 8785965934010472376}
+  audioSource: {fileID: 0}
+  tickClip: {fileID: 0}
 --- !u!1 &944888131637833936
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,12 +225,12 @@ Transform:
   m_GameObject: {fileID: 944888131637833936}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.555, y: 0.482, z: 0.392}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.289985, y: 0.45000014, z: 0.0034068823}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 63316939744851497}
-  m_Father: {fileID: 3775489869228002812}
+  m_Father: {fileID: 1204173697198471945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7950133561393555120
 MeshFilter:
@@ -301,6 +303,8 @@ MonoBehaviour:
   rotationPerStep: 9
   maxDigit: 40
   dial: {fileID: 63316939744851497}
+  audioSource: {fileID: 0}
+  tickClip: {fileID: 0}
 --- !u!1 &1300204833339754593
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,14 +336,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.246, y: -0.75638, z: -4.427}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_LocalScale: {x: 1.7000002, y: 1.7, z: 1.7000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5982046735639860031}
   - {fileID: 1204173697198471945}
-  - {fileID: 8933801323891509113}
-  - {fileID: 5062865676189539355}
-  - {fileID: 689733887368920519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &1451222413464219837
@@ -456,6 +457,7 @@ MonoBehaviour:
   puzzleSceneName: PuzzleCabinet
   puzzleType: 0
   solved: 0
+  animator: {fileID: 0}
 --- !u!1 &1550434047267696512
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +577,10 @@ Transform:
   m_LocalPosition: {x: 0.024015307, y: 0.031999853, z: 0.3885932}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8933801323891509113}
+  - {fileID: 5062865676189539355}
+  - {fileID: 689733887368920519}
   m_Father: {fileID: 3775489869228002812}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2411183650526744009
@@ -751,12 +756,12 @@ Transform:
   m_GameObject: {fileID: 7488383591391101040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3926381, y: 0.482, z: 0.3917184}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.16998471, y: 0.45000014, z: 0.0034068525}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4552939523386369080}
-  m_Father: {fileID: 3775489869228002812}
+  m_Father: {fileID: 1204173697198471945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1840098113976233149
 MeshFilter:
@@ -829,6 +834,8 @@ MonoBehaviour:
   rotationPerStep: 9
   maxDigit: 40
   dial: {fileID: 4552939523386369080}
+  audioSource: {fileID: 0}
+  tickClip: {fileID: 0}
 --- !u!1 &8247530748572756861
 GameObject:
   m_ObjectHideFlags: 0
