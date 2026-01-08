@@ -29,9 +29,20 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
     private Rigidbody rb;
 
     private ConfigurableJoint grabJoint; // Per trasporto con configurableJoint
+
+    private Vector3 localCenter;
+
     private void Awake() {
         rb = this.GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
+
+        if(TryGetComponent<Collider>(out Collider col)) {
+            Vector3 worldCenter = col.bounds.center;
+            localCenter = transform.InverseTransformPoint(worldCenter);
+        }
+        else {
+            localCenter = Vector3.zero; // coincide con pivot
+        }
     }
 
     public void OnInteract(PlayerInteract playerInteract) { // Quando il player ha premuto tasto di intearzione
@@ -106,7 +117,8 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         grabJoint = gameObject.AddComponent<ConfigurableJoint>();
         grabJoint.connectedBody = anchorRb;
         grabJoint.autoConfigureConnectedAnchor = false;
-        grabJoint.anchor = Vector3.zero;
+        // grabJoint.anchor = Vector3.zero; // presa nel pivot
+        grabJoint.anchor = localCenter; // presa al centro dell'oggetto
         grabJoint.connectedAnchor = Vector3.zero;
 
         grabJoint.projectionMode = JointProjectionMode.None;

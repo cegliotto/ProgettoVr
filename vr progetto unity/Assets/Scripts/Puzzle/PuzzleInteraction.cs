@@ -13,12 +13,12 @@ public enum PuzzleType {
 public class PuzzleInteraction : MonoBehaviour, IInteractable
 {
     [Tooltip("Nome della scena da carica per far partire il puzzle specifico")]
-    [SerializeField] private string puzzleSceneName;
-    [SerializeField] private PuzzleType puzzleType; // Necessario per identificare il puzzle
+    [SerializeField] protected string puzzleSceneName;
+    [SerializeField] protected PuzzleType puzzleType; // Necessario per identificare il puzzle
     
 
     public bool solved = false;
-    [SerializeField] private Animator animator;
+    [SerializeField] protected Animator animator;
     public PuzzleType GetPuzzleType() => puzzleType;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         }
     }
 
-    private void Start() {
+    protected virtual void Start() {
         if (PuzzleManager.Instance != null) {
             if (PuzzleManager.Instance.isPuzzleSolved(this.puzzleType)) { // Se puzzle e' gia' risolto
                 StartSolvedAnimation(); // Imposto come risolto
@@ -37,7 +37,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         }
     }
 
-    public void OnInteract(PlayerInteract playerInteract) {
+    public virtual void OnInteract(PlayerInteract playerInteract) {
         if (solved) return;
 
         Debug.Log($"Interazione con {puzzleSceneName}");
@@ -50,20 +50,12 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         }
     }
 
-    public void StartSolvedAnimation() {
+    public virtual void StartSolvedAnimation() {
         if(animator != null) { // Se ha un animazione associata al completamento
             animator.SetTrigger("completed"); // Necessario che animazione si chiami completed in caso
         }
 
-        //attivo solo se l'oggetto ha lo script PhysicalUnlock attivato 
-        if(TryGetComponent < PhysicalUnlock> (out PhysicalUnlock unlock))
-        {
-            unlock.Unlock();
-        }
-
         this.solved = true; // lo segno come completato
-
-        if (puzzleType == PuzzleType.PuzzleScrews) return; // La nightTable deve essere spostabile
 
         // Una volta completato assegno al puzzle il layer Ignore Raycast
         // in modo che, ad esempio per la cabinet, il raycast non venga bloccato dalla cabinet quando si cerca
