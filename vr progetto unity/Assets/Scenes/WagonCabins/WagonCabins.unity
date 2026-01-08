@@ -999,6 +999,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1461742426}
     m_Modifications:
+    - target: {fileID: 128055281458172038, guid: 0a3e30883a5bf794887b864d28144da8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6961293196666343302, guid: d09847042ec6b2848886cd25d179404f, type: 3}
+    - target: {fileID: 128055281458172038, guid: 0a3e30883a5bf794887b864d28144da8, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6961293196666343302, guid: d09847042ec6b2848886cd25d179404f, type: 3}
     - target: {fileID: 1650994639284641433, guid: 0a3e30883a5bf794887b864d28144da8, type: 3}
       propertyPath: m_Name
       value: Suitecase3
@@ -4394,6 +4402,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -15.508
       objectReference: {fileID: 0}
+    - target: {fileID: 4250804608021241777, guid: de490caeb8070e7419dc7cb957722ac1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -815057896576145307, guid: 9eaa059dd7e03d740b1048417047ef23, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
