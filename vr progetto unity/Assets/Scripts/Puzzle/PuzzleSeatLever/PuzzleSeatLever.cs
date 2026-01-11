@@ -60,14 +60,22 @@ public class PuzzleSeatLever : PuzzleBase
         // click inizia solo se il mouse è sopra la leva
         if (Input.GetMouseButtonDown(0))
         {
-            if (activeLever == null) return;
+            // Raycast fatto AL MOMENTO DEL CLICK per evitare che prenda click su altri oggetti della scena
+            Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
 
-            isClicking = true;
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, ~0))
+            {
+                SeatLever clickedLever = hit.collider.GetComponentInParent<SeatLever>();
+                if (clickedLever == null) return;
 
-            activeLever.Pull();
-            //drawer.OpenStep(); TOLTO PERCHè IL CASSETTO VIENE GESTITO DALLA LEVA E NON PIù DALL'INPUT DIRETTAMENTE
-            lastPullTime = Time.time;
-            return;
+                activeLever = clickedLever;
+                isClicking = true;
+
+                activeLever.Pull();
+                //drawer.OpenStep(); TOLTO PERCHè IL CASSETTO VIENE GESTITO DALLA LEVA E NON PIù DALL'INPUT DIRETTAMENTE
+                lastPullTime = Time.time;
+                return;
+            }
         }
 
         // rilascio click
