@@ -19,8 +19,8 @@ public class PlayerInteract : MonoBehaviour {
     }
 
     public void Interact() { // Se ho premuto il tasto di interazione
-        if(Player.Instance.playerState == Player.PlayerState.Dialog ||
-            Player.Instance.playerState == Player.PlayerState.Pause) {
+        if(Player.Instance.playerState == Player.PlayerState.Dialog
+            || Player.Instance.playerState == Player.PlayerState.Pause) {
             return;
         }
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,7 +27,10 @@ public class PuzzleManager : MonoBehaviour
     }
 
     public void StartPuzzle(string puzzleScene, PuzzleType puzzle) { // Richiamata in puzzleInteraction, dove passo il nome della scena
-        savedPlayerInfo = Player.Instance.SaveInfo(); // Salvo nella variabile specificata le info di posizione e orientamento del player
+        if(Player.Instance != null) {
+            savedPlayerInfo = Player.Instance.SaveInfo(); // Salvo nella variabile specificata le info di posizione e orientamento del player
+            Player.Instance.playerState = Player.PlayerState.Pause;
+        }
         currentPuzzle = puzzle; // Mi segno il puzzle corrente
 
         // Per puzzleSafeMultiple
@@ -81,13 +85,11 @@ public class PuzzleManager : MonoBehaviour
     private void OnTrainSceneLoadedExit(Scene arg0, LoadSceneMode arg1) {
         SceneManager.sceneLoaded -= OnTrainSceneLoadedExit; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
         // Aggiorno info del plyaer in modo che vada nella posizione prima del caricamento della scena
-        Player.Instance.LoadInfo(savedPlayerInfo);
+        StartCoroutine(RestorePlayerRoutine());
     }
 
     private void OnTrainSceneLoadedCompleted(Scene arg0, LoadSceneMode arg1) {
         SceneManager.sceneLoaded -= OnTrainSceneLoadedCompleted; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
-        // Aggiorno info del plyaer in modo che vada nella posizione prima del caricamento della scena
-        Player.Instance.LoadInfo(savedPlayerInfo);
 
         // far partire animazione di oggetto specifico
         PuzzleInteraction[] puzzles = FindObjectsByType<PuzzleInteraction>(FindObjectsSortMode.None);
@@ -97,6 +99,30 @@ public class PuzzleManager : MonoBehaviour
                 // fai partire animazione
                 puzzle.StartSolvedAnimation();
             }
+        }
+
+        // Aggiorno info del player in modo che vada nella posizione prima del caricamento della scena
+        StartCoroutine(RestorePlayerRoutine());
+    }
+
+    private IEnumerator RestorePlayerRoutine() {
+        // Al fine di evitare movimento della camera durante schermo nero
+        // blocco inizialmente il player
+        if (Player.Instance != null) {
+            Player.Instance.playerState = Player.PlayerState.Pause;
+            Player.Instance.LoadInfo(savedPlayerInfo);
+        }
+
+        // relativo a tempo impiegato da level loader
+        float waitTime = 1.1f;
+        yield return new WaitForSeconds(waitTime);
+
+        // dopo che il caricamento e' finito riattivo il player
+        if (Player.Instance != null) {
+            // Ricarico nuovamente le informazioni per sicurezza
+            Player.Instance.LoadInfo(savedPlayerInfo);
+            // sblocco il player
+            Player.Instance.playerState = Player.PlayerState.Idle;
         }
     }
 

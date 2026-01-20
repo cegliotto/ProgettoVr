@@ -39,6 +39,9 @@ public class NotebookItems : MonoBehaviour {
         // lo aggiungo alla lista degli oggetti raccolti
         if(NotebookManager.Instance != null) {
             NotebookManager.Instance.AddItem(item);
+            NotebookManager.Instance.PlayWriteSound();
+
+            NotebookManager.Instance.SetBusyForSeconds(fadeDuration);
         }
 
         // animazione per fade

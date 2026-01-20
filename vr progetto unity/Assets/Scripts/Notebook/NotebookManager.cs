@@ -2,7 +2,9 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [Serializable]
@@ -57,8 +59,13 @@ public class NotebookManager : MonoBehaviour {
 
     private List<ItemType> itemsPickedUp = new List<ItemType>();
 
+    public bool IsContentAnimating = false;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip paperWriteClip;
+
     void Awake() {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         currentPageIndex = 0;
 
         test_item.onClick.AddListener(() => {
@@ -91,11 +98,103 @@ public class NotebookManager : MonoBehaviour {
         if (Player.Instance != null) {
             this.notebookHolder.transform.position = Player.Instance.notebookHolder.transform.position;
             this.notebookHolder.transform.rotation = Player.Instance.notebookHolder.transform.rotation;
+
+            if (Keyboard.current.iKey.wasPressedThisFrame) {
+                if (notebookHolder.gameObject.activeSelf) {
+
+                    if (!IsContentAnimating)
+                        CloseNotebook();
+                }
+                else if (!Player.Instance.playerInteract.IsGrabbing()) {
+                    OpenNotebook();
+                }
+            }
         }
     }
 
+    public void SetBusyForSeconds(float duration) {
+        StartCoroutine(BusyRoutine(duration));
+    }
+
+    private IEnumerator BusyRoutine(float duration) {
+        IsContentAnimating = true;
+        // WaitForSecondsRealtime assicura che funzioni anche se metti il gioco in pausa
+        yield return new WaitForSecondsRealtime(duration);
+        IsContentAnimating = false;
+    }
+
+    public void OpenNotebook(int specificPageIndex = -1) {
+        if (notebookHolder.gameObject.activeSelf) return;
+
+        if (specificPageIndex >= 0 && specificPageIndex < pagePairs.Length) {
+            currentPageIndex = specificPageIndex;
+        }
+
+        // si resettano visivamente le pagine
+        UpdatePagesVisualsImmediate();
+
+        notebookHolder.gameObject.SetActive(true);
+        Player.Instance.SetState(Player.PlayerState.Pause);
+
+        // Assicurati che CursorManager esista
+        if (CursorManager.Instance != null)
+            CursorManager.Instance.SetContext(CursorContext.UI);
+    }
+
+    private void UpdatePagesVisualsImmediate() {
+        for (int i = 0; i < pagePairs.Length; i++) {
+            PagePair pair = pagePairs[i];
+
+            if (i == currentPageIndex) {
+                pair.ShowPair();
+                SetPairAlpha(pair, 1f);
+            }
+            else {
+                pair.HidePair();
+                SetPairAlpha(pair, 0f);
+            }
+        }
+    }
+
+    // Helper per settare l'alpha di entrambi i lati velocemente
+    private void SetPairAlpha(PagePair pair, float alpha) {
+        if (pair.pageLeft != null) {
+            CanvasGroup cg = pair.pageLeft.GetComponent<CanvasGroup>();
+            if (cg != null) cg.alpha = alpha;
+        }
+        if (pair.pageRIght != null) {
+            CanvasGroup cg = pair.pageRIght.GetComponent<CanvasGroup>();
+            if (cg != null) cg.alpha = alpha;
+        }
+    }
+
+    public void CloseNotebook() {
+        if (!notebookHolder.gameObject.activeSelf) return;
+
+        notebookHolder.gameObject.SetActive(false);
+
+        if (CursorManager.Instance != null)
+            CursorManager.Instance.SetContext(CursorContext.Gameplay);
+
+        // Si usa coroutine per ripristinare lo stato Idle al frame successivo
+        // per evitare conflitti di input nello stesso frame
+        StartCoroutine(ResumeGameplayNextFrame());
+    }
+
+    private IEnumerator ResumeGameplayNextFrame() {
+        yield return null; // frame successivo
+
+        Player.Instance.SetState(Player.PlayerState.Idle);
+
+        var pc = Player.Instance.GetComponent<PlayerController>();
+        pc.SetCameraRotation(
+            pc.GetCameraXRotation(),
+            pc.GetCameraYRotation()
+        );
+    }
+
     private void NextPagePair() {
-        if (isTransitioning) return;
+        if (isTransitioning || IsContentAnimating) return;
         if (currentPageIndex >= pagePairs.Length - 1) return;
 
         if(anim != null) {
@@ -106,7 +205,7 @@ public class NotebookManager : MonoBehaviour {
     }
 
     private void PreviousPagePair() {
-        if (isTransitioning) return;
+        if (isTransitioning || IsContentAnimating) return;
         if (currentPageIndex <= 0) return;
 
         if (anim != null) {
@@ -114,6 +213,12 @@ public class NotebookManager : MonoBehaviour {
         }
 
         StartCoroutine(ChangePagePair(currentPageIndex - 1));
+    }
+
+    public void PlayWriteSound() {
+        if(audioSource == null || paperWriteClip == null) return;
+
+        audioSource.PlayOneShot(paperWriteClip);
     }
 
     private IEnumerator ChangePagePair(int newIndex) {

@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour {
     public float GetCameraXRotation() => cameraXRotation;
     public float GetCameraYRotation() => cameraYRotation;
 
+    private AudioSource source;
+
     private void Awake() {
         rb = GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
@@ -41,12 +43,6 @@ public class PlayerController : MonoBehaviour {
         if (Player.Instance.playerState == Player.PlayerState.Pause) {
             return; // In modo che il player non possa muovere la camera se e' in puzzle (in dialog si, quindi non lo metto qui)
         }
-
-        // Gestione cursore
-        UpdateCursor();
-
-        if (Cursor.lockState == CursorLockMode.None)
-            return;
 
         // Lettura input in update
         // Movimento dipende da dove sta guardando
@@ -85,22 +81,17 @@ public class PlayerController : MonoBehaviour {
         rb.linearVelocity = movementDirection * speed; // Per evitare jitter si muove con linearVelocity invece che con MovePosition
     }
 
-    private void UpdateCursor() {
-        if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(1))
-            Cursor.lockState = CursorLockMode.Locked;
-
-        if (Cursor.lockState == CursorLockMode.Locked && Input.GetKeyDown(KeyCode.Escape))
-            Cursor.lockState = CursorLockMode.None;
-    }
-
-    AudioSource source;
     private void UpdateMovementState() { // Aggiornamento FSM player
-        if(movementDirection != Vector3.zero) {
-            Player.Instance.playerState = Player.PlayerState.Movement;
+        if (Player.Instance.playerState == Player.PlayerState.Pause ||
+            Player.Instance.playerState == Player.PlayerState.Dialog)
+            return;
+
+        if (movementDirection != Vector3.zero) {
+            Player.Instance.SetState(Player.PlayerState.Movement);
             if(!source.isPlaying){ source.Play(); }
         }
         else {
-            Player.Instance.playerState = Player.PlayerState.Idle;
+            Player.Instance.SetState(Player.PlayerState.Idle);
             source.Stop();
         }
     }

@@ -20,10 +20,14 @@ public class NotebookNotes : MonoBehaviour {
         notesToShow[storyProgress].SetActive(true);
 
         // Avvia animazione testo
-        // TypewriterText typewriter = note.GetComponentInChildren<TypewriterText>();
-        // if (typewriter != null) {
-        //     typewriter.Play();
-        // }
+        TypewriterText typewriter = notesToShow[storyProgress].GetComponentInChildren<TypewriterText>();
+        if (typewriter != null) {
+            typewriter.Play();
+            NotebookManager.Instance.PlayWriteSound();
+
+            float writingDuration = 3f; // per ora fissa
+            NotebookManager.Instance.SetBusyForSeconds(writingDuration);
+        }
 
         storyProgress++;
     }

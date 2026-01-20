@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TypewriterText : MonoBehaviour {
 
-    [SerializeField] private float letterDelay = 0.03f;
+    [SerializeField] private float letterDelay = 0.01f;
 
     private TMP_Text textComponent;
     private string fullText;

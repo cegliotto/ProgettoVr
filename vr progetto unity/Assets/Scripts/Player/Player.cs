@@ -1,4 +1,7 @@
 using UnityEngine;
+using System;
+
+using static Player;
 
 public class Player : MonoBehaviour {
     public static Player Instance; // Singleton
@@ -39,6 +42,10 @@ public class Player : MonoBehaviour {
 
         Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void SetState(PlayerState state) {
+        playerState = state;
     }
 
     // Metodi usati per salvare le informazioni per il cambio di scena

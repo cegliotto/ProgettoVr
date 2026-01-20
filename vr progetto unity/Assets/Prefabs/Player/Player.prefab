@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 7541193440387841996}
   - component: {fileID: 4972111364967314368}
   - component: {fileID: 7595978573357452182}
-  - component: {fileID: 7458990433158266589}
   - component: {fileID: 3602225330160136923}
   m_Layer: 2
   m_Name: Player
@@ -324,19 +323,6 @@ MonoBehaviour:
   currentGrabbableItem: {fileID: 0}
   itemFocus: {fileID: 0}
   outlineMat: {fileID: 2100000, guid: 7e8e00c84eac544578b5a5edb0d10c78, type: 2}
---- !u!114 &7458990433158266589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3819120146512710201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b4a3d09c7e2da4478ddc5a64198cf5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerNotebookStartUp
-  notebookHolder: {fileID: 5937616734865044465}
 --- !u!82 &3602225330160136923
 AudioSource:
   m_ObjectHideFlags: 0
