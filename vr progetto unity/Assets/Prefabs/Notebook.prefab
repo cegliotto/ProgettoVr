@@ -3597,6 +3597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5332141855006553077}
+  - component: {fileID: 7375470542719598287}
   m_Layer: 0
   m_Name: Notebook
   m_TagString: Untagged
@@ -3623,6 +3624,28 @@ Transform:
   - {fileID: 9108523822138714972}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 23.779, y: 0, z: 0}
+--- !u!95 &7375470542719598287
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824831820985689419}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78fd16e863d3aad4bb33c46395d84f97, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6852406767269880187
 GameObject:
   m_ObjectHideFlags: 0

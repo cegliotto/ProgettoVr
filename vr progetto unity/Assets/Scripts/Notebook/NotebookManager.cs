@@ -52,6 +52,8 @@ public class NotebookManager : MonoBehaviour {
     [SerializeField] private Button test_notes;
 
     [SerializeField] private Transform notebookHolder;
+    [SerializeField] private Transform notebookCamera;
+    [SerializeField] private Transform notebookTransform;
 
     private Animator anim;
 
@@ -63,10 +65,30 @@ public class NotebookManager : MonoBehaviour {
     private AudioSource audioSource;
     [SerializeField] private AudioClip paperWriteClip;
 
+    [SerializeField] private Animator notebookAnimator;
+
+    [SerializeField] private float animationDuration = 0.5f; // animazione notebook camera
+    [SerializeField] private AnimationCurve animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+    private Quaternion targetLocalRotation;
+    private Coroutine animationCoroutine;
+    private bool isNotebookClosing = false;
+
+    [SerializeField] private float notebookCameraFOV = 40f; // fov per la camera del notebook
+    [SerializeField] private float defaultFOV; // fov main camera
+
+    private Vector3 notebookClosedPosition;
+    [SerializeField] private Vector3 notebookClosedPositionOffset;
+    private Vector3 notebookOpenPosition;
+
     void Awake() {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         currentPageIndex = 0;
+
+        if (notebookCamera != null) {
+            targetLocalRotation = notebookCamera.transform.localRotation;
+        }
 
         test_item.onClick.AddListener(() => {
             notebookItemsManager.AnnotateNewItem((ItemType)i);
@@ -92,6 +114,11 @@ public class NotebookManager : MonoBehaviour {
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // per non distruggerlo al cambio di scena
+    }
+
+    private void Start() {
+        notebookOpenPosition = notebookTransform.transform.localPosition;
+        notebookClosedPosition = notebookOpenPosition + notebookClosedPositionOffset;
     }
 
     private void Update() {
@@ -124,7 +151,9 @@ public class NotebookManager : MonoBehaviour {
     }
 
     public void OpenNotebook(int specificPageIndex = -1) {
-        if (notebookHolder.gameObject.activeSelf) return;
+        if (notebookHolder.gameObject.activeSelf || isNotebookClosing) return;
+
+        isNotebookClosing = false;
 
         if (specificPageIndex >= 0 && specificPageIndex < pagePairs.Length) {
             currentPageIndex = specificPageIndex;
@@ -134,11 +163,99 @@ public class NotebookManager : MonoBehaviour {
         UpdatePagesVisualsImmediate();
 
         notebookHolder.gameObject.SetActive(true);
+        // animazione camera
+        if (animationCoroutine != null) StopCoroutine(animationCoroutine);
+        animationCoroutine = StartCoroutine(AnimateCameraOpen());
+
+        // animazione notebook
+        if (notebookAnimator != null) {
+            notebookAnimator.SetTrigger("Open");
+            notebookAnimator.ResetTrigger("Close");
+        }
+
         Player.Instance.SetState(Player.PlayerState.Pause);
 
-        // Assicurati che CursorManager esista
         if (CursorManager.Instance != null)
             CursorManager.Instance.SetContext(CursorContext.UI);
+    }
+    // Animazione camera per apertura
+    private IEnumerator AnimateCameraOpen() {
+        Transform mainCamTransform = Camera.main.transform;
+        Transform holderTransform = notebookCamera.transform;
+
+        holderTransform.rotation = mainCamTransform.rotation;
+        Quaternion startLocalRotation = holderTransform.localRotation;
+
+        float timeElapsed = 0f;
+        float startFOV = defaultFOV;
+
+        Vector3 startPos = notebookClosedPosition;
+
+        while (timeElapsed < animationDuration) {
+            float t = timeElapsed / animationDuration;
+            float curveValue = animationCurve.Evaluate(t);
+
+            holderTransform.localRotation = Quaternion.Slerp(startLocalRotation, targetLocalRotation, curveValue);
+            notebookCamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(startFOV, notebookCameraFOV, curveValue);
+            notebookTransform.localPosition = Vector3.Lerp(notebookClosedPosition, notebookOpenPosition, curveValue);
+
+            timeElapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        holderTransform.localRotation = targetLocalRotation;
+        animationCoroutine = null;
+    }
+
+    public void CloseNotebook() {
+        if (!notebookHolder.gameObject.activeSelf || isNotebookClosing) return;
+
+        isNotebookClosing = true;
+        if (animationCoroutine != null) StopCoroutine(animationCoroutine);
+
+        animationCoroutine = StartCoroutine(AnimateCameraClose());
+    }
+
+    // Animazione camera per chiusura
+    private IEnumerator AnimateCameraClose() {
+        if (notebookAnimator != null) {
+            notebookAnimator.SetTrigger("Close");
+        }
+
+        Transform mainCamTransform = Camera.main.transform;
+        Transform holderTransform = notebookCamera.transform;
+
+        Quaternion startRotation = holderTransform.rotation;
+
+        float timeElapsed = 0f;
+
+        float startFOV = notebookCamera.GetComponent<Camera>().fieldOfView;
+        Vector3 startPos = notebookOpenPosition;
+
+        while (timeElapsed < animationDuration) {
+            if (!isNotebookClosing) yield break;
+
+            float t = timeElapsed / animationDuration;
+            float curveValue = animationCurve.Evaluate(t);
+
+            holderTransform.rotation = Quaternion.Slerp(startRotation, mainCamTransform.rotation, curveValue);
+            notebookCamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(startFOV, defaultFOV, curveValue);
+            notebookTransform.localPosition = Vector3.Lerp(notebookOpenPosition, notebookClosedPosition, curveValue);
+
+            timeElapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        isNotebookClosing = false;
+
+        notebookHolder.gameObject.SetActive(false);
+
+        if (CursorManager.Instance != null)
+            CursorManager.Instance.SetContext(CursorContext.Gameplay);
+
+        Player.Instance.SetState(Player.PlayerState.Idle);
+
+        animationCoroutine = null;
     }
 
     private void UpdatePagesVisualsImmediate() {
@@ -156,6 +273,8 @@ public class NotebookManager : MonoBehaviour {
         }
     }
 
+
+
     // Helper per settare l'alpha di entrambi i lati velocemente
     private void SetPairAlpha(PagePair pair, float alpha) {
         if (pair.pageLeft != null) {
@@ -168,18 +287,6 @@ public class NotebookManager : MonoBehaviour {
         }
     }
 
-    public void CloseNotebook() {
-        if (!notebookHolder.gameObject.activeSelf) return;
-
-        notebookHolder.gameObject.SetActive(false);
-
-        if (CursorManager.Instance != null)
-            CursorManager.Instance.SetContext(CursorContext.Gameplay);
-
-        // Si usa coroutine per ripristinare lo stato Idle al frame successivo
-        // per evitare conflitti di input nello stesso frame
-        StartCoroutine(ResumeGameplayNextFrame());
-    }
 
     private IEnumerator ResumeGameplayNextFrame() {
         yield return null; // frame successivo
@@ -197,7 +304,7 @@ public class NotebookManager : MonoBehaviour {
         if (isTransitioning || IsContentAnimating) return;
         if (currentPageIndex >= pagePairs.Length - 1) return;
 
-        if(anim != null) {
+        if (anim != null) {
             anim.SetTrigger("NextPage");
         }
 
@@ -216,7 +323,7 @@ public class NotebookManager : MonoBehaviour {
     }
 
     public void PlayWriteSound() {
-        if(audioSource == null || paperWriteClip == null) return;
+        if (audioSource == null || paperWriteClip == null) return;
 
         audioSource.PlayOneShot(paperWriteClip);
     }
