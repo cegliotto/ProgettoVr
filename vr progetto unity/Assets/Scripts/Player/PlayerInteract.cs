@@ -19,13 +19,13 @@ public class PlayerInteract : MonoBehaviour {
     }
 
     public void Interact() { // Se ho premuto il tasto di interazione
-        if(Player.Instance.playerState == Player.PlayerState.Dialog
+        if (Player.Instance.playerState == Player.PlayerState.Dialog
             || Player.Instance.playerState == Player.PlayerState.Pause) {
             return;
         }
 
-        if(currentGrabbableItem == null) { // Se non ho nessun oggetto in mano
-            if(itemFocus != null) { // controllo se mi sto focalizzando su un oggetto
+        if (currentGrabbableItem == null) { // Se non ho nessun oggetto in mano
+            if (itemFocus != null) { // controllo se mi sto focalizzando su un oggetto
                 // Debug.Log($"interagendo con{itemFocus.name}");
                 itemFocus.GetComponent<IInteractable>().OnInteract(this); // In caso positivo allora eseguo il suo metodo Interact
             }
@@ -47,38 +47,34 @@ public class PlayerInteract : MonoBehaviour {
         interactionRay = Camera.main.ScreenPointToRay(centreScreenPosition);
 
         if (Physics.Raycast(interactionRay, out RaycastHit hitInfo, interactionDistance)) {
-            
-            if (hitInfo.collider.gameObject != lastObj){outlineCleanup();}
+
+            if (hitInfo.collider.gameObject != lastObj) { outlineCleanup(); }
             //if (!hasHit &&  hitInfo.collider.gameObject ha interactable)
-            if (!hasHit)
-            {   //la prima volta che becca un oggetto cambia il layer in modo da mostrare l'outline
+            if (!hasHit) {   //la prima volta che becca un oggetto cambia il layer in modo da mostrare l'outline
                 hasHit = true;
-                
+
                 lastObj = hitInfo.collider.gameObject;
 
                 MeshFilter mf = lastObj.GetComponent<MeshFilter>();
-                if (mf != null)
-                {
+                if (mf != null) {
                     // Vector3 center = mf.mesh.bounds.center; // object space
                     // outlineMat.SetVector("pivot", center);
                     Vector3 worldCenter = CalculateCombinedCenter(lastObj);
                     outlineMat.SetVector("pivot", worldCenter);
                 }
 
-                if (lastObj.GetComponent<GrabbableItem>() != null || 
-                    lastObj.GetComponent<PickUpItem>() != null || 
+                if (lastObj.GetComponent<GrabbableItem>() != null ||
+                    lastObj.GetComponent<PickUpItem>() != null ||
                     lastObj.GetComponent<DialogueTrigger>() != null ||
-                    lastObj.GetComponent<PuzzleInteraction>() != null)
-                {
+                    lastObj.GetComponent<PuzzleInteraction>() != null) {
                     //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
                     oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
                     hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
-                    if (hitInfo.transform.childCount > 0)
-                    {
-                        foreach (Transform child in hitInfo.transform){
+                    if (hitInfo.transform.childCount > 0) {
+                        foreach (Transform child in hitInfo.transform) {
                             oldLayer.Enqueue(LayerMask.LayerToName(child.gameObject.layer));
                             child.gameObject.layer = LayerMask.NameToLayer("OutLine");
-                        }                    
+                        }
                     }
                 }
             }
@@ -97,25 +93,22 @@ public class PlayerInteract : MonoBehaviour {
         }
     }
 
-    public void outlineCleanup()
-    {
+    public void outlineCleanup() {
         //probabilmente has hit non serve ma il codice è più leggibile
         hasHit = false;
-        if (lastObj != null && oldLayer.Count > 0)
-        {
+        if (lastObj != null && oldLayer.Count > 0) {
             //restituisce all'oggetto e tutti i figli i layer precedenti
             lastObj.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
-            if (lastObj.transform.childCount > 0)
-            {
-                foreach (Transform child in lastObj.transform){
+            if (lastObj.transform.childCount > 0) {
+                foreach (Transform child in lastObj.transform) {
                     child.gameObject.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
-                }                    
+                }
             }
             //rimuove riferimento all'oggetto e 
             lastObj = null;
             oldLayer.Clear();
         }
-        
+
     }
 
     public void TryGrab(GrabbableItem obj) {
@@ -123,9 +116,9 @@ public class PlayerInteract : MonoBehaviour {
         if (currentGrabbableItem != null) { // Se ho gia' qualcosa
 
             // controllo se posso rilasciare
-            
+
             // rilascio
-            obj.ReleaseWithJoint();
+            obj.Release();
             currentGrabbableItem = null;
 
             // cambio FSM player?
@@ -134,17 +127,20 @@ public class PlayerInteract : MonoBehaviour {
         }
 
         // prendo oggetto e lo assegno alla variabile
-        obj.GrabWithJoint(grabPoint);
+        obj.Grab(grabPoint);
         currentGrabbableItem = obj;
         // cambio FSM player?
+    }
+
+    public void ForcedRelease() {
+        currentGrabbableItem = null;
     }
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(interactionRay);
     }
-    Vector3 CalculateCombinedCenter(GameObject root)
-    {           
+    Vector3 CalculateCombinedCenter(GameObject root) {
         Renderer[] renderers = root.GetComponentsInChildren<Renderer>();
 
         if (renderers.Length == 0)
@@ -152,11 +148,10 @@ public class PlayerInteract : MonoBehaviour {
 
         Bounds combinedBounds = renderers[0].bounds;
 
-        for (int i = 1; i < renderers.Length; i++)
-        {
+        for (int i = 1; i < renderers.Length; i++) {
             combinedBounds.Encapsulate(renderers[i].bounds);
         }
 
         return combinedBounds.center;
-    }                                      
+    }
 }

@@ -36,7 +36,7 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         rb = this.GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
 
-        if(TryGetComponent<Collider>(out Collider col)) {
+        if (TryGetComponent<Collider>(out Collider col)) {
             Vector3 worldCenter = col.bounds.center;
             localCenter = transform.InverseTransformPoint(worldCenter);
         }
@@ -49,36 +49,47 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         playerInteract.TryGrab(this); // Si richiama tryGrab, per capire se il player puo' o meno prenderlo
     }
 
-    public void Grab(Transform grabPoint) { // Richiamato in PlayerInteract
-        if (debug) Debug.Log($"Grabbed : {gameObject.name} in {grabPoint.gameObject.name}");
-        // rb.isKinematic = true;
-        rb.useGravity = false; // disattivo gravita' (metodo isKinematic = false)
-
-        // Disabilito collisioni tra oggetto e player
-        Utils.DisableCollision(gameObject.GetComponent<Collider>(), Player.Instance.gameObject.GetComponent<Collider>());
-
-        this.objectGrabPointTransform = grabPoint; // assegno punto da seguire
-    }
+    // public void Grab(Transform grabPoint) { // Richiamato in PlayerInteract
+    //     if (debug) Debug.Log($"Grabbed : {gameObject.name} in {grabPoint.gameObject.name}");
+    //     // rb.isKinematic = true;
+    //     rb.useGravity = false; // disattivo gravita' (metodo isKinematic = false)
+    // 
+    //     // Disabilito collisioni tra oggetto e player
+    //     Utils.DisableCollision(gameObject.GetComponent<Collider>(), Player.Instance.gameObject.GetComponent<Collider>());
+    // 
+    //     this.objectGrabPointTransform = grabPoint; // assegno punto da seguire
+    // }
 
     private void FixedUpdate() {
-        if(objectGrabPointTransform != null) {
-            // Movimento di trasporto
-            Vector3 desiredPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, itemLerpSpeed * Time.deltaTime);
-            
-            rb.MovePosition(desiredPosition);
+        if (objectGrabPointTransform != null) {
+            // Movimento di trasporto (con grabwithjoint non si usa)
+            //Vector3 desiredPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, itemLerpSpeed * Time.deltaTime);
+
+            //rb.MovePosition(desiredPosition);
+
+            float distance = Vector3.Distance(transform.position, objectGrabPointTransform.position);
+            if (debug) {
+                Debug.Log(distance);
+            }
+
+            float forcedDropDistance = 2f;
+            if (distance >= forcedDropDistance) {
+                Release();
+                Player.Instance.playerInteract.ForcedRelease();
+            }
         }
     }
 
-    public void Release() {
-        // rb.isKinematic = false;
-        rb.useGravity = true; // riattivo gravita'
-        this.objectGrabPointTransform = null; // ho droppato, quindi imposto a null grabpoint
-
-        // Riabilito collisioni tra oggetto e player
-        Utils.EnableCollision(gameObject.GetComponent<Collider>(), Player.Instance.gameObject.GetComponent<Collider>());
-
-        if (debug) Debug.Log("Released : " + this.gameObject.name);
-    }
+    // public void Release() {
+    //     // rb.isKinematic = false;
+    //     rb.useGravity = true; // riattivo gravita'
+    //     this.objectGrabPointTransform = null; // ho droppato, quindi imposto a null grabpoint
+    // 
+    //     // Riabilito collisioni tra oggetto e player
+    //     Utils.EnableCollision(gameObject.GetComponent<Collider>(), Player.Instance.gameObject.GetComponent<Collider>());
+    // 
+    //     if (debug) Debug.Log("Released : " + this.gameObject.name);
+    // }
 
 
     // Variabili interne per salvare lo stato originale dell'oggetto grabbable
@@ -87,9 +98,19 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
     float originalMass;
     private RigidbodyInterpolation _originalInterpolation;
 
-    public void GrabWithJoint(Transform grabPoint) {
+    private Vector3 _originalInertiaTensor;
+    private Quaternion _originalInertiaRotation;
+    public void Grab(Transform grabPoint) {
+        objectGrabPointTransform = grabPoint;
+
         originalMass = rb.mass;
         rb.mass = 0.1f; // Massa leggera per non spingere via oggetti pesanti
+
+        _originalInertiaTensor = rb.inertiaTensor;
+        _originalInertiaRotation = rb.inertiaTensorRotation;
+
+        rb.inertiaTensor = new Vector3(5f, 5f, 5f);
+        rb.inertiaTensorRotation = Quaternion.identity;
 
         rb.useGravity = false;
 
@@ -103,8 +124,8 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         _originalAngularDamping = rb.angularDamping;
 
 
-        rb.linearDamping = 20f;  
-        rb.angularDamping = 20f; 
+        rb.linearDamping = 20f;
+        rb.angularDamping = 20f;
 
         Utils.DisableCollision(GetComponent<Collider>(), Player.Instance.GetComponent<Collider>());
 
@@ -141,15 +162,15 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         grabJoint.rotationDriveMode = RotationDriveMode.Slerp;
 
         grabJoint.slerpDrive = new JointDrive {
-            positionSpring = 3000f, 
-            positionDamper = 100f, 
+            positionSpring = 3000f,
+            positionDamper = 100f,
             maximumForce = Mathf.Infinity
         };
 
         if (debug) Debug.Log($"GRABBED: {name}");
     }
 
-    public void ReleaseWithJoint() {
+    public void Release() {
         if (grabJoint) {
             Destroy(grabJoint);
             grabJoint = null;
@@ -157,6 +178,8 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
 
         rb.useGravity = true;
         rb.mass = originalMass;
+
+        rb.ResetInertiaTensor();
 
         rb.interpolation = _originalInterpolation;
         rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
@@ -170,13 +193,12 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         Utils.EnableCollision(GetComponent<Collider>(), Player.Instance.GetComponent<Collider>());
 
         if (debug) Debug.Log("Released : " + gameObject.name);
+        objectGrabPointTransform = null;
     }
 
-    
-    void OnCollisionEnter(Collision collision)
-    {
-        if(source !=null && !source.isPlaying)
-        {
+
+    void OnCollisionEnter(Collision collision) {
+        if (source != null && !source.isPlaying) {
             source.Play();
         }
     }
