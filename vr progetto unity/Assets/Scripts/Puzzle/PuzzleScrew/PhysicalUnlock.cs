@@ -12,13 +12,23 @@ public class PhysicalUnlock : MonoBehaviour
         StartCoroutine(AnimateMove());
     }
 
+    // Sostituisci la coroutine esistente in PhysicalUnlock.cs con questa
     private IEnumerator AnimateMove()
     {
         Vector3 startPos = transform.position;
-        // transform.forward sposta l'oggetto "davanti" rispetto a dove guarda
-        Vector3 endPos = transform.position + (transform.forward * moveDistance);
-        float elapsed = 0;
 
+        // Calcoliamo la lunghezza reale basandoci sul collider o mesh
+        float length = 1.0f;
+        if (TryGetComponent<Collider>(out Collider col))
+        {
+            length = col.bounds.size.z; // Usa l'asse che rappresenta la lunghezza
+        }
+
+        // Sposta di 1.5 volte la lunghezza calcolata
+        float finalDistance = length * 1.5f;
+        Vector3 endPos = transform.position + (transform.forward * finalDistance);
+
+        float elapsed = 0;
         while (elapsed < moveDuration)
         {
             transform.position = Vector3.Lerp(startPos, endPos, elapsed / moveDuration);
@@ -27,11 +37,10 @@ public class PhysicalUnlock : MonoBehaviour
         }
         transform.position = endPos;
 
-        // Attiviamo la fisica solo alla fine del movimento
         if (TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.isKinematic = false;
             rb.useGravity = true;
         }
     }
-}
+} 

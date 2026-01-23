@@ -4848,16 +4848,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: nightTable
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9101131030290293682, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
-    - {fileID: 7025368922558704569, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
-    - {fileID: 5184928267325727974, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7745299484515414091, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 240594533}
+    - targetCorrespondingSourceObject: {fileID: 7745299484515414091, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 240594532}
+    - targetCorrespondingSourceObject: {fileID: 7745299484515414091, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 240594537}
   m_SourcePrefab: {fileID: 100100000, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
 --- !u!4 &240594530 stripped
 Transform:
@@ -4885,7 +4888,48 @@ MonoBehaviour:
   puzzleType: 3
   solved: 0
   animator: {fileID: 0}
-  movableNightTable: {fileID: 1856457166}
+  movableNightTable: {fileID: 240594531}
+--- !u!114 &240594533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240594531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8789ae148e904488af792692417a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhysicalUnlock
+  moveDistance: 3.5
+  moveDuration: 1
+--- !u!54 &240594537
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240594531}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &253028742
 GameObject:
   m_ObjectHideFlags: 0
@@ -33670,11 +33714,6 @@ PrefabInstance:
 --- !u!4 &1856457165 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6721134960569396911, guid: 05e7b24ec7f96e64694eb8c3c1e64cc0, type: 3}
-  m_PrefabInstance: {fileID: 1856457164}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1856457166 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7448926904577219584, guid: 05e7b24ec7f96e64694eb8c3c1e64cc0, type: 3}
   m_PrefabInstance: {fileID: 1856457164}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1861978740

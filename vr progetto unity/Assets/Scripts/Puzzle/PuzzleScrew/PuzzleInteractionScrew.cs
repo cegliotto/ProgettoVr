@@ -33,6 +33,6 @@ public class PuzzleInteractionScrew : PuzzleInteraction, IInteractable
         }
 
         // Disattiva le viti interagibili nella scena principale
-        this.gameObject.SetActive(false);
+       // this.gameObject.SetActive(false);
     }
 }
