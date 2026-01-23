@@ -19,26 +19,68 @@ public class PickUpItem : MonoBehaviour, IInteractable {
     }
 
     public void OnInteract(PlayerInteract playerInteract) {
-        if (!isTicket) {
-            if (debug) {
-                Debug.Log($"Raccolto oggetto : {gameObject.name}");
-            }
-            // Aggiunta in Notebook
-            if (NotebookManager.Instance != null) {
-                NotebookManager.Instance.OpenNotebook(0); // apro la pagina 0 del notebook
 
-                NotebookManager.Instance.notebookItemsManager.OnItemPickedUp(this.itemType);
+        if (isTicket) { // Il ticket non deve essere aggiunto nel taccuino
+            HandleTicket();
+            return;
+        }
+
+        if (!CanBePicked()) { // per cappello
+            return;
+        }
+
+        PickItem();
+    }
+
+    private bool CanBePicked() {
+        if (itemType == ItemType.Cappello) { // il cappello puo' essere raccolto solo come ultimo oggetto
+            return NotebookManager.Instance != null &&
+                   NotebookManager.Instance.notebookItemsManager.itemsPickedUp >= 5;
+        }
+
+        return true;
+    }
+
+    private void PickItem() {
+        if (debug) {
+            Debug.Log($"Raccolto oggetto : {gameObject.name}");
+        }
+
+        if (NotebookManager.Instance != null) {
+            NotebookManager.Instance.OpenNotebook(0);
+            NotebookManager.Instance.notebookItemsManager.OnItemPickedUp(itemType);
+        }
+
+        SpawnNPC();
+
+        // Suono di raccolta
+        Destroy(gameObject);
+    }
+
+    private void SpawnNPC() {
+        if(itemType == ItemType.Cappello) {
+            if (StoryNPCSpawn.Instance != null) {
+                StoryNPCSpawn.Instance.SpawnNPC(itemType); // faccio spawnare NPC in zona relativa a oggetto
+            }
+            return; // tanto il cappello a prescindere posso prenderlo se itemsPickedUp >=5
+        }
+
+        if (NotebookManager.Instance.notebookItemsManager.itemsPickedUp >= 5) { // se ho preso tutti gli oggetti tranne il 
+            // cappello
+            if (StoryNPCSpawn.Instance != null) {
+                StoryNPCSpawn.Instance.SpawnNPC(itemType); // faccio spawnare NPC in zona relativa a oggetto
             }
         }
-        else {
-            if(NotebookManager.Instance != null) {
-                NotebookManager.Instance.OpenNotebook(1); // apro pagina 1
-                NotebookManager.Instance.notebookNotesManager.UnlockNewProgress();
-            }
+    }
+
+    private void HandleTicket() {
+        if (NotebookManager.Instance != null) {
+            NotebookManager.Instance.OpenNotebook(1);
+            NotebookManager.Instance.notebookNotesManager.UnlockNewProgress();
         }
 
         // Suono di raccolta
-        Destroy(gameObject); // Distruzione dell'oggetto nel mondo
+        Destroy(gameObject);
     }
 
     private IEnumerator OpenNotebookNextFrame() {

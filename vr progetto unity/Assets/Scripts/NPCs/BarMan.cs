@@ -7,6 +7,8 @@ public class BarMan : MonoBehaviour {
     private const string CLEANING = "CleaningFloor";
     private const string WALKING = "Walk";
     private const string SNEEZE = "Sneeze";
+    private const string DWARF_IDLE = "Dwarf_idle";
+    private const string LOOK_AROUND = "Look_around";
 
     public string currentAnimation;
 
@@ -36,7 +38,7 @@ public class BarMan : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) { // Per test
             SetTalking(!isTalking);
         }
 
@@ -50,6 +52,8 @@ public class BarMan : MonoBehaviour {
             case WALKING: Moving(); break;
             case CLEANING: Cleaning(); break;
             case SNEEZE: Sneeze(); break;
+            case DWARF_IDLE: DwarfIdle(); break;
+            case LOOK_AROUND: LookAround(); break;
         }
     }
 
@@ -147,22 +151,47 @@ public class BarMan : MonoBehaviour {
     public void OnSneezeFinished() { // evento definito nell'animation clip!!
         ChangeAnimation(IDLE);
     }
+    private void DwarfIdle() {
+        //
+    }
+    public void OnDwarfIdleFinished() { // evento definito nell'animation clip!!
+        ChangeAnimation(IDLE);
+    }
+    private void LookAround() {
+        //
+    }
+    public void OnLookAroundFinished() { // evento definito nell'animation clip!!
+        ChangeAnimation(IDLE);
+    }
     private void DecideNextState() {
         if (isTalking) return;
 
-        int choice = Random.Range(0, 3);
+        int choice = Random.Range(0, 9);
 
         switch (choice) {
-            case 0: 
-                ChangeAnimation(CLEANING); 
+            case 0:
+                ChangeAnimation(CLEANING);
                 cleaningBroom.SetActive(true);
                 break;
             case 1:
+            case 2:
                 PickRandomDestination();
                 ChangeAnimation(WALKING);
                 break;
-            case 2: ChangeAnimation(SNEEZE, 0.05f); break;
+            case 3:
+            case 4:
+                ChangeAnimation(SNEEZE);
+                break;
+            case 5:
+            case 6:
+                ChangeAnimation(DWARF_IDLE);
+                break;
+            case 7:
+            case 8:
+                ChangeAnimation(LOOK_AROUND);
+                break;
         }
+
     }
 
     private void PickRandomDestination() {

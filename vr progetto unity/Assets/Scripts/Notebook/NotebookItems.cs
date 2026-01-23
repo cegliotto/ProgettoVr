@@ -8,6 +8,9 @@ public class NotebookItems : MonoBehaviour {
     [SerializeField] private GameObject[] itemsIcon;
     [SerializeField] private float fadeDuration = 0.5f; // durata animazione apparizione oggetti in notebook
 
+    //private int itemsToPickUp = 6; // 6 oggetti da prendere
+    public int itemsPickedUp = 0;
+
     public void AnnotateNewItem(ItemType item) {
         int index = (int)item;
         if ((int)item > itemsIcon.Length - 1) return;
@@ -35,6 +38,8 @@ public class NotebookItems : MonoBehaviour {
         if (!icon.activeSelf) { // se non era stato annotato, si annota
             AnnotateNewItem(item);
         }
+
+        itemsPickedUp++;
 
         // lo aggiungo alla lista degli oggetti raccolti
         if(NotebookManager.Instance != null) {

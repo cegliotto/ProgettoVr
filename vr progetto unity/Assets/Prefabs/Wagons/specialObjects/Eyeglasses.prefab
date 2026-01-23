@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4500523031838863471}
   - component: {fileID: 8011016046075845584}
   - component: {fileID: 4765700394415407137}
+  - component: {fileID: -8900821097606415064}
+  - component: {fileID: 8071336403387501396}
   m_Layer: 0
   m_Name: Eyeglasses
   m_TagString: Untagged
@@ -90,3 +92,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-8900821097606415064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513506348316604164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a2b347f79c43042973f9a9d86f8bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
+  debug: 0
+  itemType: 2
+  isTicket: 0
+--- !u!65 &8071336403387501396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513506348316604164}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1405431, y: 0.14990309, z: 0.0898865}
+  m_Center: {x: 0.06656043, y: 0, z: 0.010140365}
