@@ -6,7 +6,7 @@ public class BarMan : MonoBehaviour {
     private const string TALKING = "Talking";
     private const string CLEANING = "CleaningFloor";
     private const string WALKING = "Walk";
-    private const string SNEEZE = "Sneeze";
+    private const string STRETCHING = "Stretching";
     private const string DWARF_IDLE = "Dwarf_idle";
     private const string LOOK_AROUND = "Look_around";
 
@@ -51,7 +51,7 @@ public class BarMan : MonoBehaviour {
             case IDLE: Idle(); break;
             case WALKING: Moving(); break;
             case CLEANING: Cleaning(); break;
-            case SNEEZE: Sneeze(); break;
+            case STRETCHING: Stretching(); break;
             case DWARF_IDLE: DwarfIdle(); break;
             case LOOK_AROUND: LookAround(); break;
         }
@@ -145,10 +145,10 @@ public class BarMan : MonoBehaviour {
         cleaningBroom.SetActive(false);
         ChangeAnimation(IDLE, 0.05f);
     }
-    private void Sneeze() {
+    private void Stretching() {
         //
     }
-    public void OnSneezeFinished() { // evento definito nell'animation clip!!
+    public void OnArmStretchingFinished() { // evento definito nell'animation clip!!
         ChangeAnimation(IDLE);
     }
     private void DwarfIdle() {
@@ -180,7 +180,7 @@ public class BarMan : MonoBehaviour {
                 break;
             case 3:
             case 4:
-                ChangeAnimation(SNEEZE);
+                ChangeAnimation(STRETCHING);
                 break;
             case 5:
             case 6:

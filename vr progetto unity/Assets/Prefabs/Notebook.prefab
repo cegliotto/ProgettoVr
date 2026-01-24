@@ -579,10 +579,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '"Nella cabina del delitto ho trovato il biglietto della vittima, il suo
-    nome e'' Thomas Brigss. Ho notato un codice sul retro del biglietto 5-10-15"'
+    nome e'' Thomas Brigss. Ho notato un codice sul retro del biglietto:\n
+
+    5-10-15"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ed8f20655e057942ae144d14ceade86, type: 2}
-  m_sharedMaterial: {fileID: -1506998855018567366, guid: bd668642d737d4a409e11b987170d885, type: 2}
+  m_sharedMaterial: {fileID: 3404514209314375667, guid: 8ed8f20655e057942ae144d14ceade86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1095,13 +1097,13 @@ MonoBehaviour:
     Devo cercare un bastone ed una borsa e dirigermi nel vagone bar per altri indizi"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ed8f20655e057942ae144d14ceade86, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 3404514209314375667, guid: 8ed8f20655e057942ae144d14ceade86, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3239,7 +3241,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6215041697182024081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3247,7 +3249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -2.29}
+  m_AnchoredPosition: {x: -0.2, y: -2.57}
   m_SizeDelta: {x: 5, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1527470823801912225
