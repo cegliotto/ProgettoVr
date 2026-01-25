@@ -752,9 +752,15 @@ MonoBehaviour:
     - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
     - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
     puzzle: {fileID: 1838300947}
+    delay:
+      time: 1
+      index: 0
   - frasi:
     - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
     puzzle: {fileID: 0}
+    delay:
+      time: 0
+      index: 0
   source: {fileID: 0}
 --- !u!82 &1451645655
 AudioSource:
