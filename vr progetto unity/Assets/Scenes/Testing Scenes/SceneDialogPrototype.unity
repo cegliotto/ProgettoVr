@@ -748,9 +748,11 @@ MonoBehaviour:
   - frasi:
     - test 01
     - test 02
+    puzzle: {fileID: 1838300947}
   - frasi:
     - test 11
     - test 12
+    puzzle: {fileID: 0}
 --- !u!1001 &1665318858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,7 +826,7 @@ GameObject:
   - component: {fileID: 1838300945}
   - component: {fileID: 1838300944}
   - component: {fileID: 1838300943}
-  - component: {fileID: 1838300942}
+  - component: {fileID: 1838300947}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -832,21 +834,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1838300942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838300941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a2b347f79c43042973f9a9d86f8bb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
-  debug: 0
-  itemType: 0
-  isTicket: 0
 --- !u!65 &1838300943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -939,6 +926,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838300947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838300941}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5e5a8765e12894b92afcfd1d15c5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleInteraction
+  puzzleSceneName: 
+  puzzleType: 0
+  solved: 0
+  animator: {fileID: 0}
 --- !u!4 &1990288092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7776608792076202387, guid: b9650767d8c8df44796d977c4f10a812, type: 3}
