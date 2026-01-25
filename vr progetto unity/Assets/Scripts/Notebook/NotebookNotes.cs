@@ -23,7 +23,7 @@ public class NotebookNotes : MonoBehaviour {
         TypewriterText typewriter = notesToShow[storyProgress].GetComponentInChildren<TypewriterText>();
         if (typewriter != null) {
             typewriter.Play();
-            NotebookManager.Instance.PlayWriteSound();
+            NotebookManager.Instance.PlayLongWriteSound();
 
             float writingDuration = 3f; // per ora fissa
             NotebookManager.Instance.SetBusyForSeconds(writingDuration);

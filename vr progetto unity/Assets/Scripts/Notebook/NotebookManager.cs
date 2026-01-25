@@ -64,6 +64,9 @@ public class NotebookManager : MonoBehaviour {
     public bool IsContentAnimating = false;
     private AudioSource audioSource;
     [SerializeField] private AudioClip paperWriteClip;
+    [SerializeField] private AudioClip longPaperWriteClip;
+    [SerializeField] private AudioClip openingClosingNotebookClip;
+    [SerializeField] private AudioClip pageScrollClip;
 
     [SerializeField] private Animator notebookAnimator;
 
@@ -154,6 +157,7 @@ public class NotebookManager : MonoBehaviour {
         if (notebookHolder.gameObject.activeSelf || isNotebookClosing) return;
 
         isNotebookClosing = false;
+        PlayOpenCloseNotebookSound();
 
         if (specificPageIndex >= 0 && specificPageIndex < pagePairs.Length) {
             currentPageIndex = specificPageIndex;
@@ -210,6 +214,7 @@ public class NotebookManager : MonoBehaviour {
     public void CloseNotebook() {
         if (!notebookHolder.gameObject.activeSelf || isNotebookClosing) return;
 
+        PlayOpenCloseNotebookSound();
         isNotebookClosing = true;
         if (animationCoroutine != null) StopCoroutine(animationCoroutine);
 
@@ -328,11 +333,30 @@ public class NotebookManager : MonoBehaviour {
         audioSource.PlayOneShot(paperWriteClip);
     }
 
+    public void PlayLongWriteSound() {
+        if (audioSource == null || longPaperWriteClip == null) return;
+
+        audioSource.PlayOneShot(longPaperWriteClip);
+    }
+
+    private void PlayOpenCloseNotebookSound() {
+        if (audioSource == null || openingClosingNotebookClip == null) return;
+
+        audioSource.PlayOneShot(openingClosingNotebookClip);
+    }
+
+    private void PlayPageScrollSound() {
+        if (audioSource == null || pageScrollClip == null) return;
+
+        audioSource.PlayOneShot(pageScrollClip);
+    }
+
     private IEnumerator ChangePagePair(int newIndex) {
         isTransitioning = true;
 
         PagePair current = pagePairs[currentPageIndex];
         PagePair next = pagePairs[newIndex];
+        PlayPageScrollSound(); // Suono di cambio pagina
 
         yield return StartCoroutine(TransitionPagePair(current, next));
 

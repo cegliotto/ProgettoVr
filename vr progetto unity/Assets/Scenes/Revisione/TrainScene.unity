@@ -11602,6 +11602,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.236
       objectReference: {fileID: 0}
+    - target: {fileID: 2746161576063884296, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: pageScrollClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e0ddcd8812bc7544ad06f41398eb768, type: 3}
+    - target: {fileID: 2746161576063884296, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: longPaperWriteClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 475890454536f7c46a0b0b81bab97741, type: 3}
+    - target: {fileID: 2746161576063884296, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      propertyPath: openingClosingNotebookClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 112b1fbd1701693439b8054d6a935486, type: 3}
     - target: {fileID: 5340168149892473685, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
       propertyPath: m_Name
       value: 'GameManager '
@@ -23177,7 +23189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513506348316604164, guid: c016cfa301684f2479278b9bb065f777, type: 3}
       propertyPath: m_Name
-      value: Eyeglasses (1)
+      value: Eyeglasses
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31686,6 +31698,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8115316477276079636, guid: 3a389139e40467c4e8fa9397a95b02b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 352893a766ccbd34e9690a22d9fde285, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -41062,63 +41078,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac45a5a6b97eef478a3711c02ece799, type: 3}
---- !u!1001 &6277445357412362313
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.436
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.722
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -34.041
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.2653758
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.2653758
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.65542024
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.65542024
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 44.085007
-      objectReference: {fileID: 0}
-    - target: {fileID: 4513506348316604164, guid: c016cfa301684f2479278b9bb065f777, type: 3}
-      propertyPath: m_Name
-      value: Eyeglasses
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c016cfa301684f2479278b9bb065f777, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -41141,7 +41100,6 @@ SceneRoots:
   - {fileID: 401960994}
   - {fileID: 504487320}
   - {fileID: 743979305}
-  - {fileID: 6277445357412362313}
   - {fileID: 1331197511}
   - {fileID: 516548955}
   - {fileID: 1243158489}
