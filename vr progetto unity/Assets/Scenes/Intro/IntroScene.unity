@@ -412,7 +412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &518300717
 RectTransform:
   m_ObjectHideFlags: 0
@@ -967,7 +967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1272394789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1198,6 +1198,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4060079483319041635, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7876496858704996697, guid: 05ffb641ea256844a84cfe8de80094b5, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -1229,7 +1233,7 @@ SceneRoots:
   - {fileID: 399489588}
   - {fileID: 788364749}
   - {fileID: 1826674115}
+  - {fileID: 945470491}
   - {fileID: 518300717}
   - {fileID: 1875284660}
   - {fileID: 1440910931}
-  - {fileID: 945470491}
