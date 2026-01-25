@@ -10,6 +10,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         //public string nomeDialogo; // opzionale, per identificare il dialogo
         public List<string> frasi;
+        public PuzzleInteraction puzzle;
     }
     public List<Dialogo> dialogue;
     private int index = 0;
@@ -21,7 +22,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         {
             Time.timeScale = 0f;
             index = UiManager.Instance.nextDialogue(dialogue[index].frasi, index);
-            if (index > dialogue.Count - 1){ index = dialogue.Count - 1; }
+            if (index > dialogue.Count - 1){ index = dialogue.Count - 1; } //reset to last dialogue
         }
         
     }
