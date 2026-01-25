@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Dialogo = DialogueTrigger.Dialogo;
 
 public class UiManager : MonoBehaviour
 {
@@ -25,40 +26,12 @@ public class UiManager : MonoBehaviour
         dialogueTextMesh = DialogueBox.GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    public float counter = 0f;
-    void Update()
-    {
-        counter -= Time.deltaTime;
-        if (currentDialogue != null)
-        {
-            if (counter <= 0f)
-            {
-                Debug.Log("pro");
-                //nextDialogue();
-                counter = 2f;
-            }
-        }
-    }
-
     #region dialoghi
-    List<string> currentDialogue;
+    Dialogo currentDialogue;
     int currentDialogueIndex = 0;
     public TextMeshProUGUI dialogueTextMesh = null;
-    public void StartDialogue(List<string> dialogue)
-    {
-        counter = 2f;
-        DialogueBox.gameObject.SetActive(true);
 
-        //Time.timeScale = 0f;
-        //InputManager.Instance.DisableAllInputs();
-        EventSystem.current.SetSelectedGameObject(null);
-        currentDialogue = dialogue;
-        dialogueTextMesh.text = currentDialogue[0];
-        //InputManager.Instance.DisablePause();
-
-    }
-
-    public int nextDialogue(List<string> dialogue , int globalDialogueIndex)
+    public int nextDialogue(Dialogo dialogue , int globalDialogueIndex)
     {
         DialogueBox.gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
@@ -66,14 +39,14 @@ public class UiManager : MonoBehaviour
 
         //dialogueTextMesh.text = currentDialogue[0];
 
-        if(currentDialogueIndex < currentDialogue.Count)
+        if(currentDialogueIndex < currentDialogue.frasi.Count)
         {
-            dialogueTextMesh.text = currentDialogue[currentDialogueIndex];
+            dialogueTextMesh.text = currentDialogue.frasi[currentDialogueIndex];
             currentDialogueIndex++;
         }
         else
         {
-            Time.timeScale = 1f;
+            if (dialogue.puzzle != null){ dialogue.puzzle.enabled = true; }
             endDialogue();
             globalDialogueIndex++;
         }
@@ -83,11 +56,11 @@ public class UiManager : MonoBehaviour
     void endDialogue()
     {
         Time.timeScale = 1f;
-        //InputManager.Instance.EnableAllInputs();
         DialogueBox.gameObject.SetActive(false);
         currentDialogue = null;
         currentDialogueIndex = 0;
         //InputManager.Instance.EnablePause();
+        //InputManager.Instance.EnableAllInputs();
     }
     #endregion
 }

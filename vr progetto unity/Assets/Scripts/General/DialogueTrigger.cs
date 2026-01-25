@@ -21,7 +21,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         if(dialogue.Count > 0)
         {
             Time.timeScale = 0f;
-            index = UiManager.Instance.nextDialogue(dialogue[index].frasi, index);
+            index = UiManager.Instance.nextDialogue(dialogue[index], index);
             if (index > dialogue.Count - 1){ index = dialogue.Count - 1; } //reset to last dialogue
         }
         

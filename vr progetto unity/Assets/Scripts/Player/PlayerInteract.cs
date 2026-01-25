@@ -63,10 +63,10 @@ public class PlayerInteract : MonoBehaviour {
                     outlineMat.SetVector("pivot", worldCenter);
                 }
 
-                if (lastObj.GetComponent<GrabbableItem>() != null ||
-                    lastObj.GetComponent<PickUpItem>() != null ||
-                    lastObj.GetComponent<DialogueTrigger>() != null ||
-                    lastObj.GetComponent<PuzzleInteraction>() != null) {
+                if  ((lastObj.TryGetComponent<GrabbableItem>(out var g) && g.isActiveAndEnabled) ||
+                    (lastObj.TryGetComponent<PickUpItem>(out var p) && p.isActiveAndEnabled) ||
+                    (lastObj.TryGetComponent<DialogueTrigger>(out var d) && d.isActiveAndEnabled) ||
+                    (lastObj.TryGetComponent<PuzzleInteraction>(out var pi) && pi.isActiveAndEnabled)){
                     //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
                     oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
                     hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
