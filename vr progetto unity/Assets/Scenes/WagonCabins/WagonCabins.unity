@@ -2416,6 +2416,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3408949984586179771, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b270f77959673d444a545fc60ffb2ece, type: 2}
     - target: {fileID: 3626129919735144086, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -2480,6 +2484,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8037582656849910946, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b270f77959673d444a545fc60ffb2ece, type: 2}
     - target: {fileID: 8227082284321748423, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -6758,6 +6766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   debug: 0
   itemType: 0
+  isTicket: 0
 --- !u!1 &1639404762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3728584049237746136, guid: f6026e49748e8814ea8d3e99a49285e6, type: 3}
