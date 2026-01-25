@@ -3,7 +3,12 @@ guid: 98809afaedbe8479c9f03ed200fd2ebe
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walking_Stick
+    second: {fileID: 2100000, guid: 352893a766ccbd34e9690a22d9fde285, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

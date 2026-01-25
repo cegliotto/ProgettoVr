@@ -24,6 +24,9 @@ public class WordByWordText : MonoBehaviour
         "cappello di castoro nero,"
     };
 
+    [Header("Oggetti 3D")]
+    public GameObject[] clueObjects; // Assicurati che sia nello stesso ordine di 'clues'
+
     void Start()
     {
         textComponent.text = "";
@@ -68,6 +71,13 @@ public class WordByWordText : MonoBehaviour
                         }
                         textComponent.text += "</size></color></b>";
 
+                        // Mostra l'oggetto 3D corrispondente
+                        int clueIndex = System.Array.IndexOf(clues, clue);
+                        if (clueIndex >= 0 && clueIndex < clueObjects.Length && clueObjects[clueIndex] != null)
+                        {
+                            clueObjects[clueIndex].SetActive(true);
+                        }
+
                         // Pausa lunga sull'indizio
                         yield return new WaitForSeconds(cluePause);
 
@@ -77,15 +87,11 @@ public class WordByWordText : MonoBehaviour
                 }
             }
 
-            
             if (!isClue)
             {
                 textComponent.text += words[i] + " ";
-
-                float delay = /*words[i].EndsWith(".") ? wordDelay + 0.3f :*/ wordDelay;
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSeconds(wordDelay);
             }
-            
         }
     }
 }
