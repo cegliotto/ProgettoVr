@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -30,30 +31,45 @@ public class UiManager : MonoBehaviour
     Dialogo currentDialogue;
     int currentDialogueIndex = 0;
     public TextMeshProUGUI dialogueTextMesh = null;
-
-    public int nextDialogue(Dialogo dialogue , int globalDialogueIndex)
-    {
-        DialogueBox.gameObject.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        currentDialogue = dialogue;
-
-        //dialogueTextMesh.text = currentDialogue[0];
-
-        if(currentDialogueIndex < currentDialogue.frasi.Count)
-        {
-            dialogueTextMesh.text = currentDialogue.frasi[currentDialogueIndex];
-            currentDialogueIndex++;
+    
+    public void startDialogue(List<Dialogo> dialogue, AudioSource source)
+    {   
+        if(currentDialogue == null){
+            StartCoroutine(nextDialogue(dialogue, source)); 
         }
-        else
-        {
-            if (dialogue.puzzle != null){ dialogue.puzzle.enabled = true; }
-            endDialogue();
-            globalDialogueIndex++;
-        }
-        return globalDialogueIndex;
     }
 
-    void endDialogue()
+    public IEnumerator nextDialogue(List<Dialogo> dialogue, AudioSource source)
+    {
+        DialogueBox.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null); //check
+        currentDialogue = dialogue[0];
+
+        while(currentDialogueIndex < currentDialogue.frasi.Count)
+        {
+            source.clip = currentDialogue.frasi[currentDialogueIndex];
+            
+            Debug.Log("isPlaying");
+            source.Play();
+            yield return new WaitWhile(() => source.isPlaying);
+            if (currentDialogueIndex == currentDialogue.delay.index && currentDialogue.delay.time >0f)
+            {   Debug.Log("wait");
+                yield return new WaitForSecondsRealtime(currentDialogue.delay.time);
+                Debug.Log("end wait");
+            }
+            currentDialogueIndex++;
+            
+        }
+        
+        if(currentDialogueIndex >= currentDialogue.frasi.Count)
+        {
+            if (currentDialogue.puzzle != null){ currentDialogue.puzzle.enabled = true; }
+            endDialogue();
+            if (dialogue.Count > 1){dialogue.RemoveAt(0);} //rimuove il dialogo solo se non è l'ultimo
+        }
+        yield return null;
+    }
+    public void endDialogue()
     {
         Time.timeScale = 1f;
         DialogueBox.gameObject.SetActive(false);
