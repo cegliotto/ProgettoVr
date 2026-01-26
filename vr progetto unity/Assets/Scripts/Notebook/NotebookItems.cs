@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class NotebookItems : MonoBehaviour {
 
     [SerializeField] private GameObject[] itemsIcon;
+    [SerializeField] private GameObject[] checkIcons;
     [SerializeField] private float fadeDuration = 0.5f; // durata animazione apparizione oggetti in notebook
 
     //private int itemsToPickUp = 6; // 6 oggetti da prendere
@@ -23,7 +24,7 @@ public class NotebookItems : MonoBehaviour {
         icon.SetActive(true);
 
         // animazione per fade
-        StartCoroutine(Utils.FadeCanvasGroup(cg, 0f, 0.4f, fadeDuration));
+        StartCoroutine(Utils.FadeCanvasGroup(cg, 0f, 1f, fadeDuration));
     }
 
     public void OnItemPickedUp(ItemType item) {
@@ -34,6 +35,10 @@ public class NotebookItems : MonoBehaviour {
 
         GameObject icon = itemsIcon[index];
         CanvasGroup cg = icon.GetComponent<CanvasGroup>();
+
+        GameObject check_icon = checkIcons[index];
+        CanvasGroup cg_check = check_icon.GetComponent<CanvasGroup>();
+
 
         if (!icon.activeSelf) { // se non era stato annotato, si annota
             AnnotateNewItem(item);
@@ -50,6 +55,7 @@ public class NotebookItems : MonoBehaviour {
         }
 
         // animazione per fade
-        StartCoroutine(Utils.FadeCanvasGroup(cg, cg.alpha, 1f, fadeDuration));
+        StartCoroutine(Utils.FadeCanvasGroup(cg, cg.alpha, 0.6f, fadeDuration));
+        StartCoroutine(Utils.FadeCanvasGroup(cg_check, 0.0f, 1f, fadeDuration));
     }
 }
