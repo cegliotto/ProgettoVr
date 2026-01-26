@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -803059039694622606, guid: 98809afaedbe8479c9f03ed200fd2ebe, type: 3}
+  - {fileID: 2100000, guid: 352893a766ccbd34e9690a22d9fde285, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   debug: 0
   itemType: 0
+  isTicket: 0
