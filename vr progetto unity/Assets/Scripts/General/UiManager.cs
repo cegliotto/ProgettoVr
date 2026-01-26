@@ -32,14 +32,14 @@ public class UiManager : MonoBehaviour
     int currentDialogueIndex = 0;
     public TextMeshProUGUI dialogueTextMesh = null;
     
-    public void startDialogue(List<Dialogo> dialogue, AudioSource source)
+    public void startDialogue(List<Dialogo> dialogue, AudioSource source, Animator animator)
     {   
         if(currentDialogue == null){
-            StartCoroutine(nextDialogue(dialogue, source)); 
+            StartCoroutine(nextDialogue(dialogue, source, animator)); 
         }
     }
 
-    public IEnumerator nextDialogue(List<Dialogo> dialogue, AudioSource source)
+    public IEnumerator nextDialogue(List<Dialogo> dialogue, AudioSource source,  Animator animator)
     {
         DialogueBox.gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null); //check
@@ -50,6 +50,7 @@ public class UiManager : MonoBehaviour
             source.clip = currentDialogue.frasi[currentDialogueIndex];
             
             Debug.Log("isPlaying");
+            animator.SetBool("isTalking", true);
             source.Play();
             yield return new WaitWhile(() => source.isPlaying);
             if (currentDialogueIndex == currentDialogue.delay.index && currentDialogue.delay.time >0f)
@@ -65,6 +66,7 @@ public class UiManager : MonoBehaviour
         {
             if (currentDialogue.puzzle != null){ currentDialogue.puzzle.enabled = true; }
             endDialogue();
+            animator.SetBool("isTalking", false);
             if (dialogue.Count > 1){dialogue.RemoveAt(0);} //rimuove il dialogo solo se non è l'ultimo
         }
         yield return null;

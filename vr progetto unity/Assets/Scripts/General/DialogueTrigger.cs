@@ -22,6 +22,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     }
     public List<Dialogo> dialogue;
     public AudioSource source;
+    public Animator animator;
     public void Awake()
     {
         source = this.gameObject.GetComponent<AudioSource>();
@@ -31,7 +32,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         if(dialogue.Count > 0 && source != null)
         {
             Time.timeScale = 0f;
-            UiManager.Instance.startDialogue(dialogue, source);
+            UiManager.Instance.startDialogue(dialogue, source, animator);
             //if (index > dialogue.Count - 1){ index = dialogue.Count - 1; } //reset to last dialogue
         }
         
