@@ -7,8 +7,8 @@ public class IntroController : MonoBehaviour
 
     private void Start()
     {
-        if (startButton != null)
-            startButton.SetActive(true);
+        //if (startButton != null)
+            //startButton.SetActive(true);
     }
 
     public void StartGame()

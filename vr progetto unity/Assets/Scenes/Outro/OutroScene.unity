@@ -1418,8 +1418,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8ed8f20655e057942ae144d14ceade86, type: 2}
-  m_sharedMaterial: {fileID: 3404514209314375667, guid: 8ed8f20655e057942ae144d14ceade86, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bd668642d737d4a409e11b987170d885, type: 2}
+  m_sharedMaterial: {fileID: -1506998855018567366, guid: bd668642d737d4a409e11b987170d885, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1443,8 +1443,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 47
+  m_fontSizeBase: 47
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   textComponent: {fileID: 1698775319}
   fullText: "Il 9 luglio 1864, sul treno serale della North London Railway, ebbe
     luogo il primo omicidio mai avvenuto su una ferrovia britannica. La vittima fu
-    Thomas Briggs, rispettabile impiegato di banca. \nIl suo biglietto ferroviario,
+    Thomas Briggs, rispettabile impiegato di banca.  Il suo biglietto ferroviario,
     rinvenuto e riconosciuto, confermo' la sua presenza a bordo quella sera. Accanto
     al sangue furono trovati anche un bastone e una borsa, entrambi identificati
     come proprieta' di Briggs. Mancavano pero' alcuni oggetti di valore: un orologio,
@@ -1519,11 +1519,18 @@ MonoBehaviour:
     venne trovato un cappello di castoro nero, risultato poi appartenere a Franz
     Muller, che aveva commissionato il suo acquisto a un tassista di Londra, testimone
     cruciale per la risoluzione del caso. \nTale cappello divenne l\u2019indizio
-    decisivo. Tutte le prove condussero a Franz M\xFCller, che venne arrestato, processato
+    decisivo. Tutte le prove condussero a Franz Muller, che venne arrestato, processato
     e riconosciuto colpevole dell\u2019omicidio di Thomas Briggs."
-  wordDelay: 0.01
+  charDelay: 0.03
   cluePause: 2
-  fadeDuration: 1
+  clues:
+  - biglietto ferroviario,
+  - bastone
+  - borsa,
+  - orologio,
+  - catena d'oro
+  - occhiali d'oro,
+  - cappello di castoro nero,
   clueObjects:
   - {fileID: 1816674529}
   - {fileID: 2084177086}
@@ -1532,6 +1539,8 @@ MonoBehaviour:
   - {fileID: 623594759}
   - {fileID: 56962954}
   - {fileID: 939797787}
+  animationDuration: 0.8
+  pulseScale: {x: 1.2, y: 1.2, z: 1.2}
 --- !u!1 &1749829148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,7 +1598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da35e3892de02d7499e9b151f78216b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e779af58c8ea444b8652909a1239812, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
