@@ -3,18 +3,18 @@ using UnityEngine;
 public class ParallaxLooper : MonoBehaviour
 {
     public float speed = 6f;            // scorre in +Z globale
-    public float segmentLengthZ = 60f;  // distanza tra A e B in Z globale
+    public float segmentLengthZ = 60f;  // distanza tra segmenti (L)
 
-    Transform a, b;
+    Transform a, b, c;
     float startZ;
 
     void Start()
     {
         a = transform.GetChild(0);
         b = transform.GetChild(1);
+        c = transform.GetChild(2);
 
-        // memorizzo lo Z iniziale del gruppo come riferimento
-        startZ = transform.position.z;
+        startZ = a.position.z;
     }
 
     void Update()
@@ -24,13 +24,13 @@ public class ParallaxLooper : MonoBehaviour
 
         a.position += step;
         b.position += step;
+        c.position += step;
 
         float limitZ = startZ + segmentLengthZ;
+        float wrap = segmentLengthZ * 3f; // 3 segmenti -> 3L
 
-        if (a.position.z >= limitZ)
-            a.position -= new Vector3(0f, 0f, segmentLengthZ * 2f);
-
-        if (b.position.z >= limitZ)
-            b.position -= new Vector3(0f, 0f, segmentLengthZ * 2f);
+        if (a.position.z >= limitZ) a.position -= new Vector3(0f, 0f, wrap);
+        if (b.position.z >= limitZ) b.position -= new Vector3(0f, 0f, wrap);
+        if (c.position.z >= limitZ) c.position -= new Vector3(0f, 0f, wrap);
     }
 }
