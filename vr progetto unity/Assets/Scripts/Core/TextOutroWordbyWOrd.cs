@@ -26,13 +26,16 @@ public class WordByWordText : MonoBehaviour
     [Header("Animation Settings")]
     public float animationDuration = 0.8f;
     public Vector3 pulseScale = new Vector3(1.2f, 1.2f, 1.2f);
+    
+    [Header("Hover Animation")]
+    public float hoverAmplitude = 0.1f; 
+    public float hoverSpeed = 2f; 
 
     void Start()
     {
         textComponent.text = "";
         textComponent.maxVisibleCharacters = 0;
 
-        // oggetti invisibili all'inizio
         foreach (var obj in clueObjects) if (obj != null) obj.SetActive(false);
 
         StartCoroutine(ShowTextRoutine());
@@ -80,8 +83,8 @@ public class WordByWordText : MonoBehaviour
 
                 if (matchedClueIndex < clueObjects.Length && clueObjects[matchedClueIndex] != null)
                 {
-                    // ANIMAZIONE PULSE
-                    StartCoroutine(AnimateObject(clueObjects[matchedClueIndex]));
+                    // Pulse e oscillazione
+                    StartCoroutine(AnimateObjectSequence(clueObjects[matchedClueIndex]));
                 }
 
                 yield return new WaitForSeconds(cluePause);
@@ -95,26 +98,57 @@ public class WordByWordText : MonoBehaviour
         }
     }
 
-    IEnumerator AnimateObject(GameObject obj)
+    //Pulse poi Hover infinito
+    IEnumerator AnimateObjectSequence(GameObject obj)
     {
         obj.SetActive(true);
-        Vector3 originalScale = obj.transform.localScale;
-        Renderer renderer = obj.GetComponentInChildren<Renderer>();
 
+        // Pulse
+        yield return StartCoroutine(PulseRoutine(obj));
+
+        //Avvia l'oscillazione passando la posizione ATTUALE dell'oggetto per evitare salti improvvisi
+        StartCoroutine(HoverRoutine(obj));
+    }
+
+    IEnumerator PulseRoutine(GameObject obj)
+    {
+        Vector3 originalScale = obj.transform.localScale;
         float elapsed = 0;
 
         while (elapsed < animationDuration)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / animationDuration;
-
-            // Animazione Pulse 
             float curve = Mathf.Sin(t * Mathf.PI);
             obj.transform.localScale = Vector3.Lerp(originalScale, Vector3.Scale(originalScale, pulseScale), curve);
+            yield return null;
+        }
+        obj.transform.localScale = originalScale;
+    }
+
+    IEnumerator HoverRoutine(GameObject obj)
+    {
+        Vector3 startPos = obj.transform.position;
+        float randomOffset = Random.Range(0f, 10f);
+
+        // Variabile per far entrare l'oscillazione gradualmente 
+        float motionIntensity = 0f;
+        float fadeInSpeed = 0.5f; //In 2 secondi l'oscillazione arriva a pieno regime
+
+        while (obj != null && obj.activeInHierarchy)
+        {
+            //imcremento l'intensità per evitare lo scatto iniziale
+            motionIntensity = Mathf.MoveTowards(motionIntensity, 1f, Time.deltaTime * fadeInSpeed);
+
+            float time = (Time.time + randomOffset) * hoverSpeed;
+
+            //Calcolo l'offset (lo scostamento)
+            float offsetX = Mathf.Cos(time * 0.8f) * (hoverAmplitude * 0.5f);
+            float offsetY = Mathf.Sin(time) * hoverAmplitude;
+            //offset moltiplicato per intensità corrente
+            obj.transform.position = startPos + new Vector3(offsetX, offsetY, 0) * motionIntensity;
 
             yield return null;
         }
-
-        obj.transform.localScale = originalScale;
     }
 }
