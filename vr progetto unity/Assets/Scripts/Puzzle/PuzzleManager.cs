@@ -13,6 +13,7 @@ public class PuzzleManager : MonoBehaviour
     private PuzzleType currentPuzzle;
 
     private List<PuzzleType> solvedPuzzles; // Lista che contiene SOLO i puzzle risolti
+    private List<PuzzleType> unlockedPuzzles; // Lista che contiene SOLO i puzzle unlocked
 
     private void Awake() {
         if(Instance != null) { // Se c'e' gia' istanza 
@@ -24,6 +25,7 @@ public class PuzzleManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); // per non distruggerlo al cambio di scena
 
         solvedPuzzles = new List<PuzzleType>();
+        unlockedPuzzles = new List<PuzzleType>();
     }
 
     public void StartPuzzle(string puzzleScene, PuzzleType puzzle) { // Richiamata in puzzleInteraction, dove passo il nome della scena
@@ -128,5 +130,13 @@ public class PuzzleManager : MonoBehaviour
 
     public bool isPuzzleSolved(PuzzleType puzzleToCheck) {
         return solvedPuzzles.Contains(puzzleToCheck);
+    }
+
+    public bool isPuzzleUnlocked(PuzzleType puzzleToCheck) {
+        return unlockedPuzzles.Contains(puzzleToCheck);
+    }
+
+    public void AddUnlockedPuzzle(PuzzleType puzzleToSignAsUnlocked) {
+        unlockedPuzzles.Add(puzzleToSignAsUnlocked);
     }
 }

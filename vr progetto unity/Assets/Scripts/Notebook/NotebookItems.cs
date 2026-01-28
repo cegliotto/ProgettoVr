@@ -16,7 +16,7 @@ public class NotebookItems : MonoBehaviour {
         int index = (int)item;
         if ((int)item > itemsIcon.Length - 1) return;
 
-        // suono scrittura taccuino
+        NotebookManager.Instance.OpenNotebook(0);
 
         GameObject icon = itemsIcon[index];
         CanvasGroup cg = icon.GetComponent<CanvasGroup>();

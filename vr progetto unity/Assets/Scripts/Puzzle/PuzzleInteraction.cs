@@ -18,6 +18,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     
 
     public bool solved = false;
+    public bool unlocked;
     [SerializeField] protected Animator animator;
     public PuzzleType GetPuzzleType() => puzzleType;
 
@@ -31,6 +32,9 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
 
     protected virtual void Start() {
         if (PuzzleManager.Instance != null) {
+            if (PuzzleManager.Instance.isPuzzleUnlocked(this.puzzleType)) {
+                unlocked = true;
+            }
             if (PuzzleManager.Instance.isPuzzleSolved(this.puzzleType)) { // Se puzzle e' gia' risolto
                 StartSolvedAnimation(); // Imposto come risolto
             }
@@ -38,6 +42,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     }
 
     public virtual void OnInteract(PlayerInteract playerInteract) {
+        if (!enabled) return;
         if (solved) return;
 
         Debug.Log($"Interazione con {puzzleSceneName}");

@@ -29,7 +29,8 @@ public enum ItemType {
     Occhiali,
     Collana,
     Orologio,
-    Cappello
+    Cappello,
+    None
 }
 
 public class NotebookManager : MonoBehaviour {
@@ -99,7 +100,7 @@ public class NotebookManager : MonoBehaviour {
         });
 
         test_notes.onClick.AddListener(() => {
-            notebookNotesManager.UnlockNewProgress();
+            notebookNotesManager.UnlockNewProgress(NotebookNotes.NotesProgress.Ticket);
         });
 
         nextPageButton.onClick.AddListener(() => {

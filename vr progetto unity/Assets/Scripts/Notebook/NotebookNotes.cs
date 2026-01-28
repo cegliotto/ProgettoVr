@@ -1,26 +1,31 @@
 using UnityEngine;
 
 public class NotebookNotes : MonoBehaviour {
-    public int storyProgress;
+
+    public enum NotesProgress {
+        Ticket, 
+        Woman,
+        Barman,
+        Hat,
+        None
+    }
 
     [SerializeField] private GameObject[] notesToShow;
 
     private void Awake() {
-        storyProgress = 0;
-
         foreach (var note in notesToShow) {
             note.SetActive(false);
         }
     }
 
-    public void UnlockNewProgress() {
-        // suono scrittura taccuino
-        if (storyProgress >= notesToShow.Length) return;
+    public void UnlockNewProgress(NotesProgress progressUnlocked) {
+        NotebookManager.Instance.OpenNotebook(1);
 
-        notesToShow[storyProgress].SetActive(true);
+        int storyProgressUnlocked = (int)progressUnlocked;
+        notesToShow[storyProgressUnlocked].SetActive(true);
 
         // Avvia animazione testo
-        TypewriterText typewriter = notesToShow[storyProgress].GetComponentInChildren<TypewriterText>();
+        TypewriterText typewriter = notesToShow[storyProgressUnlocked].GetComponentInChildren<TypewriterText>();
         if (typewriter != null) {
             typewriter.Play();
             NotebookManager.Instance.PlayLongWriteSound();
@@ -28,7 +33,5 @@ public class NotebookNotes : MonoBehaviour {
             float writingDuration = 3f; // per ora fissa
             NotebookManager.Instance.SetBusyForSeconds(writingDuration);
         }
-
-        storyProgress++;
     }
 }

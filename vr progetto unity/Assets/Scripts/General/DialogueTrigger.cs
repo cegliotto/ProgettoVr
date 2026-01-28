@@ -17,8 +17,10 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         //public string nomeDialogo; // opzionale, per identificare il dialogo
         //public List<string> frasi;
         public List<AudioClip> frasi;
-        public PuzzleInteraction puzzle;
+        public PuzzleInteraction[] puzzles;
         public  delay delay;
+        public ItemType[] itemToAnnotateAfterDialog = new ItemType[0];
+        public NotebookNotes.NotesProgress progressToUnlockAfterDialog = NotebookNotes.NotesProgress.None;
     }
     public List<Dialogo> dialogue;
     public AudioSource source;
@@ -31,7 +33,10 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     {
         if(dialogue.Count > 0 && source != null)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
+            if(Player.Instance != null) {
+                Player.Instance.SetState(Player.PlayerState.Dialog);
+            }
             UiManager.Instance.startDialogue(dialogue, source, animator);
             //if (index > dialogue.Count - 1){ index = dialogue.Count - 1; } //reset to last dialogue
         }

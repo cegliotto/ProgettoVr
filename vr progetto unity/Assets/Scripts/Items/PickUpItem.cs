@@ -76,7 +76,7 @@ public class PickUpItem : MonoBehaviour, IInteractable {
     private void HandleTicket() {
         if (NotebookManager.Instance != null) {
             NotebookManager.Instance.OpenNotebook(1);
-            NotebookManager.Instance.notebookNotesManager.UnlockNewProgress();
+            NotebookManager.Instance.notebookNotesManager.UnlockNewProgress(NotebookNotes.NotesProgress.Ticket);
         }
 
         // Suono di raccolta

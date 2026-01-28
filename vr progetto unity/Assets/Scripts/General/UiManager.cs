@@ -50,7 +50,7 @@ public class UiManager : MonoBehaviour
             source.clip = currentDialogue.frasi[currentDialogueIndex];
             
             Debug.Log("isPlaying");
-            animator.SetBool("isTalking", true);
+            //animator.SetBool("isTalking", true);
             source.Play();
             yield return new WaitWhile(() => source.isPlaying);
             if (currentDialogueIndex == currentDialogue.delay.index && currentDialogue.delay.time >0f)
@@ -64,16 +64,43 @@ public class UiManager : MonoBehaviour
         
         if(currentDialogueIndex >= currentDialogue.frasi.Count)
         {
-            if (currentDialogue.puzzle != null){ currentDialogue.puzzle.enabled = true; }
+            if (currentDialogue.puzzles != null){
+                foreach (PuzzleInteraction puzzle in currentDialogue.puzzles) {
+                    puzzle.unlocked = true; // Segno come sbloccato
+                    // lo segno anche in puzzle manager per coerenza al cambio di scena
+                    if(PuzzleManager.Instance != null) {
+                        PuzzleManager.Instance.AddUnlockedPuzzle(puzzle.GetPuzzleType());
+                    }
+                }
+            }
+
+            if(NotebookManager.Instance != null) {
+                // Se il dialogo deve sbloccare nuova nota nel notebook, si sblocca quella associata al dialogo
+                if (currentDialogue.progressToUnlockAfterDialog != NotebookNotes.NotesProgress.None) {
+                    NotebookManager.Instance.notebookNotesManager.UnlockNewProgress(currentDialogue.progressToUnlockAfterDialog);
+                }
+                // Se il dialogo deve far annotare un nuovo oggetto, si fa annotare
+                if (currentDialogue.itemToAnnotateAfterDialog.Length > 0) {
+                    foreach(ItemType itemToAnnotate in currentDialogue.itemToAnnotateAfterDialog) {
+                        NotebookManager.Instance.notebookItemsManager.AnnotateNewItem(itemToAnnotate);
+                    }
+                }
+            }
+
             endDialogue();
-            animator.SetBool("isTalking", false);
+            //animator.SetBool("isTalking", false);
             if (dialogue.Count > 1){dialogue.RemoveAt(0);} //rimuove il dialogo solo se non è l'ultimo
         }
         yield return null;
     }
     public void endDialogue()
     {
-        Time.timeScale = 1f;
+        // Time.timeScale = 1f;
+        if (Player.Instance != null) {
+            if(Player.Instance.playerState == Player.PlayerState.Dialog) {
+                Player.Instance.SetState(Player.PlayerState.Idle);
+            }
+        }
         DialogueBox.gameObject.SetActive(false);
         currentDialogue = null;
         currentDialogueIndex = 0;

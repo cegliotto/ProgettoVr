@@ -63,13 +63,14 @@ public class PlayerInteract : MonoBehaviour {
                     outlineMat.SetVector("pivot", worldCenter);
                 }
 
-                if  ((lastObj.TryGetComponent<GrabbableItem>(out var g) && g.isActiveAndEnabled) ||
+                if ((lastObj.TryGetComponent<GrabbableItem>(out var g) && g.isActiveAndEnabled) ||
                     (lastObj.TryGetComponent<PickUpItem>(out var p) && p.isActiveAndEnabled) ||
                     (lastObj.TryGetComponent<DialogueTrigger>(out var d) && d.isActiveAndEnabled) ||
-                    (lastObj.TryGetComponent<PuzzleInteraction>(out var pi) && pi.isActiveAndEnabled)){
+                    (lastObj.TryGetComponent<PuzzleInteraction>(out var pi) && pi.isActiveAndEnabled && pi.unlocked)) {
                     //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
                     oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
                     hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
+
                     if (hitInfo.transform.childCount > 0) {
                         foreach (Transform child in hitInfo.transform) {
                             oldLayer.Enqueue(LayerMask.LayerToName(child.gameObject.layer));
@@ -80,7 +81,10 @@ public class PlayerInteract : MonoBehaviour {
             }
 
 
-            if (hitInfo.transform.TryGetComponent<IInteractable>(out IInteractable interactableItem)) {
+            if (hitInfo.transform.TryGetComponent<PuzzleInteraction>(out var puzzleInteraction)) {
+                itemFocus = (puzzleInteraction.enabled && puzzleInteraction.unlocked) ? hitInfo.transform : null;
+            }
+            else if (hitInfo.transform.TryGetComponent<IInteractable>(out IInteractable interactableItem)) {
                 itemFocus = hitInfo.transform;
             }
             else {
