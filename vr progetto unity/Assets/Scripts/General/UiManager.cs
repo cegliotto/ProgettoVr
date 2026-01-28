@@ -1,9 +1,11 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Dialogo = DialogueTrigger.Dialogo;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -32,14 +34,14 @@ public class UiManager : MonoBehaviour
     int currentDialogueIndex = 0;
     public TextMeshProUGUI dialogueTextMesh = null;
     
-    public void startDialogue(List<Dialogo> dialogue, AudioSource source, Animator animator)
+    public void startDialogue(List<Dialogo> dialogue, AudioSource source, Animator animator, String nextScene = null)
     {   
         if(currentDialogue == null){
-            StartCoroutine(nextDialogue(dialogue, source, animator)); 
+            StartCoroutine(nextDialogue(dialogue, source, animator, nextScene)); 
         }
     }
 
-    public IEnumerator nextDialogue(List<Dialogo> dialogue, AudioSource source,  Animator animator)
+    public IEnumerator nextDialogue(List<Dialogo> dialogue, AudioSource source,  Animator animator, String nextScene = null)
     {
         DialogueBox.gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null); //check
@@ -88,8 +90,17 @@ public class UiManager : MonoBehaviour
             }
 
             endDialogue();
-            //animator.SetBool("isTalking", false);
             if (dialogue.Count > 1){dialogue.RemoveAt(0);} //rimuove il dialogo solo se non è l'ultimo
+            //animator.SetBool("isTalking", false);
+
+            if (!string.IsNullOrEmpty(nextScene))
+            {
+                // caricamento della scena mediante levelLoader per fade-in / fade-out
+                if (LevelLoader.Instance != null)
+                    LevelLoader.Instance.LoadNextScene(nextScene); // effettuo il load della scena
+                else
+                    SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
+            }
         }
         yield return null;
     }
