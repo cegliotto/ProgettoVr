@@ -2,8 +2,8 @@
 
 public class PuzzleLockpick : PuzzleBase
 {
-
     [SerializeField] private Transform rake;
+
 
     [SerializeField] private Transform torsionWrench;
 
@@ -32,6 +32,11 @@ public class PuzzleLockpick : PuzzleBase
     [SerializeField] private AudioClip pinClick;
     [SerializeField] private AudioClip successFinal;
 
+    [Header("Cubi")]
+    [SerializeField] private Color pinLockedColor;
+    [SerializeField] private Color pinUnlockedColor;
+    [SerializeField] private Renderer[] pinVisuals;
+
     private float baseRakeY;
     private int currentPinIndex = 1; // 1..4
     private bool[] pinSet;
@@ -44,6 +49,11 @@ public class PuzzleLockpick : PuzzleBase
     {
         // Array che tiene traccia dei pin già settati (4 pin totali)
         pinSet = new bool[4];
+
+        for (int i = 0; i < pinVisuals.Length; i++)
+        {
+            pinVisuals[i].material.color = pinLockedColor;
+        }
 
         // Salvo la Y iniziale del rake e imposto un range attorno a quella posizione
         baseRakeY = rake.localPosition.y;
@@ -94,7 +104,9 @@ public class PuzzleLockpick : PuzzleBase
         // Aggiorna la rotazione del torsion in base alla tensione corrente
         UpdateTorsionVisual();
 
-        
+        TrySetCurrentPin();
+
+
     }
 
     private void HandleTensionInput(bool allowIncrease)
@@ -168,8 +180,7 @@ public class PuzzleLockpick : PuzzleBase
             StopScrape();
         }
 
-        if (setWhileDragging)
-            TrySetCurrentPin();
+        
     }
 
     private void TrySetCurrentPin()
@@ -192,6 +203,7 @@ public class PuzzleLockpick : PuzzleBase
         {
             // Segna il pin come settato
             pinSet[currentPinIndex - 1] = true;
+            pinVisuals[currentPinIndex - 1].material.color = pinUnlockedColor;
 
             // Feedback audio
             PlayOneShot(pinClick);
