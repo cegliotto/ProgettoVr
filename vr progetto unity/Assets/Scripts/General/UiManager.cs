@@ -52,7 +52,7 @@ public class UiManager : MonoBehaviour
             source.clip = currentDialogue.frasi[currentDialogueIndex];
             
             Debug.Log("isPlaying");
-            //animator.SetBool("isTalking", true);
+            SetTalkingAnimation(true, animator);
             source.Play();
             yield return new WaitWhile(() => source.isPlaying);
             if (currentDialogueIndex == currentDialogue.delay.index && currentDialogue.delay.time >0f)
@@ -91,7 +91,7 @@ public class UiManager : MonoBehaviour
 
             endDialogue();
             if (dialogue.Count > 1){dialogue.RemoveAt(0);} //rimuove il dialogo solo se non è l'ultimo
-            //animator.SetBool("isTalking", false);
+            SetTalkingAnimation(false, animator);
 
             if (!string.IsNullOrEmpty(nextScene))
             {
@@ -117,6 +117,15 @@ public class UiManager : MonoBehaviour
         currentDialogueIndex = 0;
         //InputManager.Instance.EnablePause();
         //InputManager.Instance.EnableAllInputs();
+    }
+
+    private void SetTalkingAnimation(bool value, Animator anim) {
+        if(anim.gameObject.GetComponent<BarMan>() == null) {
+            anim.SetBool("isTalking", value);
+        }
+        else {
+            anim.gameObject.GetComponent<BarMan>().SetTalking(value);
+        }
     }
     #endregion
 }

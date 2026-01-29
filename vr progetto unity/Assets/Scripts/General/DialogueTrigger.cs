@@ -29,6 +29,8 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     public void Awake()
     {
         source = this.gameObject.GetComponent<AudioSource>();
+        if(animator == null)
+            animator = this.gameObject.GetComponent<Animator>();
     }
 
     public void OnInteract(PlayerInteract playerInteract)
