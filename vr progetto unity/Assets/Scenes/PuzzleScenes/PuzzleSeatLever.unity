@@ -983,7 +983,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2035,6 +2035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   debug: 0
   itemType: 0
+  isTicket: 0
 --- !u!65 &1472353272
 BoxCollider:
   m_ObjectHideFlags: 0
