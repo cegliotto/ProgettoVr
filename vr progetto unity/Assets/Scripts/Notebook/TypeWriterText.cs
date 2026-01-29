@@ -9,10 +9,14 @@ public class TypewriterText : MonoBehaviour {
     private TMP_Text textComponent;
     private string fullText;
 
+    public bool active;
+
     void Awake() {
         textComponent = GetComponent<TMP_Text>();
         fullText = textComponent.text;
         fullText = AddSizeToNumbers(fullText);
+
+        if (!active) return;
 
         textComponent.text = "";
     }

@@ -26,6 +26,8 @@ public class NotebookNotes : MonoBehaviour {
 
         // Avvia animazione testo
         TypewriterText typewriter = notesToShow[storyProgressUnlocked].GetComponentInChildren<TypewriterText>();
+        if (!typewriter.active) return;
+
         if (typewriter != null) {
             typewriter.Play();
             NotebookManager.Instance.PlayLongWriteSound();

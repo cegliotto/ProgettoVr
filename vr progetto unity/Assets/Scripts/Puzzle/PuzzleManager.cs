@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
 
 public class PuzzleManager : MonoBehaviour
@@ -138,5 +139,9 @@ public class PuzzleManager : MonoBehaviour
 
     public void AddUnlockedPuzzle(PuzzleType puzzleToSignAsUnlocked) {
         unlockedPuzzles.Add(puzzleToSignAsUnlocked);
+    }
+
+    public bool HasAnyPuzzleBeenSolved() {
+        return solvedPuzzles.Count > 0;
     }
 }

@@ -77,15 +77,15 @@ public class UiManager : MonoBehaviour
             }
 
             if(NotebookManager.Instance != null) {
+                // Se il dialogo deve far annotare un nuovo oggetto, si fa annotare
+                if (currentDialogue.itemToAnnotateAfterDialog.Length > 0) {
+                    foreach (ItemType itemToAnnotate in currentDialogue.itemToAnnotateAfterDialog) {
+                        NotebookManager.Instance.notebookItemsManager.AnnotateNewItem(itemToAnnotate);
+                    }
+                }
                 // Se il dialogo deve sbloccare nuova nota nel notebook, si sblocca quella associata al dialogo
                 if (currentDialogue.progressToUnlockAfterDialog != NotebookNotes.NotesProgress.None) {
                     NotebookManager.Instance.notebookNotesManager.UnlockNewProgress(currentDialogue.progressToUnlockAfterDialog);
-                }
-                // Se il dialogo deve far annotare un nuovo oggetto, si fa annotare
-                if (currentDialogue.itemToAnnotateAfterDialog.Length > 0) {
-                    foreach(ItemType itemToAnnotate in currentDialogue.itemToAnnotateAfterDialog) {
-                        NotebookManager.Instance.notebookItemsManager.AnnotateNewItem(itemToAnnotate);
-                    }
                 }
             }
 

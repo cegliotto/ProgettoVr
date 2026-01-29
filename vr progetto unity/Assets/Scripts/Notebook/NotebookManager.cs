@@ -317,7 +317,7 @@ public class NotebookManager : MonoBehaviour {
         StartCoroutine(ChangePagePair(currentPageIndex + 1));
     }
 
-    private void PreviousPagePair() {
+    public void PreviousPagePair() {
         if (isTransitioning || IsContentAnimating) return;
         if (currentPageIndex <= 0) return;
 
