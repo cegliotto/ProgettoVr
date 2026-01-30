@@ -10089,6 +10089,7 @@ MonoBehaviour:
   source: {fileID: 0}
   animator: {fileID: 0}
   nextScene: 
+  dialogueId: 0
 --- !u!65 &456850974
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12026,7 +12027,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5340168149892473685, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1012643719}
   m_SourcePrefab: {fileID: 100100000, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
 --- !u!1001 &573817073
 PrefabInstance:
@@ -19128,6 +19132,24 @@ Transform:
   - {fileID: 338637842}
   m_Father: {fileID: 1462316947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1012643709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5340168149892473685, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
+  m_PrefabInstance: {fileID: 568521943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1012643719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012643709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a096074cb50754dde905e2ce2a3a10f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  numDialogues: 3
 --- !u!1 &1015108722
 GameObject:
   m_ObjectHideFlags: 0
@@ -27322,6 +27344,7 @@ MonoBehaviour:
   source: {fileID: 0}
   animator: {fileID: 0}
   nextScene: 
+  dialogueId: 0
 --- !u!1 &1462316946
 GameObject:
   m_ObjectHideFlags: 0
@@ -33451,6 +33474,7 @@ MonoBehaviour:
   source: {fileID: 0}
   animator: {fileID: 0}
   nextScene: 
+  dialogueId: 1
 --- !u!82 &1781016020
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34355,6 +34379,10 @@ PrefabInstance:
     - target: {fileID: 2971590923895312411, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
       propertyPath: m_Name
       value: Pendolare
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogueId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9199731121875895752, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
       propertyPath: puzzle

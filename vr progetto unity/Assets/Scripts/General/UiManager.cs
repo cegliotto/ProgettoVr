@@ -34,14 +34,14 @@ public class UiManager : MonoBehaviour
     int currentDialogueIndex = 0;
     public TextMeshProUGUI dialogueTextMesh = null;
     
-    public void startDialogue(List<Dialogo> dialogue, AudioSource source, Animator animator, String nextScene = null)
+    public void startDialogue(int dialogueId, List<Dialogo> dialogue, AudioSource source, Animator animator, String nextScene = null)
     {   
         if(currentDialogue == null){
-            StartCoroutine(nextDialogue(dialogue, source, animator, nextScene)); 
+            StartCoroutine(nextDialogue(dialogueId, dialogue, source, animator, nextScene)); 
         }
     }
 
-    public IEnumerator nextDialogue(List<Dialogo> dialogue, AudioSource source,  Animator animator, String nextScene = null)
+    public IEnumerator nextDialogue(int dialogueId, List<Dialogo> dialogue, AudioSource source,  Animator animator, String nextScene = null)
     {
         DialogueBox.gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null); //check
@@ -90,7 +90,10 @@ public class UiManager : MonoBehaviour
             }
 
             endDialogue();
-            if (dialogue.Count > 1){dialogue.RemoveAt(0);} //rimuove il dialogo solo se non è l'ultimo
+            if (dialogue.Count > 1){
+                dialogue.RemoveAt(0);
+                DialogueManager.toRemove[dialogueId]++;
+            } //rimuove il dialogo solo se non è l'ultimo
             SetTalkingAnimation(false, animator);
 
             if (!string.IsNullOrEmpty(nextScene))

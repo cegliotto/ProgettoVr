@@ -26,11 +26,21 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     public AudioSource source;
     public Animator animator;
     public string nextScene = null;
+
+    public int dialogueId;
+
+
     public void Awake()
     {
         source = this.gameObject.GetComponent<AudioSource>();
         if(animator == null)
             animator = this.gameObject.GetComponent<Animator>();
+
+        
+        for (int i = 0; i < DialogueManager.toRemove[dialogueId]; i++)
+        {
+            dialogue.RemoveAt(0);
+        }
     }
 
     public void OnInteract(PlayerInteract playerInteract)
@@ -46,7 +56,7 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
             if(Player.Instance != null) {
                 Player.Instance.SetState(Player.PlayerState.Dialog);
             }
-            UiManager.Instance.startDialogue(dialogue, source, animator, nextScene);
+            UiManager.Instance.startDialogue(dialogueId, dialogue, source, animator, nextScene);
             //if (index > dialogue.Count - 1){ index = dialogue.Count - 1; } //reset to last dialogue
         }
     }
