@@ -92,7 +92,9 @@ public class UiManager : MonoBehaviour
             endDialogue();
             if (dialogue.Count > 1){
                 dialogue.RemoveAt(0);
-                DialogueManager.toRemove[dialogueId]++;
+
+                if(DialogueManager.toRemove.Count - 1  >= dialogueId)
+                    DialogueManager.toRemove[dialogueId]++;
             } //rimuove il dialogo solo se non è l'ultimo
             SetTalkingAnimation(false, animator);
 

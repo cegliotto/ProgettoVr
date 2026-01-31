@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 8828285367949090788}
   - component: {fileID: -7300850190131937698}
   - component: {fileID: 2076681394208539399}
+  - component: {fileID: 8276326116336405321}
   m_Layer: 0
   m_Name: 'GameManager '
   m_TagString: Untagged
@@ -506,6 +507,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8276326116336405321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340168149892473685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a096074cb50754dde905e2ce2a3a10f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  numDialogues: 3
 --- !u!1001 &2027251533577250529
 PrefabInstance:
   m_ObjectHideFlags: 0

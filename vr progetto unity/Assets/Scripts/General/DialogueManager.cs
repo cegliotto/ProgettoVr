@@ -5,7 +5,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
     public int numDialogues;
-    public static List<int> toRemove;
+    public static List<int> toRemove = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -18,9 +18,7 @@ public class DialogueManager : MonoBehaviour
         
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        if (toRemove == null)
-            toRemove = new List<int>();
+        toRemove = new List<int>();
 
         for (int i = 0; i < numDialogues; i++)
         {

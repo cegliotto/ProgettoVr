@@ -39,7 +39,8 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         
         for (int i = 0; i < DialogueManager.toRemove[dialogueId]; i++)
         {
-            dialogue.RemoveAt(0);
+            if (dialogue.Count > 1)
+                dialogue.RemoveAt(0);
         }
     }
 
