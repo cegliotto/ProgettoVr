@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3237859576207870416}
   - component: {fileID: 1787474732038513646}
   - component: {fileID: 3827841927242977161}
+  - component: {fileID: 1250698647531995793}
   m_Layer: 0
   m_Name: hat
   m_TagString: Untagged
@@ -89,3 +90,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1250698647531995793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103355880409909419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0.1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
