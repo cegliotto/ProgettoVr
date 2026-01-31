@@ -179,7 +179,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 68474d3e5d090894c97564134b4b99bd, type: 3}
+  - {fileID: 2100000, guid: 17b3f21b7c2035a43934d745d04ef77a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -287,7 +287,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 68474d3e5d090894c97564134b4b99bd, type: 3}
+  - {fileID: 2100000, guid: 17b3f21b7c2035a43934d745d04ef77a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -479,6 +479,7 @@ MonoBehaviour:
   puzzleSceneName: PuzzleCabinet
   puzzleType: 0
   solved: 0
+  unlocked: 0
   animator: {fileID: 0}
 --- !u!1 &1550434047267696512
 GameObject:
@@ -840,7 +841,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 68474d3e5d090894c97564134b4b99bd, type: 3}
+  - {fileID: 2100000, guid: 17b3f21b7c2035a43934d745d04ef77a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
