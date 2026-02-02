@@ -52,7 +52,7 @@ public class UiManager : MonoBehaviour
             source.clip = currentDialogue.frasi[currentDialogueIndex];
             
             Debug.Log("isPlaying");
-            SetTalkingAnimation(true, animator);
+            SetTalkingAnimation(dialogueId, true, animator);
             source.Play();
             yield return new WaitWhile(() => source.isPlaying);
             if (currentDialogueIndex == currentDialogue.delay.index && currentDialogue.delay.time >0f)
@@ -96,7 +96,7 @@ public class UiManager : MonoBehaviour
                 if(DialogueManager.toRemove.Count - 1  >= dialogueId)
                     DialogueManager.toRemove[dialogueId]++;
             } //rimuove il dialogo solo se non è l'ultimo
-            SetTalkingAnimation(false, animator);
+            SetTalkingAnimation(dialogueId, false, animator);
 
             if (!string.IsNullOrEmpty(nextScene))
             {
@@ -124,8 +124,16 @@ public class UiManager : MonoBehaviour
         //InputManager.Instance.EnableAllInputs();
     }
 
-    private void SetTalkingAnimation(bool value, Animator anim) {
-        if(anim.gameObject.GetComponent<BarMan>() == null) {
+    private void SetTalkingAnimation(int dialogueId, bool value, Animator anim) {
+        if (value == true && dialogueId != 3) { // Solo la signora e' seduta
+            Vector3 dir = Player.Instance.transform.position - anim.transform.position;
+            dir.y = 0f;
+
+            if (dir != Vector3.zero)
+                anim.transform.rotation = Quaternion.LookRotation(dir);
+        }
+
+        if (anim.gameObject.GetComponent<BarMan>() == null) {
             anim.SetBool("isTalking", value);
         }
         else {

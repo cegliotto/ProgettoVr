@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Diagnostics;
 
@@ -32,6 +33,8 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
 
     private Vector3 localCenter;
 
+    private bool collisionsEnabled = false;
+
     private void Awake() {
         rb = this.GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
@@ -43,6 +46,15 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
         else {
             localCenter = Vector3.zero; // coincide con pivot
         }
+    }
+
+    private void Start() {
+        StartCoroutine(EnableCollisionsAfterDelay(1f));
+    }
+
+    private IEnumerator EnableCollisionsAfterDelay(float delay) {
+        yield return new WaitForSeconds(delay);
+        collisionsEnabled = true;
     }
 
     public void OnInteract(PlayerInteract playerInteract) { // Quando il player ha premuto tasto di intearzione
@@ -198,6 +210,8 @@ public class GrabbableItem : MonoBehaviour, IInteractable {
 
 
     void OnCollisionEnter(Collision collision) {
+        if (!collisionsEnabled) return;
+
         if (source != null && !source.isPlaying) {
             source.Play();
         }

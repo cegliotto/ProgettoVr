@@ -80,7 +80,7 @@ public class PuzzleCabinet : PuzzleBase {
             return;
         }
 
-        float rotationInput = deltaX * mouseToDegrees;
+        float rotationInput = -deltaX * mouseToDegrees;
         // clamp anti-salti grossi
         rotationInput = Mathf.Clamp(rotationInput, -maxDegreesPerFrame, maxDegreesPerFrame);
         activeDial.Rotate(rotationInput);
