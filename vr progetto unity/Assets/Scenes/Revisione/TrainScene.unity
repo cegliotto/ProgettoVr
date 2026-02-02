@@ -11997,6 +11997,7 @@ MonoBehaviour:
   debug: 0
   itemType: 4
   isTicket: 0
+  canPickedUp: 1
 --- !u!65 &504487323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12562,6 +12563,7 @@ MonoBehaviour:
   debug: 0
   itemType: 5
   isTicket: 0
+  canPickedUp: 1
 --- !u!65 &520186232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13427,21 +13429,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.236
       objectReference: {fileID: 0}
-    - target: {fileID: 2076681394208539399, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
-      propertyPath: m_Volume
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 2076681394208539399, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5340168149892473685, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
       propertyPath: m_Name
       value: 'GameManager '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8276326116336405321, guid: de2bdff39c78af34f8a10506bc6cdcee, type: 3}
-      propertyPath: numDialogues
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16188,6 +16178,7 @@ MonoBehaviour:
   debug: 0
   itemType: 3
   isTicket: 0
+  canPickedUp: 1
 --- !u!65 &743979308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39887,6 +39878,7 @@ MonoBehaviour:
   debug: 0
   itemType: 0
   isTicket: 1
+  canPickedUp: 1
 --- !u!1 &1843080814
 GameObject:
   m_ObjectHideFlags: 0

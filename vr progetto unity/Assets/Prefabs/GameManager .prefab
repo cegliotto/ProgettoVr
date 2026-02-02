@@ -376,6 +376,7 @@ MonoBehaviour:
   - {fileID: 1924074150823909767}
   - {fileID: 3090829774379154601}
   fadeDuration: 1
+  suspanceMusic: {fileID: 8300000, guid: 7f62ae970d7f1f34fbd7b119af2272b3, type: 3}
   itemsPickedUp: 0
 --- !u!114 &8828285367949090788
 MonoBehaviour:
@@ -421,9 +422,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 7d35df7a9aa6d40b9bb928826492a278, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.067
+  m_Volume: 0.06
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -519,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a096074cb50754dde905e2ce2a3a10f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  numDialogues: 3
+  numDialogues: 8
 --- !u!1001 &2027251533577250529
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class NotebookItems : MonoBehaviour {
     [SerializeField] private GameObject[] itemsIcon;
     [SerializeField] private GameObject[] checkIcons;
     [SerializeField] private float fadeDuration = 0.5f; // durata animazione apparizione oggetti in notebook
+
+    [SerializeField] private AudioClip suspanceMusic;
 
     //private int itemsToPickUp = 6; // 6 oggetti da prendere
     public int itemsPickedUp = 0;
@@ -22,6 +25,17 @@ public class NotebookItems : MonoBehaviour {
         CanvasGroup cg = icon.GetComponent<CanvasGroup>();
 
         icon.SetActive(true);
+
+        if(item == ItemType.Cappello) {
+            // devo sbloccare il cappello
+            PickUpItem cappello = FindObjectsByType<PickUpItem>(FindObjectsSortMode.None).FirstOrDefault(p => p.GetItemType() == ItemType.Cappello);
+            cappello.canPickedUp = true;
+
+            var audioSource = NotebookManager.Instance.GetComponent<AudioSource>();
+
+            audioSource.clip = suspanceMusic; // suspance music
+            audioSource.Play(); // play della suspance music
+        }
 
         // animazione per fade
         StartCoroutine(Utils.FadeCanvasGroup(cg, 0f, 1f, fadeDuration));

@@ -8,14 +8,22 @@ public class PickUpItem : MonoBehaviour, IInteractable {
     [SerializeField] private ItemType itemType;
 
     [SerializeField] private bool isTicket;
+    [HideInInspector] public bool canPickedUp = true;
 
     private void Awake() {
+        // il cappello non e' inizialmente prendibile
+        if (itemType == ItemType.Cappello) canPickedUp = false;
+
         if(NotebookManager.Instance != null) {
             if (NotebookManager.Instance.AlreadyPickedUp(this.itemType)) { // Se questo oggetto e' gia' stato raccolto
                 // lo distruggo -> necessario per quando si cambia scena per la risoluzione dei puzzle
                 Destroy(gameObject);
             }
         }
+    }
+
+    public ItemType GetItemType() {
+        return itemType;
     }
 
     public void OnInteract(PlayerInteract playerInteract) {
@@ -25,22 +33,12 @@ public class PickUpItem : MonoBehaviour, IInteractable {
             return;
         }
 
-        if (!CanBePicked()) { // per cappello
+        if (!canPickedUp) { // per cappello
             return;
         }
 
         PickItem();
     }
-
-    private bool CanBePicked() {
-        if (itemType == ItemType.Cappello) { // il cappello puo' essere raccolto solo come ultimo oggetto
-            return NotebookManager.Instance != null &&
-                   NotebookManager.Instance.notebookItemsManager.itemsPickedUp >= 5;
-        }
-
-        return true;
-    }
-
     private void PickItem() {
         if (debug) {
             Debug.Log($"Raccolto oggetto : {gameObject.name}");
