@@ -43,4 +43,4 @@ public class PhysicalUnlock : MonoBehaviour
             rb.useGravity = true;
         }
     }
-} 
+}
