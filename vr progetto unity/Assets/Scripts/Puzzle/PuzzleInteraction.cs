@@ -13,7 +13,9 @@ public enum PuzzleType {
 public class PuzzleInteraction : MonoBehaviour, IInteractable
 {
     [Tooltip("Nome della scena da carica per far partire il puzzle specifico")]
-    [SerializeField] protected string puzzleSceneName;
+    //[SerializeField] protected string puzzleSceneName;
+    [SerializeField] private Camera puzzleCamera;
+    [SerializeField] private GameObject puzzleObj;
     [SerializeField] protected PuzzleType puzzleType; // Necessario per identificare il puzzle
     
 
@@ -45,10 +47,10 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         if (!enabled) return;
         if (solved) return;
 
-        Debug.Log($"Interazione con {puzzleSceneName}");
+        //Debug.Log($"Interazione con {puzzleSceneName}");
 
         if (PuzzleManager.Instance != null) {
-            PuzzleManager.Instance.StartPuzzle(puzzleSceneName, puzzleType); // Carico la scena relativa a questo puzzle
+            PuzzleManager.Instance.StartPuzzle(puzzleObj, puzzleCamera, puzzleType); // Carico la scena relativa a questo puzzle
         }
         else {
             Debug.Log("Puzzle manager non trovato");

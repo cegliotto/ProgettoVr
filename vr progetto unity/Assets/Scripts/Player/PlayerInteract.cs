@@ -15,7 +15,10 @@ public class PlayerInteract : MonoBehaviour {
     public bool IsGrabbing() => currentGrabbableItem != null;
 
     private void Update() {
-        CheckInteraction();
+        if (Player.Instance.playerState != Player.PlayerState.Pause)
+        {
+            CheckInteraction();
+        }
     }
 
     public void Interact() { // Se ho premuto il tasto di interazione
@@ -66,7 +69,8 @@ public class PlayerInteract : MonoBehaviour {
                 if ((lastObj.TryGetComponent<GrabbableItem>(out var g) && g.isActiveAndEnabled) ||
                     (lastObj.TryGetComponent<PickUpItem>(out var p) && p.isActiveAndEnabled) ||
                     (lastObj.TryGetComponent<DialogueTrigger>(out var d) && d.isActiveAndEnabled) ||
-                    (lastObj.TryGetComponent<PuzzleInteraction>(out var pi) && pi.isActiveAndEnabled && pi.unlocked)) {
+                    (lastObj.TryGetComponent<PuzzleInteraction>(out var pi) && pi.isActiveAndEnabled && pi.unlocked)
+                    ) {
                     //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
                     oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
                     hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
