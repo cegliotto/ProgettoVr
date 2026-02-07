@@ -1467,6 +1467,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15785262, y: 0.3513826, z: 0.14224832}
   m_Center: {x: -0.07790533, y: 0.12748852, z: 0.0017345733}
+--- !u!114 &73138164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998808328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
+  glowIntensity: 2
+  speed: 2
+  puzzleID: PuzzleSeatLever
 --- !u!1001 &74073800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1818,13 +1833,13 @@ PrefabInstance:
       addedObject: {fileID: 82085141}
     - targetCorrespondingSourceObject: {fileID: 252477152057534872, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 82085146}
+      addedObject: {fileID: 82085143}
     - targetCorrespondingSourceObject: {fileID: 4138240319887456456, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 82085140}
     - targetCorrespondingSourceObject: {fileID: 4138240319887456456, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 82085149}
+      addedObject: {fileID: 82085142}
   m_SourcePrefab: {fileID: 100100000, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
 --- !u!4 &82085137 stripped
 Transform:
@@ -1885,22 +1900,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1862522981755737666, guid: bf79e7a14e0c7084787333f2db3fac64, type: 3}
---- !u!114 &82085146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82085139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 0.5
-  speed: 0.95
-  puzzleID: 
---- !u!114 &82085149
+--- !u!114 &82085142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1912,9 +1912,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 0.5
-  speed: 1
-  puzzleID: 
+  glowIntensity: 2
+  speed: 2
+--- !u!114 &82085143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82085139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
+  glowIntensity: 2
+  speed: 2
 --- !u!1 &86810369
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,10 +6582,10 @@ PrefabInstance:
       addedObject: {fileID: 240594532}
     - targetCorrespondingSourceObject: {fileID: 7745299484515414091, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 240594537}
+      addedObject: {fileID: 240594538}
     - targetCorrespondingSourceObject: {fileID: 7745299484515414091, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 240594538}
+      addedObject: {fileID: 240594537}
   m_SourcePrefab: {fileID: 100100000, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
 --- !u!4 &240594530 stripped
 Transform:
@@ -6653,12 +6666,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 240594531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
+  m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 0.5
-  speed: 1
-  puzzleID: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
+  glowIntensity: 2
+  speed: 2
+  puzzleID: PuzzleScrews
 --- !u!1 &253028742
 GameObject:
   m_ObjectHideFlags: 0
@@ -15292,7 +15305,8 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1250698647531995793, guid: da4a2b33dee824e43b30e4d58d805a57, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -15301,10 +15315,10 @@ PrefabInstance:
       addedObject: {fileID: 520186232}
     - targetCorrespondingSourceObject: {fileID: 4103355880409909419, guid: da4a2b33dee824e43b30e4d58d805a57, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 520186231}
+      addedObject: {fileID: 520186233}
     - targetCorrespondingSourceObject: {fileID: 4103355880409909419, guid: da4a2b33dee824e43b30e4d58d805a57, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 520186235}
+      addedObject: {fileID: 520186231}
   m_SourcePrefab: {fileID: 100100000, guid: da4a2b33dee824e43b30e4d58d805a57, type: 3}
 --- !u!4 &520186229 stripped
 Transform:
@@ -15353,7 +15367,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.235682, y: 0.29956204, z: 0.23697202}
   m_Center: {x: -0.006276004, y: -0.009742508, z: 0.08349426}
---- !u!114 &520186235
+--- !u!114 &520186233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15362,12 +15376,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 520186230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
+  m_Script: {fileID: 11500000, guid: c16cf80c405b0a541ac259bb02d53e66, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 0.5
-  speed: 1
-  puzzleID: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowOnUnlock
+  glowIntensity: 2
+  speed: 2
 --- !u!4 &520249890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8344078184813476050, guid: 0c301b7d83ea77e459e4c427cbafc42c, type: 3}
@@ -26515,7 +26528,7 @@ PrefabInstance:
       addedObject: {fileID: 998808333}
     - targetCorrespondingSourceObject: {fileID: 8672381405370584976, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1028617898}
+      addedObject: {fileID: 73138164}
   m_SourcePrefab: {fileID: 100100000, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
 --- !u!4 &998808327 stripped
 Transform:
@@ -27405,21 +27418,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1827464119}
   m_SourcePrefab: {fileID: 100100000, guid: c80f197777420cf40ba654477d34eabf, type: 3}
---- !u!114 &1028617898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998808328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 0.5
-  speed: 1
-  puzzleID: 
 --- !u!1 &1029011600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6099534803822675286, guid: dcab3dd4de4b64f4b9eca493ef25ce6d, type: 3}
@@ -32735,14 +32733,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4513506348316604164, guid: c016cfa301684f2479278b9bb065f777, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1246362146}
+      addedObject: {fileID: 1246362142}
   m_SourcePrefab: {fileID: 100100000, guid: c016cfa301684f2479278b9bb065f777, type: 3}
 --- !u!4 &1246362141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4500523031838863471, guid: c016cfa301684f2479278b9bb065f777, type: 3}
   m_PrefabInstance: {fileID: 1243158489}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1246362146
+--- !u!114 &1246362142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32754,9 +32752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 0.5
-  speed: 1
-  puzzleID: 
+  glowIntensity: 2
+  speed: 2
 --- !u!1001 &1247403116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48605,7 +48602,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1300204833339754593, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1821367449}
+      addedObject: {fileID: 1821367445}
   m_SourcePrefab: {fileID: 100100000, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
 --- !u!4 &1821367443 stripped
 Transform:
@@ -48623,7 +48620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5e5a8765e12894b92afcfd1d15c5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleInteraction
---- !u!114 &1821367449
+--- !u!114 &1821367445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48632,12 +48629,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1053736027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
+  m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 0.5
-  speed: 1
-  puzzleID: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
+  glowIntensity: 2
+  speed: 2
+  puzzleID: PuzzleCabinet
 --- !u!1001 &1822124104
 PrefabInstance:
   m_ObjectHideFlags: 0
