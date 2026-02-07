@@ -11,7 +11,7 @@ public class PuzzleSeatLever : PuzzleBase
     private bool isClicking;
 
 
-    [SerializeField] private float idleTimeToClose = 2f;
+    [SerializeField] private float idleTimeToClose = 0.75f;
 
     private float lastPullTime;
 

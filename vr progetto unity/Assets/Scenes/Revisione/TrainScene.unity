@@ -3194,7 +3194,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 363549914}
-  - {fileID: 1968106526}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &118274452
@@ -17111,6 +17110,10 @@ PrefabInstance:
       propertyPath: puzzleCamera
       value: 
       objectReference: {fileID: 100787156}
+    - target: {fileID: -5163677358318188895, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
+      propertyPath: idleTimeToClose
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1111552894753268112, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -17310,8 +17313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeatDrawer
   maxOpenDistance: 1.4
-  openStep: 0.1
-  closeSpeed: 0.6
+  openStep: 0.3
+  closeSpeed: 0.7
   drawerAudio: {fileID: 589408858}
   drawerSlide: {fileID: 8300000, guid: c6bc6543865183c4688e0d48d99d199d, type: 3}
   soundStartOffset: 0.5
@@ -26610,8 +26613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeatDrawer
   maxOpenDistance: 0.4
-  openStep: 0.05
-  closeSpeed: 0.15
+  openStep: 0.08
+  closeSpeed: 0.3
   drawerAudio: {fileID: 0}
   drawerSlide: {fileID: 0}
   soundStartOffset: 0.5
@@ -53456,8 +53459,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968106525}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.185, y: 1.34, z: -21.23616}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53466,7 +53469,7 @@ Transform:
   - {fileID: 1841270787}
   - {fileID: 822877530}
   - {fileID: 369577580}
-  m_Father: {fileID: 117708064}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1969414849
 PrefabInstance:
@@ -59688,3 +59691,4 @@ SceneRoots:
   - {fileID: 145550679}
   - {fileID: 1439464219}
   - {fileID: 1521197058}
+  - {fileID: 1968106526}
