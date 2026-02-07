@@ -12,11 +12,18 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         public int index = -1;
     }
     [System.Serializable]
+    public class AudioLine
+    {
+        public AudioClip clip;
+        public string text;
+    }
+    
+    [System.Serializable]
     public class Dialogo
     {
         //public string nomeDialogo; // opzionale, per identificare il dialogo
         //public List<string> frasi;
-        public List<AudioClip> frasi;
+        public List<AudioLine> frasi;
         public PuzzleInteraction[] puzzles;
         public  delay delay;
         public ItemType[] itemToAnnotateAfterDialog = new ItemType[0];

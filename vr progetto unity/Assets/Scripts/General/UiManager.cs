@@ -49,7 +49,8 @@ public class UiManager : MonoBehaviour
 
         while(currentDialogueIndex < currentDialogue.frasi.Count)
         {
-            source.clip = currentDialogue.frasi[currentDialogueIndex];
+            source.clip = currentDialogue.frasi[currentDialogueIndex].clip;
+            dialogueTextMesh.text = currentDialogue.frasi[currentDialogueIndex].text;
             
             Debug.Log("isPlaying");
             SetTalkingAnimation(dialogueId, true, animator);

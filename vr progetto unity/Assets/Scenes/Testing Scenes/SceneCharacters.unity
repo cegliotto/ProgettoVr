@@ -268,26 +268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cdae2f98a5d4434bcf01efa7a386d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogue:
-  - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
-    puzzles: []
-    delay:
-      time: 1
-      index: 0
-    itemToAnnotateAfterDialog: 
-    progressToUnlockAfterDialog: 4
-  - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
-    puzzles: []
-    delay:
-      time: 0
-      index: 0
-    itemToAnnotateAfterDialog: 
-    progressToUnlockAfterDialog: 4
+  dialogue: []
   source: {fileID: 0}
   animator: {fileID: 0}
+  nextScene: 
+  dialogueId: 0
 --- !u!82 &255671598
 AudioSource:
   m_ObjectHideFlags: 0
@@ -571,26 +556,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cdae2f98a5d4434bcf01efa7a386d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
-  dialogue:
-  - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
-    puzzles: []
-    delay:
-      time: 1
-      index: 0
-    itemToAnnotateAfterDialog: 
-    progressToUnlockAfterDialog: 4
-  - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
-    puzzles: []
-    delay:
-      time: 0
-      index: 0
-    itemToAnnotateAfterDialog: 
-    progressToUnlockAfterDialog: 4
+  dialogue: []
   source: {fileID: 0}
   animator: {fileID: 5866666019961678989}
+  nextScene: 
+  dialogueId: 0
 --- !u!65 &269477950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -728,8 +698,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 1
@@ -737,7 +709,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 
     progressToUnlockAfterDialog: 4
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -746,6 +719,8 @@ MonoBehaviour:
     progressToUnlockAfterDialog: 4
   source: {fileID: 0}
   animator: {fileID: 0}
+  nextScene: 
+  dialogueId: 0
 --- !u!65 &270190328
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -888,24 +863,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
-    puzzles: []
-    delay:
-      time: 1
-      index: 0
-    itemToAnnotateAfterDialog: 
-    progressToUnlockAfterDialog: 4
-  - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 8300000, guid: 93548dbff021c4a43b4367a62892a9e7, type: 3}
+      text: book
     puzzles: []
     delay:
       time: 0
       index: 0
     itemToAnnotateAfterDialog: 
-    progressToUnlockAfterDialog: 4
-  source: {fileID: 0}
+    progressToUnlockAfterDialog: 0
+  source: {fileID: 645191254}
   animator: {fileID: 0}
+  nextScene: 
+  dialogueId: 0
 --- !u!65 &645191256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -959,6 +928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905531295}
   - component: {fileID: 905531294}
+  - component: {fileID: 905531296}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -993,6 +963,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &905531296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905531293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a096074cb50754dde905e2ce2a3a10f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  numDialogues: 5
+--- !u!114 &1013652638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+  m_PrefabInstance: {fileID: 5525082753739994956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1225685115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,8 +1133,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 1
@@ -1148,7 +1144,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 
     progressToUnlockAfterDialog: 4
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -1157,6 +1154,8 @@ MonoBehaviour:
     progressToUnlockAfterDialog: 4
   source: {fileID: 0}
   animator: {fileID: 0}
+  nextScene: 
+  dialogueId: 0
 --- !u!82 &1392790902
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1385,8 +1384,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 1
@@ -1394,7 +1395,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 
     progressToUnlockAfterDialog: 4
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -1403,6 +1405,8 @@ MonoBehaviour:
     progressToUnlockAfterDialog: 4
   source: {fileID: 0}
   animator: {fileID: 0}
+  nextScene: 
+  dialogueId: 0
 --- !u!82 &1451645655
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2182,7 +2186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1031632035952823466
 Transform:
   m_ObjectHideFlags: 0
@@ -3302,6 +3306,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4574309572484947164, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: dialogueTextMesh
+      value: 
+      objectReference: {fileID: 1013652638}
     - target: {fileID: 4591287331334398573, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
