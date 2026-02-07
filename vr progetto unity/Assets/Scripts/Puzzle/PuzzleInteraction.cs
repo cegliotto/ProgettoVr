@@ -58,8 +58,10 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     }
 
     public virtual void StartSolvedAnimation() {
+        int oldLayer = 0;
         if(animator != null) { // Se ha un animazione associata al completamento
             animator.SetTrigger("completed"); // Necessario che animazione si chiami completed in caso
+            gameObject.layer = oldLayer;
         }
 
         this.solved = true; // lo segno come completato
@@ -69,6 +71,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         // di prendere la borsa
         int layer = LayerMask.NameToLayer("Ignore Raycast");
         if (layer != -1) {
+            oldLayer = gameObject.layer;
             gameObject.layer = layer;
         }
     }

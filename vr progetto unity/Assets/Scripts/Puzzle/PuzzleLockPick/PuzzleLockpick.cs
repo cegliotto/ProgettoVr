@@ -165,7 +165,7 @@ public class PuzzleLockpick : PuzzleBase
 
         // applica posizione
         Vector3 localPos = rake.localPosition;
-        localPos.y = targetY * Time.deltaTime / 100;
+        localPos.y = targetY;
         rake.localPosition = localPos;
 
         // --- AUDIO SCRAPE STABILE ---

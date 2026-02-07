@@ -78,6 +78,22 @@ public class PuzzleManager : MonoBehaviour
         puzzleObj = null;
     }
 
+
+private void OnEnable()
+{
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+private void OnDisable()
+{
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    Debug.Log("Cambio scena");
+    mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+}
+
     // A puzzle completato
     public void CompletePuzzle() {
         // Per puzzleSafeMultiple
