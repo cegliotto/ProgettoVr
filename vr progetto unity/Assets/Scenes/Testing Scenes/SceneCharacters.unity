@@ -865,6 +865,17 @@ MonoBehaviour:
   - frasi:
     - clip: {fileID: 8300000, guid: 93548dbff021c4a43b4367a62892a9e7, type: 3}
       text: book
+    - clip: {fileID: 8300000, guid: 93548dbff021c4a43b4367a62892a9e7, type: 3}
+      text: book2
+    puzzles: []
+    delay:
+      time: 0
+      index: 0
+    itemToAnnotateAfterDialog: 
+    progressToUnlockAfterDialog: 0
+  - frasi:
+    - clip: {fileID: 8300000, guid: 93548dbff021c4a43b4367a62892a9e7, type: 3}
+      text: book21
     puzzles: []
     delay:
       time: 0
@@ -3304,7 +3315,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 632721815469101285, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4574309572484947164, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: dialogueTextMesh

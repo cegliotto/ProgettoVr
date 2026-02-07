@@ -13740,8 +13740,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 1
@@ -13749,7 +13751,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 0000000001000000
     progressToUnlockAfterDialog: 1
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -16164,7 +16167,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 632721815469101285, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4591287331334398573, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16210,6 +16213,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_text
+      value: Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_margin.x
+      value: -174.32834
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_margin.z
+      value: -164.31494
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052071588332683056, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8077298553119409010, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_Name
       value: Ui Manager
@@ -16220,7 +16247,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 182142130336535785, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1008206835}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
 --- !u!1001 &568521943
@@ -27153,6 +27183,81 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007513064}
   m_Mesh: {fileID: 6622325991954135552, guid: af6602f139dd54b4f867032e0fc9565e, type: 3}
+--- !u!1 &1008206834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008206835}
+  - component: {fileID: 1008206837}
+  - component: {fileID: 1008206836}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1008206835
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008206834}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781246623}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -296.6}
+  m_SizeDelta: {x: 1710.8, y: 146.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1008206836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008206834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.019607844}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1008206837
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008206834}
+  m_CullTransparentMesh: 1
 --- !u!1 &1009007378
 GameObject:
   m_ObjectHideFlags: 0
@@ -38092,8 +38197,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
+    - clip: {fileID: 0}
+      text: 
     puzzles:
     - {fileID: 998808340}
     - {fileID: 1821367444}
@@ -38103,7 +38210,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 0000000001000000
     progressToUnlockAfterDialog: 1
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -38303,6 +38411,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
       propertyPath: 'dialogue.Array.data[0].puzzles.Array.data[0]'
       value: 
       objectReference: {fileID: 998808340}
@@ -38310,6 +38422,43 @@ PrefabInstance:
       propertyPath: 'dialogue.Array.data[0].puzzles.Array.data[1]'
       value: 
       objectReference: {fileID: 1821367444}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 78095dc286687454a857f81eb686eb82, type: 3}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].text
+      value: "Oh\u2026 mi ha spaventata, signore. Ha sentito che brutta notizia \xE8
+        appena arrivata?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 74d8b5d0f322c704c900b0cc4c255937, type: 3}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[1].text
+      value: " Il signor Briggs potrebbe essere morto, vittima di un omicidio \u2026
+        mi vengono i brividi solo a dirlo."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e1036ffa08fd2e44d926f819fbee8021, type: 3}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[2].text
+      value: Viaggiavo spesso con lui. Un gentiluomo, sempre puntuale.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 56ebf4e932f24704c9845aa366087dd9, type: 3}
+    - target: {fileID: 4248721338270168180, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[3].text
+      value: "Ogni mattina andava al vagone con il bar per il suo caff\xE8. Non si
+        separava mai dalla sua borsa \u2026 e da quel bastone elegante che aveva.
+        Se questi due oggetti non sono qui da qualche parte, temo siano rimasti al
+        bar."
+      objectReference: {fileID: 0}
     - target: {fileID: 4638501922459566938, guid: 8937ff96d0f7ec74284a822af85d6642, type: 3}
       propertyPath: m_Size.z
       value: 0.50999355
@@ -47620,8 +47769,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
+    - clip: {fileID: 0}
+      text: 
     puzzles:
     - {fileID: 58428865}
     delay:
@@ -47630,7 +47781,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 020000000300000004000000
     progressToUnlockAfterDialog: 2
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -47738,6 +47890,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!224 &1781246623 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 182142130336535785, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+  m_PrefabInstance: {fileID: 567918965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1781587882
 GameObject:
   m_ObjectHideFlags: 0

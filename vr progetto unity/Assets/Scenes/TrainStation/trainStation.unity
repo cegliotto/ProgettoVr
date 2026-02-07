@@ -4966,6 +4966,16 @@ Transform:
   - {fileID: 1353122932}
   m_Father: {fileID: 471783004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &976123227 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5197586789375038156, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+  m_PrefabInstance: {fileID: 7589400065434424970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &976123229 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1981659265546528813, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+  m_PrefabInstance: {fileID: 7589400065434424970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993023235
 GameObject:
   m_ObjectHideFlags: 0
@@ -8052,7 +8062,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 632721815469101285, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 632721815469101285, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8062,6 +8072,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4574309572484947164, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: dialogueTextMesh
+      value: 
+      objectReference: {fileID: 1844815026}
     - target: {fileID: 4591287331334398573, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.89298
@@ -8209,6 +8223,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2948764791989479032, guid: 546a1fd3f6de746f7bc8ec590fc80b77, type: 3}
   m_PrefabInstance: {fileID: 759925666}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1844815026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+  m_PrefabInstance: {fileID: 1767118239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1881819851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10220,6 +10245,38 @@ PrefabInstance:
     - target: {fileID: 2340739657807315275, guid: c93d268d31de71c4688556acaea4c892, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 976123227}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 976123229}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e1e710d25172c8b42b2f234497c829ab, type: 3}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].text
+      value: Biglietto prego
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 22a5052f84ca9a645afd2cec7bfa7270, type: 3}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[1].text
+      value: Tutto in regola, puo salire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501709491272400042, guid: c93d268d31de71c4688556acaea4c892, type: 3}
+      propertyPath: dialogue.Array.data[0].progressToUnlockAfterDialog
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2627134641599664267, guid: c93d268d31de71c4688556acaea4c892, type: 3}
       propertyPath: m_StaticEditorFlags
