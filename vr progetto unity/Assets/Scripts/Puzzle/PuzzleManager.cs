@@ -108,6 +108,8 @@ public class PuzzleManager : MonoBehaviour
 
         puzzleObj.SetActive(false);
         puzzleObj = null;
+
+        OnTrainSceneLoadedCompleted();
     }
 
     private void OnTrainSceneLoadedExit(Scene arg0, LoadSceneMode arg1) {
@@ -116,8 +118,8 @@ public class PuzzleManager : MonoBehaviour
         StartCoroutine(RestorePlayerRoutine());
     }
 
-    private void OnTrainSceneLoadedCompleted(Scene arg0, LoadSceneMode arg1) {
-        SceneManager.sceneLoaded -= OnTrainSceneLoadedCompleted; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
+    private void OnTrainSceneLoadedCompleted() {
+        //SceneManager.sceneLoaded -= OnTrainSceneLoadedCompleted; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
 
         // far partire animazione di oggetto specifico
         PuzzleInteraction[] puzzles = FindObjectsByType<PuzzleInteraction>(FindObjectsSortMode.None);

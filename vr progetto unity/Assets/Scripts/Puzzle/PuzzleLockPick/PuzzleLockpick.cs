@@ -157,14 +157,15 @@ public class PuzzleLockpick : PuzzleBase
 
         // Movimento "assoluto": evita salti e drift
         float mouseY = Input.mousePosition.y;
+        //float offsetY = (mouseY - dragStartMouseY) * rakeMoveSpeed;
         float offsetY = (mouseY - dragStartMouseY) * rakeMoveSpeed;
         float targetY = Mathf.Clamp(dragStartRakeY + offsetY, rakeMinY, rakeMaxY);
 
-        float movement = Mathf.Abs(targetY - rake.localPosition.y);
+        float movement = Mathf.Abs((targetY - rake.localPosition.y) );
 
         // applica posizione
         Vector3 localPos = rake.localPosition;
-        localPos.y = targetY;
+        localPos.y = targetY * Time.deltaTime / 100;
         rake.localPosition = localPos;
 
         // --- AUDIO SCRAPE STABILE ---
