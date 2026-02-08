@@ -39,6 +39,13 @@ public class PlayerController : MonoBehaviour {
         Cursor.visible = false;
     }
 
+    private void Start() {
+        Vector3 euler = playerCameraHolder.rotation.eulerAngles;
+
+        cameraXRotation = euler.x > 180f ? euler.x - 360f : euler.x;
+        cameraYRotation = euler.y;
+    }
+
     private void Update() {
         if (Player.Instance.playerState == Player.PlayerState.Pause) {
             return; // In modo che il player non possa muovere la camera se e' in puzzle (in dialog si, quindi non lo metto qui)
