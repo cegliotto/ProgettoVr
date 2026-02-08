@@ -2510,8 +2510,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 8300000, guid: 362c399777153e742897ec3cb6e3004f, type: 3}
+      text: "Aspetti.   Quel cappello\u2026 lo riconosco."
+    - clip: {fileID: 8300000, guid: 9f6baa7f421c5ce48a5b4e8ca58abaf0, type: 3}
+      text: "L\u2019ho comprato io. Non per me. Un certo\u2026 Franz M\xFCller mi
+        ha commissionato di prenderglielo. Mi ha pagato molto per farlo, sinceramente
+        non capivo per quale motivo \u2026forse voleva che la sua identit\xE0 rimanesse
+        segreta, ma non so cosa avesse da nascondere."
     puzzles: []
     delay:
       time: 1
@@ -2521,6 +2526,7 @@ MonoBehaviour:
   source: {fileID: 0}
   animator: {fileID: 0}
   nextScene: OutroScene
+  dialogueId: 0
 --- !u!1 &7807516585565870012
 GameObject:
   m_ObjectHideFlags: 0

@@ -1690,8 +1690,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 8300000, guid: 585e1069b9a4242c490782ae5542d686, type: 3}
+      text: "Un uomo, prima del terribile accaduto, \xE8 entrato nella cabina del
+        presunto morto."
+    - clip: {fileID: 8300000, guid: 3aff084c7c9ec43d88db2f7568bd8517, type: 3}
+      text: ' Indossava un cappello di castoro nero.'
+    - clip: {fileID: 8300000, guid: d0032b06ac5f341f7831fa05fcdb3891, type: 3}
+      text: " Non era uno qualunque \u2026 aveva un\u2019aria tenebrosa"
+    - clip: {fileID: 8300000, guid: c6ab0239e6e93488b8b9c8129c1e3316, type: 3}
+      text: "magari \xE8 stato proprio lui a commettere l\u2019omicidio."
+    - clip: {fileID: 8300000, guid: a6100925c511240a7bf9a56a4a9d0078, type: 3}
+      text: Secondo me nella cabina potrebbero esserci ulteriori indizi
     puzzles: []
     delay:
       time: 1
@@ -1699,7 +1708,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 05000000
     progressToUnlockAfterDialog: 3
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0

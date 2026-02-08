@@ -16218,16 +16218,20 @@ PrefabInstance:
       value: Text
       objectReference: {fileID: 0}
     - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_margin.w
+      value: -69.21298
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_margin.x
-      value: -174.32834
+      value: -726.0492
       objectReference: {fileID: 0}
     - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_margin.z
-      value: -164.31494
+      value: -730.449
       objectReference: {fileID: 0}
     - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_VerticalAlignment
-      value: 512
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -21798,7 +21802,7 @@ Transform:
   m_GameObject: {fileID: 787069762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.446, y: -0.726, z: -11.263}
+  m_LocalPosition: {x: 1.439, y: -0.725, z: -11.263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27233,7 +27237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.019607844}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.18431373}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -49026,9 +49030,43 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pendolare
       objectReference: {fileID: 0}
+    - target: {fileID: 2971590923895312411, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
       propertyPath: dialogueId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fb4e58b07e10c24586d48b1e0efb27e, type: 3}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].text
+      value: "Finalmente qualcuno. C'\xE8 stato un gran trambusto poco fa."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bbaa55a35b6db34cb386ea1de448e7a, type: 3}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[1].text
+      value: Ho sentito un colpo poi delle urla, ho paura sia successo qualcosa ad
+        un passeggero.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: aa084eebcb5d07047b0843b599391b46, type: 3}
+    - target: {fileID: 3103436858856514575, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[2].text
+      value: " Forse era il signor Thomas Briggs, ma non ne sono certo, purtroppo
+        per\xF2 non ho visto chi sia stato il colpevole. Meglio che qualcuno indaghi."
       objectReference: {fileID: 0}
     - target: {fileID: 9199731121875895752, guid: 59579ee2c93d5774c8e930f0ea862ff2, type: 3}
       propertyPath: puzzle
