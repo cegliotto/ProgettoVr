@@ -18,6 +18,9 @@ public class PlayerInteract : MonoBehaviour {
         if (Player.Instance.playerState != Player.PlayerState.Pause)
         {
             CheckInteraction();
+        }else
+        {
+            outlineCleanup();
         }
     }
 
