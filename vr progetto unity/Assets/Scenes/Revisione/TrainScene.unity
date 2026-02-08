@@ -1467,21 +1467,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15785262, y: 0.3513826, z: 0.14224832}
   m_Center: {x: -0.07790533, y: 0.12748852, z: 0.0017345733}
---- !u!114 &73138164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998808328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
-  glowIntensity: 2
-  speed: 2
-  puzzleID: PuzzleSeatLever
 --- !u!1001 &74073800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1913,7 +1898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
   glowIntensity: 2
-  speed: 2
+  speed: 3
 --- !u!114 &82085143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1927,7 +1912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
   glowIntensity: 2
-  speed: 2
+  speed: 3
 --- !u!1 &86810369
 GameObject:
   m_ObjectHideFlags: 0
@@ -6522,8 +6507,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 712d6dc153b5a974296b01248f3015d5, type: 2}
     - target: {fileID: 4597168664990787672, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4492369
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597168664990787672, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0101483
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597168664990787672, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.993
+      value: 1.335
       objectReference: {fileID: 0}
     - target: {fileID: 4597168664990787672, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6531,7 +6524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4597168664990787672, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.641
+      value: 4.6504
       objectReference: {fileID: 0}
     - target: {fileID: 4597168664990787672, guid: b2f88e3e24843444c8cb8ec106d9336b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6615,6 +6608,7 @@ MonoBehaviour:
   unlocked: 1
   animator: {fileID: 0}
   movableNightTable: {fileID: 240594531}
+  necklace: {fileID: 743979306}
 --- !u!114 &240594533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6627,7 +6621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8789ae148e904488af792692417a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicalUnlock
-  moveDistance: 3.5
+  moveDistance: 3
   moveDuration: 1
 --- !u!54 &240594537
 Rigidbody:
@@ -6668,8 +6662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
-  glowIntensity: 2
-  speed: 2
+  glowIntensity: 3
+  speed: 5
   puzzleID: PuzzleScrews
 --- !u!1 &253028742
 GameObject:
@@ -15381,8 +15375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16cf80c405b0a541ac259bb02d53e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlowOnUnlock
-  glowIntensity: 2
-  speed: 2
+  glowIntensity: 6
+  speed: 8
 --- !u!4 &520249890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8344078184813476050, guid: 0c301b7d83ea77e459e4c427cbafc42c, type: 3}
@@ -20269,6 +20263,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3769324150000866509, guid: 3f5c43d9630334242895ef6b28e1028e, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 743979312}
+    - targetCorrespondingSourceObject: {fileID: 3769324150000866509, guid: 3f5c43d9630334242895ef6b28e1028e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 743979308}
     - targetCorrespondingSourceObject: {fileID: 3769324150000866509, guid: 3f5c43d9630334242895ef6b28e1028e, type: 3}
@@ -20322,6 +20319,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9030082473674837206, guid: 3f5c43d9630334242895ef6b28e1028e, type: 3}
   m_PrefabInstance: {fileID: 743979305}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &743979312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743979306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc7cee36ee4813489957f7cff8c1e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NecklaceVisibility
 --- !u!1001 &744060070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26520,9 +26529,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8672381405370584976, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 998808333}
-    - targetCorrespondingSourceObject: {fileID: 8672381405370584976, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 73138164}
+    - targetCorrespondingSourceObject: {fileID: 5286917185042203116, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1125852802}
   m_SourcePrefab: {fileID: 100100000, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
 --- !u!4 &998808327 stripped
 Transform:
@@ -28635,7 +28644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513387342821761785, guid: c80f197777420cf40ba654477d34eabf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.329914
+      value: 7.351
       objectReference: {fileID: 0}
     - target: {fileID: 4513387342821761785, guid: c80f197777420cf40ba654477d34eabf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28919,11 +28928,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.62973386, y: 0.05986085, z: 1.9703298}
   m_Center: {x: -0.02606627, y: -0.04059402, z: 0.000001939605}
---- !u!1 &1094432984 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5838867455598592294, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-  m_PrefabInstance: {fileID: 1375237590}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1095529842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29834,6 +29838,26 @@ Transform:
   - {fileID: 589408846}
   m_Father: {fileID: 714414265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1125852796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5286917185042203116, guid: 722beb17128f6824f926b5f871a96aa0, type: 3}
+  m_PrefabInstance: {fileID: 998808326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1125852802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125852796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
+  glowIntensity: 2
+  speed: 2
+  puzzleID: PuzzleSeatLever
 --- !u!1001 &1127958229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32747,7 +32771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
   glowIntensity: 2
-  speed: 2
+  speed: 3
 --- !u!1001 &1247403116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35836,180 +35860,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1454112092161641973, guid: 6a4941bc3db0ca34c8cdaa2dec4a24ba, type: 3}
   m_PrefabInstance: {fileID: 573817073}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1375237590
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1480564088}
-    m_Modifications:
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.58246166
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.58246166
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.58246166
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 29.998
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.011
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -182.993
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5838867455598592294, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      propertyPath: m_Name
-      value: luggage1 (8)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5838867455598592294, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1375237592}
-  m_SourcePrefab: {fileID: 100100000, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
---- !u!4 &1375237591 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3360003969075796229, guid: 57853b87c8ac75e479bb6269179b267a, type: 3}
-  m_PrefabInstance: {fileID: 1375237590}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1375237592
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094432984}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5146253342786360470, guid: 108820addaf0542c2a5e80dae57d5708, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 94c177db8e5d1b141bab0903d7577011, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &1376759849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38763,7 +38613,6 @@ Transform:
   - {fileID: 1202474501}
   - {fileID: 329553970}
   - {fileID: 1376759850}
-  - {fileID: 1375237591}
   - {fileID: 576639066}
   - {fileID: 392871954}
   - {fileID: 2096100204}
@@ -48673,8 +48522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
-  glowIntensity: 2
-  speed: 2
+  glowIntensity: 4
+  speed: 5
   puzzleID: PuzzleCabinet
 --- !u!1001 &1822124104
 PrefabInstance:

@@ -7,8 +7,7 @@ public class PhysicalUnlock : MonoBehaviour
     [SerializeField] private float moveDuration = 1.0f;
 
     public void Unlock()
-    {
-        // Usiamo una coroutine per lo spostamento fluido
+    {  
         StartCoroutine(AnimateMove());
     }
 
@@ -25,7 +24,7 @@ public class PhysicalUnlock : MonoBehaviour
         }
 
         // Sposta di 1.5 volte la lunghezza calcolata
-        float finalDistance = length * 1.5f;
+        float finalDistance = length * moveDistance;
         Vector3 endPos = transform.position + (transform.forward * finalDistance);
 
         float elapsed = 0;

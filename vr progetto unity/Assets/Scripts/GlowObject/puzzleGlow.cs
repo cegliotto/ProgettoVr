@@ -7,6 +7,7 @@ public class GlowUntilSolved : MonoBehaviour
     [SerializeField] private float glowIntensity = 2f;
     [SerializeField] private float speed = 2f;
 
+
     [SerializeField] private string puzzleID; // ID unico per la persistenza
     private PuzzleInteraction puzzleInteraction;
 

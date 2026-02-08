@@ -3,6 +3,7 @@ using UnityEngine;
 public class PuzzleInteractionScrew : PuzzleInteraction, IInteractable
 {
     [SerializeField] private GameObject movableNightTable; // Night table che puo' essere spostato
+    [SerializeField] private GameObject necklace;
 
     protected override void Start()
     {
@@ -28,10 +29,10 @@ public class PuzzleInteractionScrew : PuzzleInteraction, IInteractable
             {
                 unlock.Unlock();
             }
-            else
-            {
-                Debug.LogError("PhysicalUnlock non trovato sul comodino!");
-            }
+        }
+        if (necklace != null)
+        {
+            necklace.SetActive(true);
         }
 
         // Disattiva le viti interagibili nella scena principale
