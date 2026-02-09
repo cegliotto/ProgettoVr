@@ -126,6 +126,12 @@ public class NotebookManager : MonoBehaviour {
     }
 
     private void Update() {
+        if(PuzzleManager.Instance != null) {
+            if (PuzzleManager.Instance.isPlayingPuzzle) {
+                return;
+            }
+        }
+
         if (Player.Instance != null) {
             this.notebookHolder.transform.position = Player.Instance.notebookHolder.transform.position;
             this.notebookHolder.transform.rotation = Player.Instance.notebookHolder.transform.rotation;

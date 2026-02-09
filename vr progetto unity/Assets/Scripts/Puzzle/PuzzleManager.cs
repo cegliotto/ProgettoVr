@@ -19,6 +19,8 @@ public class PuzzleManager : MonoBehaviour
     private List<PuzzleType> solvedPuzzles; // Lista che contiene SOLO i puzzle risolti
     private List<PuzzleType> unlockedPuzzles; // Lista che contiene SOLO i puzzle unlocked
 
+    public bool isPlayingPuzzle;
+
     private void Awake() {
         if(Instance != null) { // Se c'e' gia' istanza 
             Destroy(gameObject);
@@ -54,6 +56,8 @@ public class PuzzleManager : MonoBehaviour
         puzzleCamera = puzzleCameraRef;
         mainCamera.enabled = false;
         puzzleCamera.enabled = true;
+
+        isPlayingPuzzle = true; // Richiamato in notebook manager per evitare di aprire il notebook durante il puzzle
     }
 
     // A puzzle non completato, utente vuole solo tornare a scena del treno
@@ -76,6 +80,8 @@ public class PuzzleManager : MonoBehaviour
 
         puzzleObj.SetActive(false);
         puzzleObj = null;
+
+        isPlayingPuzzle = false;
     }
 
 
@@ -124,6 +130,8 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 
         puzzleObj.SetActive(false);
         puzzleObj = null;
+
+        isPlayingPuzzle = false;
 
         OnTrainSceneLoadedCompleted();
     }
