@@ -9,8 +9,6 @@ public class PuzzleLockpick : PuzzleBase
     [Tooltip("Quanto si muove il rake per pixel di mouse (base). Più basso = più preciso.")]
     [SerializeField] private float rakeMoveSpeed = 0.00012f;
 
-    [Tooltip("Range verticale (in locale) attorno alla posizione iniziale del rake.")]
-    [SerializeField] private float rakeRange = 0.03f; // ↑ aumenta se sotto al 2° pin non arrivi
 
     [Tooltip("Moltiplicatore massimo quando muovi il mouse velocemente.")]
     [SerializeField] private float maxAccelerationMultiplier = 8f;
@@ -29,6 +27,13 @@ public class PuzzleLockpick : PuzzleBase
 
     [SerializeField] private float rakeMinY = 0.2355f;
     [SerializeField] private float rakeMaxY = 0.28f;
+
+    [Header("Anti Spike / Stabilization")]
+    [Tooltip("Clamp massimo delta pixel/frame (anti scatto quando cambiano focus/flash/animazioni).")]
+    [SerializeField] private float maxDeltaPixelsPerFrame = 80f;
+
+    [Tooltip("Frame da ignorare dopo aver settato un pin (sicurezza).")]
+    [SerializeField] private int ignoreMouseFramesAfterPinSet = 1;
 
     [Header("Tension")]
     [Range(0f, 1f)]
@@ -65,6 +70,7 @@ public class PuzzleLockpick : PuzzleBase
     private float lastRakeMoveTime = -999f;
 
     private float lastMouseY;
+    private int ignoreMouseFrames = 0;
 
     protected void Start()
     {
@@ -89,18 +95,19 @@ public class PuzzleLockpick : PuzzleBase
 
     protected override void PuzzleBehaviour()
     {
+        // Tensione SEMPRE gestita (anche in stuck, ma senza aumento se serve)
+        bool allowIncrease = stuckTimer <= 0f;
+
         if (stuckTimer > 0f)
-        {
             stuckTimer -= Time.deltaTime;
 
-            HandleTensionInput(allowIncrease: false);
-            UpdateTorsionVisual();
-            return;
-        }
-
-        HandleTensionInput(allowIncrease: true);
-        HandleRakeDrag();
+        HandleTensionInput(allowIncrease);
+        HandleRakeDrag();          // ✅ il rake NON si “blocca” mai
         UpdateTorsionVisual();
+
+        // Se sei in stuck, blocca solo il set pin (non il movimento)
+        if (stuckTimer > 0f)
+            return;
 
         TrySetCurrentPin();
     }
@@ -117,8 +124,6 @@ public class PuzzleLockpick : PuzzleBase
 
         tension += delta * tensionChangeSpeed * Time.deltaTime;
         tension = Mathf.Clamp01(tension);
-
-        Debug.Log("Tensione attuale: " + tension);
     }
 
     private void HandleRakeDrag()
@@ -126,7 +131,8 @@ public class PuzzleLockpick : PuzzleBase
         if (Input.GetMouseButtonDown(0))
         {
             isDragging = true;
-            lastMouseY = Input.mousePosition.y;
+            lastMouseY = Input.mousePosition.y; // ancora pulita
+            ignoreMouseFrames = 0;
             return;
         }
 
@@ -139,30 +145,33 @@ public class PuzzleLockpick : PuzzleBase
 
         if (!isDragging) return;
 
+        if (ignoreMouseFrames > 0)
+        {
+            ignoreMouseFrames--;
+            lastMouseY = Input.mousePosition.y; // evita accumulo delta
+            return;
+        }
+
         float mouseY = Input.mousePosition.y;
         float deltaPixels = mouseY - lastMouseY;
         lastMouseY = mouseY;
 
-        // 0..1 in base a "quanto veloce" è il movimento (pixel/frame)
+        // ✅ Anti-spike: se Unity “salta” il cursore o cambia focus, qui lo smorzi
+        deltaPixels = Mathf.Clamp(deltaPixels, -maxDeltaPixelsPerFrame, maxDeltaPixelsPerFrame);
+
         float speed01 = Mathf.Clamp01(Mathf.Abs(deltaPixels) / Mathf.Max(1f, accelPixelsForMax));
-
-        // curva (precisione sui piccoli movimenti, accelera sui grandi)
         float curve01 = Mathf.Clamp01(accelerationCurve.Evaluate(speed01));
-
-        // moltiplicatore: 1..maxAccelerationMultiplier
         float multiplier = Mathf.Lerp(1f, maxAccelerationMultiplier, curve01);
 
         float desiredDeltaY = deltaPixels * rakeMoveSpeed * multiplier;
 
         float targetY = Mathf.Clamp(rake.localPosition.y + desiredDeltaY, rakeMinY, rakeMaxY);
-
         float movement = Mathf.Abs(targetY - rake.localPosition.y);
 
         Vector3 localPos = rake.localPosition;
         localPos.y = targetY;
         rake.localPosition = localPos;
 
-        // --- AUDIO SCRAPE STABILE ---
         if (movement > 0.00005f)
         {
             lastRakeMoveTime = Time.time;
@@ -170,20 +179,29 @@ public class PuzzleLockpick : PuzzleBase
         }
 
         if (scrapeSource != null && scrapeSource.isPlaying && (Time.time - lastRakeMoveTime) > 0.08f)
-        {
             StopScrape();
-        }
     }
 
     private void TrySetCurrentPin()
     {
-        Debug.Log($"pinCorrente={currentPinIndex} | tensione={tension} | currentZone={(currentZone ? currentZone.name : "NULL")}");
-
         if (currentPinIndex < 1 || currentPinIndex > 4) return;
         if (pinSet[currentPinIndex - 1]) return;
 
         if (currentZone == null) return;
         if (currentZone.pinIndex != currentPinIndex) return;
+
+        // Rispetta davvero setWhileDragging:
+        // - true: set mentre trascini (mouse tenuto) oppure al click
+        // - false: SOLO al click (mouse down)
+        if (!setWhileDragging)
+        {
+            if (!Input.GetMouseButtonDown(0)) return;
+        }
+        else
+        {
+            // se vuoi che richieda almeno “tenere premuto”, lascia così:
+            if (!Input.GetMouseButton(0)) return;
+        }
 
         if (currentZone.IsTensionInRange(tension))
         {
@@ -196,6 +214,10 @@ public class PuzzleLockpick : PuzzleBase
             currentPinIndex++;
             currentZone = null;
 
+            // ✅ Previene scatti immediati dopo il set
+            ignoreMouseFrames = Mathf.Max(ignoreMouseFramesAfterPinSet, 0);
+            lastMouseY = Input.mousePosition.y;
+
             if (currentPinIndex == 5)
             {
                 PlayOneShot(successFinal);
@@ -205,6 +227,9 @@ public class PuzzleLockpick : PuzzleBase
         else if (tension > currentZone.maxTension)
         {
             stuckTimer = stuckCooldown;
+
+            ignoreMouseFrames = Mathf.Max(ignoreMouseFramesAfterPinSet, 0);
+            lastMouseY = Input.mousePosition.y;
         }
     }
 
@@ -256,6 +281,7 @@ public class PuzzleLockpick : PuzzleBase
         PuzzleManager.Instance.ExitFromPuzzle();
     }
 
+    // Chiamalo da OnTriggerEnter
     public void SetZone(Collider other)
     {
         var zone = other.GetComponent<LockPinZone>();
@@ -265,6 +291,17 @@ public class PuzzleLockpick : PuzzleBase
             currentZone = zone;
     }
 
+    // ✅ IMPORTANTE: chiamalo da OnTriggerStay per aggiornare zona anche senza re-enter
+    public void StayZone(Collider other)
+    {
+        var zone = other.GetComponent<LockPinZone>();
+        if (zone == null) return;
+
+        if (zone.pinIndex == currentPinIndex)
+            currentZone = zone;
+    }
+
+    // Chiamalo da OnTriggerExit
     public void ClearZone(Collider other)
     {
         var zone = other.GetComponent<LockPinZone>();
