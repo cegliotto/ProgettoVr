@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: -7300850190131937698}
   - component: {fileID: 2076681394208539399}
   - component: {fileID: 8276326116336405321}
+  - component: {fileID: 306251366798449446}
   m_Layer: 0
   m_Name: 'GameManager '
   m_TagString: Untagged
@@ -287,7 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d52545930901a4ab4c6821ca80c502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
-  trainSceneName: TrainScene
+  mainCamera: {fileID: 0}
+  isPlayingPuzzle: 0
 --- !u!114 &2746161576063884296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +310,7 @@ MonoBehaviour:
   nextPageButton: {fileID: 4194592825802536585}
   prevPageButton: {fileID: 1725283431830786158}
   pageFadeDuration: 0.4
+  currentPageIndex: 0
   notebookItemsManager: {fileID: 8644760696862188518}
   notebookNotesManager: {fileID: 8828285367949090788}
   test_item: {fileID: 8173059479656358612}
@@ -521,6 +524,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   numDialogues: 8
+--- !u!114 &306251366798449446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340168149892473685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44aab21c949c03a4894793cb1cc0d84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  musicSource: {fileID: 0}
+  defaultFadeDuration: 1.5
 --- !u!1001 &2027251533577250529
 PrefabInstance:
   m_ObjectHideFlags: 0
