@@ -5505,6 +5505,108 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2948764791989479032, guid: 546a1fd3f6de746f7bc8ec590fc80b77, type: 3}
   m_PrefabInstance: {fileID: 1368222208}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1169862329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1169862331}
+  - component: {fileID: 1169862330}
+  m_Layer: 0
+  m_Name: Light Probe Group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!220 &1169862330
+LightProbeGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169862329}
+  m_Enabled: 1
+  m_SourcePositions:
+  - {x: 17.663229, y: 1, z: 1}
+  - {x: 17.663229, y: 1, z: -1}
+  - {x: 17.663229, y: -1, z: 1}
+  - {x: 17.663229, y: -1, z: -0.5428295}
+  - {x: 15.663229, y: 1, z: 1}
+  - {x: 15.663229, y: 1, z: -1}
+  - {x: 15.663229, y: -1, z: 1}
+  - {x: 15.663229, y: -1, z: -0.5428295}
+  - {x: 13.195416, y: -1, z: 1}
+  - {x: 13.195416, y: 1, z: -1.0000002}
+  - {x: 13.195416, y: 1, z: 1}
+  - {x: 13.195416, y: -1, z: -0.54282975}
+  - {x: 10.867922, y: -1, z: 1}
+  - {x: 10.867922, y: 1, z: -1.0000002}
+  - {x: 10.867922, y: 1, z: 1}
+  - {x: 10.867922, y: -1, z: -0.54282975}
+  - {x: 8.3296, y: -1, z: 1}
+  - {x: 8.3296, y: 1, z: -1.0000002}
+  - {x: 8.3296, y: 1, z: 1}
+  - {x: 8.3296, y: -1, z: -0.54282975}
+  - {x: 5.118268, y: -1, z: 1}
+  - {x: 5.118268, y: 1, z: -1.0000002}
+  - {x: 5.118268, y: 1, z: 1}
+  - {x: 5.118268, y: -1, z: -0.54282975}
+  - {x: 2.2798822, y: 1, z: 1}
+  - {x: 2.2798822, y: 1, z: -1.0000002}
+  - {x: 2.2798822, y: -1, z: 1}
+  - {x: 2.2798822, y: -1, z: -0.54282975}
+  - {x: 0.27988315, y: 1, z: 1}
+  - {x: 0.27988315, y: 1, z: -1.0000002}
+  - {x: 0.27988315, y: -1, z: 0.09902644}
+  - {x: 0.27988315, y: -1, z: -1.0000002}
+  - {x: -2.1879303, y: -1, z: 0.5672493}
+  - {x: -2.1879303, y: 1, z: -1.0000002}
+  - {x: -2.1879303, y: 1, z: 1}
+  - {x: -2.1879303, y: -1, z: -1.0000002}
+  - {x: -4.5154257, y: -1, z: 1}
+  - {x: -4.5154257, y: 1, z: -1.0000002}
+  - {x: -4.5154257, y: 1, z: 1}
+  - {x: -4.5154257, y: -1, z: -1.0000002}
+  - {x: -7.053747, y: -1, z: 1}
+  - {x: -7.053747, y: 1, z: -1.0000002}
+  - {x: -7.053747, y: 1, z: 1}
+  - {x: -7.053747, y: -1, z: -1.0000002}
+  - {x: -10.2650795, y: -1, z: 1}
+  - {x: -10.2650795, y: 1, z: -1.0000002}
+  - {x: -10.2650795, y: 1, z: 1}
+  - {x: -10.2650795, y: -1, z: -1.0000002}
+  - {x: -16.821371, y: 1, z: 1}
+  - {x: -16.821371, y: 1, z: -1.0000002}
+  - {x: -16.821371, y: -1, z: 1}
+  - {x: -16.821371, y: -1, z: -1.0000002}
+  - {x: -13.610039, y: 1, z: 1}
+  - {x: -13.610039, y: 1, z: -1.0000002}
+  - {x: -13.610039, y: -1, z: -1.0000002}
+  - {x: -13.610039, y: -1, z: 1}
+  - {x: -19.464823, y: 1, z: -1.0000002}
+  - {x: -19.464823, y: -1, z: -1.0000002}
+  - {x: -19.464823, y: -1, z: 1}
+  - {x: -19.464823, y: 1, z: 1}
+  m_Dering: 1
+--- !u!4 &1169862331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169862329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.63005, y: 2.66, z: -3.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1187180354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3895252206033394962, guid: b9650767d8c8df44796d977c4f10a812, type: 3}
@@ -10359,7 +10461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5920953124362927045, guid: c93d268d31de71c4688556acaea4c892, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6052295797262028302, guid: c93d268d31de71c4688556acaea4c892, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10499,3 +10601,4 @@ SceneRoots:
   - {fileID: 1293427666}
   - {fileID: 1926910551}
   - {fileID: 1552426242}
+  - {fileID: 1169862331}
