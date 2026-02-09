@@ -15,10 +15,10 @@ public class GlowOnUnlock : MonoBehaviour
         mat = GetComponent<Renderer>().material;
         mat.EnableKeyword("_EMISSION");
 
-        // Salviamo il colore base (nero o spento)
+        // Salva il colore base (nero o spento)
         baseColor = mat.GetColor("_EmissionColor");
 
-        // Cerchiamo il componente PickUpItem che ha la variabile canPickedUp
+        // Cerca il componente PickUpItem che ha la variabile canPickedUp
         pickUpScript = GetComponent<PickUpItem>();
 
         if (pickUpScript == null)
@@ -27,7 +27,7 @@ public class GlowOnUnlock : MonoBehaviour
 
     void Update()
     {
-        // Controlliamo la variabile canPickedUp (settata in NotebookItems.cs)
+        // Controlla la variabile canPickedUp (settata in NotebookItems.cs)
         if (pickUpScript == null || !pickUpScript.canPickedUp)
         {
             // Se non è attivo, manteniamo il colore base (spento)
