@@ -69,6 +69,10 @@ public class PuzzleManager : MonoBehaviour
         if(Player.Instance != null) {
             Player.Instance.playerState = Player.PlayerState.Idle;
         }
+        if (Pendolare.Instance != null)
+        {
+            Pendolare.Instance.MoveAndSit();
+        }
         //SceneManager.sceneLoaded += OnTrainSceneLoadedExit;
         // if (LevelLoader.Instance != null)
         //     LevelLoader.Instance.LoadNextScene(trainSceneName);
@@ -116,6 +120,11 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 
         if(Player.Instance != null) {
             Player.Instance.playerState = Player.PlayerState.Idle;
+        }
+        
+        if (Pendolare.Instance != null)
+        {
+            Pendolare.Instance.MoveAndSit();    
         }
         // carico scena treno
         //SceneManager.sceneLoaded += OnTrainSceneLoadedCompleted; // Sottoscrivo evento -> in modo che quando la scena viene caricata
