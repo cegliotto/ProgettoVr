@@ -44,7 +44,7 @@ public class NotebookManager : MonoBehaviour {
     [SerializeField] private float pageFadeDuration = 0.4f;
     private bool isTransitioning = false;
 
-    private int currentPageIndex;
+    public int currentPageIndex;
 
     public NotebookItems notebookItemsManager;
     public NotebookNotes notebookNotesManager;
@@ -140,7 +140,21 @@ public class NotebookManager : MonoBehaviour {
                     OpenNotebook();
                 }
             }
+            // esc per chiudere il notebook
+            if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+                if (notebookHolder.gameObject.activeSelf) {
+                    if (!IsContentAnimating)
+                        CloseNotebook();
+                }
+            }
         }
+
+        ArrowVisibilityManagement();
+    }
+
+    private void ArrowVisibilityManagement() { // Visibilita' frecce in base a pagina corrente del notebook
+        prevPageButton.gameObject.SetActive(currentPageIndex != 0);
+        nextPageButton.gameObject.SetActive(currentPageIndex != pagePairs.Length - 1);
     }
 
     public void SetBusyForSeconds(float duration) {
@@ -314,6 +328,8 @@ public class NotebookManager : MonoBehaviour {
             anim.SetTrigger("NextPage");
         }
 
+        ArrowVisibilityManagement();
+
         StartCoroutine(ChangePagePair(currentPageIndex + 1));
     }
 
@@ -324,6 +340,8 @@ public class NotebookManager : MonoBehaviour {
         if (anim != null) {
             anim.SetTrigger("PrevPage");
         }
+
+        ArrowVisibilityManagement();
 
         StartCoroutine(ChangePagePair(currentPageIndex - 1));
     }
