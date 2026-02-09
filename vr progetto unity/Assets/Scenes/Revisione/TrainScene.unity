@@ -50839,6 +50839,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5739077151382429362, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739077151382429362, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7818699446840822377, guid: af73454fc3024cd438e7547c6a4538d1, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -53920,7 +53928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2616684958389692258, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2616684958389692258, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
       propertyPath: m_StaticEditorFlags

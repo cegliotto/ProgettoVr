@@ -3,27 +3,30 @@
 public class PuzzleLockpick : PuzzleBase
 {
     [SerializeField] private Transform rake;
-
-
     [SerializeField] private Transform torsionWrench;
 
     [Header("Rake Movement")]
-    [SerializeField] private float rakeMoveSpeed = 0.0025f; // scala del delta mouse
-    [SerializeField] private float rakeMinY = -0.02f;       // limiti local Y
+    [Tooltip("Quanto il rake segue lo spostamento del mouse (in unità locali per pixel). Più basso = più preciso.")]
+    [SerializeField] private float rakeMoveSpeed = 0.00015f; // MOLTO più basso
+
+    [Tooltip("Velocità massima del rake (unità locali al secondo). Evita che un micro-movimento/step del mouse faccia saltare.")]
+    [SerializeField] private float maxRakeSpeed = 0.03f;
+
+    [SerializeField] private float rakeMinY = -0.02f;
     [SerializeField] private float rakeMaxY = 0.02f;
 
     [Header("Tension")]
     [Range(0f, 1f)]
     [SerializeField] private float tension = 0f;
 
-    [SerializeField] private float tensionChangeSpeed = 1.2f; // quanto aumenta per secondo
-    [SerializeField] private float torsionMaxAngle = 20f;      // rotazione visiva max (gradi)
+    [SerializeField] private float tensionChangeSpeed = 1.2f;
+    [SerializeField] private float torsionMaxAngle = 20f;
 
     [Header("Pin Interaction")]
     [Tooltip("Se true, prova a settare il pin mentre il rake è in zona (più facile). Se false, solo al click.")]
     [SerializeField] private bool setWhileDragging = true;
 
-    [SerializeField] private float stuckCooldown = 0.3f; // blocco breve se tensione troppo alta
+    [SerializeField] private float stuckCooldown = 0.3f;
 
     [Header("Audio")]
     [SerializeField] private AudioSource scrapeSource;
@@ -42,97 +45,71 @@ public class PuzzleLockpick : PuzzleBase
     private bool[] pinSet;
     private bool isDragging;
 
-    private LockPinZone currentZone;     // zona in cui si trova il rake (se è quella del pin corrente)
+    private LockPinZone currentZone;
     private float stuckTimer = 0f;
     private float lastRakeMoveTime = -999f;
+
+    private float lastMouseY;
+    private float rakeY; // stato "continuo" del rake (più stabile del target diretto)
+
     protected void Start()
     {
-        // Array che tiene traccia dei pin già settati (4 pin totali)
         pinSet = new bool[4];
 
         for (int i = 0; i < pinVisuals.Length; i++)
-        {
             pinVisuals[i].material.color = pinLockedColor;
-        }
 
-        // Salvo la Y iniziale del rake e imposto un range attorno a quella posizione
         baseRakeY = rake.localPosition.y;
         rakeMinY = baseRakeY - 0.02f;
         rakeMaxY = baseRakeY + 0.02f;
 
-        // Aggiorna subito la rotazione visiva del torsion
-        // in base al valore iniziale della tensione
-        UpdateTorsionVisual();
+        rakeY = baseRakeY;
 
-        // Prepara l'AudioSource per il suono di "scrape" continuo
+        UpdateTorsionVisual();
         SetupScrapeLoop();
     }
 
     private void Update()
     {
-        // Logica principale del puzzle (chiamata ogni frame)
         PuzzleBehaviour();
 
-        // Uscita manuale dal puzzle (non completato)
         if (Input.GetKeyDown(KeyCode.Escape))
             ExitPuzzle();
     }
 
     protected override void PuzzleBehaviour()
     {
-        // Se siamo in stato di "stuck" (tensione troppo alta)
         if (stuckTimer > 0f)
         {
-            // Scala il timer
             stuckTimer -= Time.deltaTime;
 
-            // Durante lo stuck permettiamo SOLO di diminuire la tensione
-            // così l'utente capisce che deve mollare
             HandleTensionInput(allowIncrease: false);
-
-            // Aggiorna comunque il feedback visivo del torsion
             UpdateTorsionVisual();
             return;
         }
 
-        // Gestione normale della tensione (A / D)
         HandleTensionInput(allowIncrease: true);
-
-        // Gestione del movimento del rake tramite drag del mouse
         HandleRakeDrag();
-
-        // Aggiorna la rotazione del torsion in base alla tensione corrente
         UpdateTorsionVisual();
 
         TrySetCurrentPin();
-
-
     }
 
     private void HandleTensionInput(bool allowIncrease)
     {
         float delta = 0f;
 
-        // A = diminuisce tensione
         if (Input.GetKey(KeyCode.A)) delta -= 1f;
-
-        // D = aumenta tensione
         if (Input.GetKey(KeyCode.D)) delta += 1f;
 
-        // Se siamo in stuck, non permettiamo di aumentare la tensione
         if (!allowIncrease && delta > 0f)
             delta = 0f;
 
-        // Aggiorna il valore di tensione nel tempo
         tension += delta * tensionChangeSpeed * Time.deltaTime;
-
-        // Clamp tra 0 e 1 (valore normalizzato)
         tension = Mathf.Clamp01(tension);
-        Debug.Log("Tensione attuale: " + tension);
 
+        Debug.Log("Tensione attuale: " + tension);
     }
-    private float dragStartMouseY;
-    private float dragStartRakeY;
 
     private void HandleRakeDrag()
     {
@@ -140,8 +117,10 @@ public class PuzzleLockpick : PuzzleBase
         if (Input.GetMouseButtonDown(0))
         {
             isDragging = true;
-            dragStartMouseY = Input.mousePosition.y;
-            dragStartRakeY = rake.localPosition.y;
+            lastMouseY = Input.mousePosition.y;
+
+            // riallinea lo stato interno alla posizione attuale
+            rakeY = rake.localPosition.y;
             return;
         }
 
@@ -155,17 +134,25 @@ public class PuzzleLockpick : PuzzleBase
 
         if (!isDragging) return;
 
-        // Movimento "assoluto": evita salti e drift
+        // Movimento incrementale (più "fine"): usa delta pixel frame-to-frame
         float mouseY = Input.mousePosition.y;
-        //float offsetY = (mouseY - dragStartMouseY) * rakeMoveSpeed;
-        float offsetY = (mouseY - dragStartMouseY) * rakeMoveSpeed;
-        float targetY = Mathf.Clamp(dragStartRakeY + offsetY, rakeMinY, rakeMaxY);
+        float deltaPixels = mouseY - lastMouseY;
+        lastMouseY = mouseY;
 
-        float movement = Mathf.Abs((targetY - rake.localPosition.y) );
+        // Converti pixel -> unità locali (molto piccolo)
+        float desiredDeltaY = deltaPixels * rakeMoveSpeed;
 
-        // applica posizione
+        // Limita la velocità (anti-salto) indipendentemente dal DPI / polling
+        float maxStep = maxRakeSpeed * Time.deltaTime;
+        desiredDeltaY = Mathf.Clamp(desiredDeltaY, -maxStep, maxStep);
+
+        // Applica e clamp ai limiti
+        rakeY = Mathf.Clamp(rakeY + desiredDeltaY, rakeMinY, rakeMaxY);
+
+        float movement = Mathf.Abs(rakeY - rake.localPosition.y);
+
         Vector3 localPos = rake.localPosition;
-        localPos.y = targetY;
+        localPos.y = rakeY;
         rake.localPosition = localPos;
 
         // --- AUDIO SCRAPE STABILE ---
@@ -175,72 +162,50 @@ public class PuzzleLockpick : PuzzleBase
             StartScrape();
         }
 
-        // ferma solo se è passato un po’ di tempo dall’ultimo movimento vero
         if (scrapeSource != null && scrapeSource.isPlaying && (Time.time - lastRakeMoveTime) > 0.08f)
         {
             StopScrape();
         }
-
-        
     }
 
     private void TrySetCurrentPin()
     {
         Debug.Log($"pinCorrente={currentPinIndex} | tensione={tension} | currentZone={(currentZone ? currentZone.name : "NULL")}");
 
-
-        // Controlli di sicurezza sull'indice del pin
         if (currentPinIndex < 1 || currentPinIndex > 4) return;
-
-        // Se il pin corrente è già stato settato, esci
         if (pinSet[currentPinIndex - 1]) return;
 
-        // Se il rake non si trova nella zona del pin corrente, esci
         if (currentZone == null) return;
         if (currentZone.pinIndex != currentPinIndex) return;
 
-        // Caso corretto: tensione nel range giusto
         if (currentZone.IsTensionInRange(tension))
         {
-            // Segna il pin come settato
             pinSet[currentPinIndex - 1] = true;
             pinVisuals[currentPinIndex - 1].material.color = pinUnlockedColor;
 
-            // Feedback audio
             PlayOneShot(pinClick);
-
-            // Feedback visivo opzionale sul pin
             currentZone.Flash();
 
-            // Passa al pin successivo (ordine fisso)
             currentPinIndex++;
             currentZone = null;
 
-            // Se abbiamo appena settato l'ultimo pin
             if (currentPinIndex == 5)
             {
                 PlayOneShot(successFinal);
                 PuzzleCompleted();
             }
         }
-        // Caso: tensione troppo alta
         else if (tension > currentZone.maxTension)
         {
             stuckTimer = stuckCooldown;
         }
-        // Caso: tensione troppo bassa → nessun evento
     }
-
 
     private void UpdateTorsionVisual()
     {
-        // Se il modello del torsion non è assegnato, esci
         if (torsionWrench == null) return;
 
-        // Interpolazione dell'angolo in base alla tensione
         float angle = Mathf.Lerp(0f, torsionMaxAngle, tension);
-
-        // Rotazione locale del torsion (asse da adattare al modello)
         torsionWrench.localRotation = Quaternion.Euler(0f, 0f, -angle);
     }
 
@@ -273,13 +238,10 @@ public class PuzzleLockpick : PuzzleBase
         oneShotSource.PlayOneShot(clip);
     }
 
-
     protected override void PuzzleCompleted()
     {
         if (PuzzleManager.Instance != null)
-        {
             PuzzleManager.Instance.CompletePuzzle();
-        }
     }
 
     protected override void ExitPuzzle()
@@ -292,7 +254,6 @@ public class PuzzleLockpick : PuzzleBase
         var zone = other.GetComponent<LockPinZone>();
         if (zone == null) return;
 
-        // Ordine fisso: accetta solo la zona del pin corrente
         if (zone.pinIndex == currentPinIndex)
             currentZone = zone;
     }
@@ -303,6 +264,4 @@ public class PuzzleLockpick : PuzzleBase
         if (zone != null && currentZone == zone)
             currentZone = null;
     }
-
-
 }
