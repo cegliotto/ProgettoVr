@@ -29,7 +29,9 @@ public class NotebookItems : MonoBehaviour {
         if(item == ItemType.Cappello) {
             // devo sbloccare il cappello
             PickUpItem cappello = FindObjectsByType<PickUpItem>(FindObjectsSortMode.None).FirstOrDefault(p => p.GetItemType() == ItemType.Cappello);
+            cappello.enabled = true;
             cappello.canPickedUp = true;
+
 
             var audioSource = NotebookManager.Instance.GetComponent<AudioSource>();
 
