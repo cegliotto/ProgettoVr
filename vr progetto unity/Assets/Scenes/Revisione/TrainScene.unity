@@ -6648,6 +6648,7 @@ MonoBehaviour:
   glowIntensity: 3
   speed: 5
   puzzleID: PuzzleScrews
+  puzzleInteraction: {fileID: 0}
 --- !u!1 &253028742
 GameObject:
   m_ObjectHideFlags: 0
@@ -29822,9 +29823,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
-  glowIntensity: 8
+  glowIntensity: 1.5
   speed: 6
   puzzleID: PuzzleSeatLever
+  puzzleInteraction: {fileID: 0}
 --- !u!1001 &1127958229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48221,6 +48223,7 @@ MonoBehaviour:
   glowIntensity: 8
   speed: 6
   puzzleID: PuzzleCabinet
+  puzzleInteraction: {fileID: 0}
 --- !u!1001 &1822124104
 PrefabInstance:
   m_ObjectHideFlags: 0
