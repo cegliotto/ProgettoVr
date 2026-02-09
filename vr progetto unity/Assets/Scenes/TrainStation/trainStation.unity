@@ -8656,6 +8656,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0299606, z: 1}
   m_Center: {x: 0, y: 0.48761663, z: 0}
+--- !u!1 &1926910549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1926910551}
+  - component: {fileID: 1926910550}
+  m_Layer: 0
+  m_Name: SceneAudioConfig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1926910550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926910549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9779833738b51246873640312106567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMusic
+  mode: 1
+  sceneMusic: {fileID: 0}
+  volume: 1
+  fadeDuration: 1.5
+--- !u!4 &1926910551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926910549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.38453, y: 0, z: -62.72139}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1977669744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6592973912609527575, guid: e17ad35d61c19374ca47e2c0ff6da3c6, type: 3}
@@ -10570,3 +10618,4 @@ SceneRoots:
   - {fileID: 329241195}
   - {fileID: 3117840520276332456}
   - {fileID: 1293427666}
+  - {fileID: 1926910551}

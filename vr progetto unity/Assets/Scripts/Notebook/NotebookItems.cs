@@ -33,8 +33,8 @@ public class NotebookItems : MonoBehaviour {
 
             var audioSource = NotebookManager.Instance.GetComponent<AudioSource>();
 
-            audioSource.clip = suspanceMusic; // suspance music
-            audioSource.Play(); // play della suspance music
+            MusicManager.Instance.PlayMusicImmediate(suspanceMusic, 1f);
+
         }
 
         // animazione per fade
