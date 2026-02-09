@@ -6,14 +6,29 @@ public class PuzzleLockpick : PuzzleBase
     [SerializeField] private Transform torsionWrench;
 
     [Header("Rake Movement")]
-    [Tooltip("Quanto il rake segue lo spostamento del mouse (in unità locali per pixel). Più basso = più preciso.")]
-    [SerializeField] private float rakeMoveSpeed = 0.00015f; // MOLTO più basso
+    [Tooltip("Quanto si muove il rake per pixel di mouse (base). Più basso = più preciso.")]
+    [SerializeField] private float rakeMoveSpeed = 0.00012f;
 
-    [Tooltip("Velocità massima del rake (unità locali al secondo). Evita che un micro-movimento/step del mouse faccia saltare.")]
-    [SerializeField] private float maxRakeSpeed = 0.03f;
+    [Tooltip("Range verticale (in locale) attorno alla posizione iniziale del rake.")]
+    [SerializeField] private float rakeRange = 0.03f; // ↑ aumenta se sotto al 2° pin non arrivi
 
-    [SerializeField] private float rakeMinY = -0.02f;
-    [SerializeField] private float rakeMaxY = 0.02f;
+    [Tooltip("Moltiplicatore massimo quando muovi il mouse velocemente.")]
+    [SerializeField] private float maxAccelerationMultiplier = 8f;
+
+    [Tooltip("Quanti pixel/frame servono per arrivare al massimo della curva (più alto = meno accelera).")]
+    [SerializeField] private float accelPixelsForMax = 35f;
+
+    [Tooltip("Curva di accelerazione: input 0..1 (velocità mouse), output 0..1 (moltiplicatore).")]
+    [SerializeField]
+    private AnimationCurve accelerationCurve = new AnimationCurve(
+        new Keyframe(0f, 0f),
+        new Keyframe(0.25f, 0.08f),
+        new Keyframe(0.6f, 0.35f),
+        new Keyframe(1f, 1f)
+    );
+
+    [SerializeField] private float rakeMinY = 0.2355f;
+    [SerializeField] private float rakeMaxY = 0.28f;
 
     [Header("Tension")]
     [Range(0f, 1f)]
@@ -50,7 +65,6 @@ public class PuzzleLockpick : PuzzleBase
     private float lastRakeMoveTime = -999f;
 
     private float lastMouseY;
-    private float rakeY; // stato "continuo" del rake (più stabile del target diretto)
 
     protected void Start()
     {
@@ -60,10 +74,6 @@ public class PuzzleLockpick : PuzzleBase
             pinVisuals[i].material.color = pinLockedColor;
 
         baseRakeY = rake.localPosition.y;
-        rakeMinY = baseRakeY - 0.02f;
-        rakeMaxY = baseRakeY + 0.02f;
-
-        rakeY = baseRakeY;
 
         UpdateTorsionVisual();
         SetupScrapeLoop();
@@ -113,18 +123,13 @@ public class PuzzleLockpick : PuzzleBase
 
     private void HandleRakeDrag()
     {
-        // Inizio drag
         if (Input.GetMouseButtonDown(0))
         {
             isDragging = true;
             lastMouseY = Input.mousePosition.y;
-
-            // riallinea lo stato interno alla posizione attuale
-            rakeY = rake.localPosition.y;
             return;
         }
 
-        // Fine drag
         if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
@@ -134,25 +139,27 @@ public class PuzzleLockpick : PuzzleBase
 
         if (!isDragging) return;
 
-        // Movimento incrementale (più "fine"): usa delta pixel frame-to-frame
         float mouseY = Input.mousePosition.y;
         float deltaPixels = mouseY - lastMouseY;
         lastMouseY = mouseY;
 
-        // Converti pixel -> unità locali (molto piccolo)
-        float desiredDeltaY = deltaPixels * rakeMoveSpeed;
+        // 0..1 in base a "quanto veloce" è il movimento (pixel/frame)
+        float speed01 = Mathf.Clamp01(Mathf.Abs(deltaPixels) / Mathf.Max(1f, accelPixelsForMax));
 
-        // Limita la velocità (anti-salto) indipendentemente dal DPI / polling
-        float maxStep = maxRakeSpeed * Time.deltaTime;
-        desiredDeltaY = Mathf.Clamp(desiredDeltaY, -maxStep, maxStep);
+        // curva (precisione sui piccoli movimenti, accelera sui grandi)
+        float curve01 = Mathf.Clamp01(accelerationCurve.Evaluate(speed01));
 
-        // Applica e clamp ai limiti
-        rakeY = Mathf.Clamp(rakeY + desiredDeltaY, rakeMinY, rakeMaxY);
+        // moltiplicatore: 1..maxAccelerationMultiplier
+        float multiplier = Mathf.Lerp(1f, maxAccelerationMultiplier, curve01);
 
-        float movement = Mathf.Abs(rakeY - rake.localPosition.y);
+        float desiredDeltaY = deltaPixels * rakeMoveSpeed * multiplier;
+
+        float targetY = Mathf.Clamp(rake.localPosition.y + desiredDeltaY, rakeMinY, rakeMaxY);
+
+        float movement = Mathf.Abs(targetY - rake.localPosition.y);
 
         Vector3 localPos = rake.localPosition;
-        localPos.y = rakeY;
+        localPos.y = targetY;
         rake.localPosition = localPos;
 
         // --- AUDIO SCRAPE STABILE ---
