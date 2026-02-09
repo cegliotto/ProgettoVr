@@ -10,7 +10,9 @@ public class PuzzleManager : MonoBehaviour
 
     //[SerializeField] private string trainSceneName;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private AudioListener mainListener;
     private Camera puzzleCamera = null;
+    private AudioListener puzzleListener = null;
     private GameObject puzzleObj = null;
     private Player.PlayerInfo savedPlayerInfo; // Informazioni di posizione e orientamento del player per il cambio di scena
 
@@ -34,7 +36,7 @@ public class PuzzleManager : MonoBehaviour
         unlockedPuzzles = new List<PuzzleType>();
     }
 
-    public void StartPuzzle(GameObject puzzleObjRef,Camera puzzleCameraRef, PuzzleType puzzle) { // Richiamata in puzzleInteraction, dove passo il nome della scena
+    public void StartPuzzle(GameObject puzzleObjRef,Camera puzzleCameraRef, AudioListener puzzleListenerRef ,PuzzleType puzzle) { // Richiamata in puzzleInteraction, dove passo il nome della scena
         if(Player.Instance != null) {
             savedPlayerInfo = Player.Instance.SaveInfo(); // Salvo nella variabile specificata le info di posizione e orientamento del player
             Player.Instance.playerState = Player.PlayerState.Pause;
@@ -54,8 +56,11 @@ public class PuzzleManager : MonoBehaviour
         puzzleObj.SetActive(true);
 
         puzzleCamera = puzzleCameraRef;
+        puzzleListener = puzzleListenerRef;
         mainCamera.enabled = false;
         puzzleCamera.enabled = true;
+        mainListener.enabled = false;
+        puzzleListener.enabled = true;
 
         isPlayingPuzzle = true; // Richiamato in notebook manager per evitare di aprire il notebook durante il puzzle
     }
@@ -69,7 +74,7 @@ public class PuzzleManager : MonoBehaviour
         if(Player.Instance != null) {
             Player.Instance.playerState = Player.PlayerState.Idle;
         }
-        if (Pendolare.Instance != null)
+        if (Pendolare.Instance.gotTicket && Pendolare.Instance != null)
         {
             Pendolare.Instance.MoveAndSit();
         }
@@ -80,6 +85,8 @@ public class PuzzleManager : MonoBehaviour
         //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
         mainCamera.enabled = true;
         puzzleCamera.enabled = false;
+        mainListener.enabled = true;
+        puzzleListener.enabled = false;
         if (puzzleCamera != null){ puzzleCamera = null; }
 
         puzzleObj.SetActive(false);
@@ -101,7 +108,7 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 {
     Debug.Log("Cambio scena");
     mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
+    mainListener = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>();
 }
 
     // A puzzle completato
@@ -122,7 +129,7 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
             Player.Instance.playerState = Player.PlayerState.Idle;
         }
         
-        if (Pendolare.Instance != null)
+        if (Pendolare.Instance.gotTicket && Pendolare.Instance != null)
         {
             Pendolare.Instance.MoveAndSit();    
         }
@@ -135,6 +142,10 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
         mainCamera.enabled = true;
         puzzleCamera.enabled = false;
+        mainListener.enabled = true;
+        puzzleListener.enabled = false;
+
+
         if (puzzleCamera != null){ puzzleCamera = null; }
 
         puzzleObj.SetActive(false);

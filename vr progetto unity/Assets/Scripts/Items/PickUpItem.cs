@@ -76,7 +76,7 @@ public class PickUpItem : MonoBehaviour, IInteractable {
             NotebookManager.Instance.OpenNotebook(1);
             NotebookManager.Instance.notebookNotesManager.UnlockNewProgress(NotebookNotes.NotesProgress.Ticket);
         }
-
+        Pendolare.Instance.gotTicket = true;
         // Suono di raccolta
         Destroy(gameObject);
     }

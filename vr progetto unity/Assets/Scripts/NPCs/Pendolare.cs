@@ -6,6 +6,7 @@ public class Pendolare : MonoBehaviour
     public static Pendolare Instance;
     [SerializeField] private Transform sittingTransform;
     private Animator anim;
+    public bool gotTicket = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
