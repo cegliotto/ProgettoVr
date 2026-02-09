@@ -43213,9 +43213,166 @@ PrefabInstance:
     m_TransformParent: {fileID: 130569180}
     m_Modifications:
     - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].frasi.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].frasi.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[3].frasi.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[0].puzzles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].puzzles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].puzzles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
       propertyPath: 'dialogue.Array.data[0].puzzles.Array.data[0]'
       value: 
       objectReference: {fileID: 58428865}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[1].puzzles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 58428865}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[2].puzzles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 58428865}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 95d09d483c936b0498067df0c57764b1, type: 3}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[0].frasi.Array.data[0].text
+      value: "Cosa posso servirle? Ah\u2026 mi scuso\u2026 lei deve essere il detective"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].frasi.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7cecc70197a0bf546bdba4f144a3cc9d, type: 3}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].frasi.Array.data[0].text
+      value: "Il signor Briggs era un uomo perbene.Sempre elegante era solito indossare
+        un orologio d\u2019oro, una catena e degli occhiali raffinati. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].frasi.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b07a0f9534879144bd09d1d25c5ba20, type: 3}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].frasi.Array.data[1].text
+      value: "Se quegli oggetti preziosi non sono con lui\u2026 allora qualcuno potrebbe
+        aver architettato tutto questo per rubarglieli. Ma da dove potrebbe essere
+        scappato? C\u2019\xE8 solo un ultimo vagone su questo treno, proprio dietro
+        la porta in fondo a questa carrozza \u2026 ma nessuno ci pu\xF2 entrare"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].frasi.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ad8d27dac5c2a1346a9297e704077506, type: 3}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].frasi.Array.data[0].text
+      value: Per qualsiasi cosa chieda pure
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].frasi.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7cecc70197a0bf546bdba4f144a3cc9d, type: 3}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].frasi.Array.data[1].text
+      value: "Il signor Briggs era un uomo perbene.Sempre elegante era solito indossare
+        un orologio d\u2019oro, una catena d'oro e degli occhiali raffinati. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[3].frasi.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ad8d27dac5c2a1346a9297e704077506, type: 3}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[3].frasi.Array.data[0].text
+      value: Per qualsiasi cosa chieda pure
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[0].progressToUnlockAfterDialog
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].progressToUnlockAfterDialog
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].progressToUnlockAfterDialog
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[3].progressToUnlockAfterDialog
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[0].itemToAnnotateAfterDialog.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[1].itemToAnnotateAfterDialog.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[2].itemToAnnotateAfterDialog.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: dialogue.Array.data[3].itemToAnnotateAfterDialog.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[1].itemToAnnotateAfterDialog.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[1].itemToAnnotateAfterDialog.Array.data[1]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[1].itemToAnnotateAfterDialog.Array.data[2]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[2].itemToAnnotateAfterDialog.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[2].itemToAnnotateAfterDialog.Array.data[1]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[2].itemToAnnotateAfterDialog.Array.data[2]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[3].itemToAnnotateAfterDialog.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[3].itemToAnnotateAfterDialog.Array.data[1]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589161651658500655, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
+      propertyPath: 'dialogue.Array.data[3].itemToAnnotateAfterDialog.Array.data[2]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3490739349308898947, guid: ea95b0dc7856c9c458da5365c8a27b91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.408
