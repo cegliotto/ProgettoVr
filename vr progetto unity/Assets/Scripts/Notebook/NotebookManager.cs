@@ -63,7 +63,7 @@ public class NotebookManager : MonoBehaviour {
     private List<ItemType> itemsPickedUp = new List<ItemType>();
 
     public bool IsContentAnimating = false;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip paperWriteClip;
     [SerializeField] private AudioClip longPaperWriteClip;
     [SerializeField] private AudioClip openingClosingNotebookClip;
@@ -87,7 +87,7 @@ public class NotebookManager : MonoBehaviour {
 
     void Awake() {
         anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        if(audioSource == null) audioSource = GetComponent<AudioSource>();
         currentPageIndex = 0;
 
         if (notebookCamera != null) {
@@ -178,7 +178,6 @@ public class NotebookManager : MonoBehaviour {
         if (notebookHolder.gameObject.activeSelf || isNotebookClosing) return;
 
         isNotebookClosing = false;
-        PlayOpenCloseNotebookSound();
 
         if (specificPageIndex >= 0 && specificPageIndex < pagePairs.Length) {
             currentPageIndex = specificPageIndex;
@@ -188,6 +187,7 @@ public class NotebookManager : MonoBehaviour {
         UpdatePagesVisualsImmediate();
 
         notebookHolder.gameObject.SetActive(true);
+        PlayOpenCloseNotebookSound();
         // animazione camera
         if (animationCoroutine != null) StopCoroutine(animationCoroutine);
         animationCoroutine = StartCoroutine(AnimateCameraOpen());

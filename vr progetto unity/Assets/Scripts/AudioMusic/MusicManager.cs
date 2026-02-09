@@ -54,7 +54,6 @@ public class MusicManager : MonoBehaviour
         musicSource.clip = newClip;
         musicSource.Play();
     }
-
     
     /// Fade-out e stop (scena senza musica / inizio scena silenziosa).
     public void FadeOutAndStop(float fadeDuration = -1f)
