@@ -15,6 +15,7 @@ public class PuzzleManager : MonoBehaviour
     private Camera puzzleCamera = null;
     private AudioListener puzzleListener = null;
     GameObject pointer = null;
+    GameObject fadeIn = null;
     private GameObject puzzleObj = null;
     private Player.PlayerInfo savedPlayerInfo; // Informazioni di posizione e orientamento del player per il cambio di scena
 
@@ -57,8 +58,12 @@ public class PuzzleManager : MonoBehaviour
         puzzleObj = puzzleObjRef;
         puzzleObj.SetActive(true);
 
+        fadeIn = LevelLoader.Instance.gameObject.transform.Find("CrossFade").gameObject;
+        if (fadeIn != null){ fadeIn.SetActive(false);}
+        
         pointer = UiManager.Instance.gameObject.transform.Find("Canvas/pointer").gameObject;
-        pointer.SetActive(false);
+        if (pointer != null){ pointer.SetActive(false); }
+        
         puzzleCamera = puzzleCameraRef;
         puzzleListener = puzzleListenerRef;
         mainCamera.enabled = false;
@@ -88,7 +93,8 @@ public class PuzzleManager : MonoBehaviour
         // else
         //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
 
-        pointer.SetActive(true);
+        if (fadeIn != null){ fadeIn.SetActive(true); }
+        if (pointer != null){ pointer.SetActive(true); }
 
         mainCamera.enabled = true;
         puzzleCamera.enabled = false;
@@ -147,7 +153,8 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         //     LevelLoader.Instance.LoadNextScene(trainSceneName);
         // else
         //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
-        pointer.SetActive(true);
+        if (fadeIn != null){ fadeIn.SetActive(true); }
+        if (pointer != null){ pointer.SetActive(true); }
         
         mainCamera.enabled = true;
         puzzleCamera.enabled = false;
