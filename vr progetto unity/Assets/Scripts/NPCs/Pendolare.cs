@@ -7,6 +7,7 @@ public class Pendolare : MonoBehaviour
     [SerializeField] private Transform sittingTransform;
     private Animator anim;
     public bool gotTicket = false;
+    public bool sitted;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +28,8 @@ public class Pendolare : MonoBehaviour
         if(sittingTransform != null) {
             transform.position = sittingTransform.position;
             transform.rotation = sittingTransform.rotation;
+
+            sitted = true;
 
             if (anim != null) {
                 anim.SetTrigger("Sit");
