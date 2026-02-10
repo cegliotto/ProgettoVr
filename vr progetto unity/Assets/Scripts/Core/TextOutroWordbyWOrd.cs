@@ -29,7 +29,23 @@ public class WordByWordText : MonoBehaviour
     
     [Header("Hover Animation")]
     public float hoverAmplitude = 0.1f; 
-    public float hoverSpeed = 2f; 
+    public float hoverSpeed = 2f;
+
+    [Header("Button Settings")]
+    public GameObject continueButton;
+    public CanvasGroup buttonCanvasGroup;
+    public float buttonDelay = 1f;
+    public float fadeDuration = 0.5f;
+
+    void Awake()
+    {
+        // Nascondi tutto all'inizio
+        if (continueButton != null)
+            continueButton.SetActive(false);
+
+        if (buttonCanvasGroup != null)
+            buttonCanvasGroup.alpha = 0f;
+    }
 
     void Start()
     {
@@ -96,6 +112,14 @@ public class WordByWordText : MonoBehaviour
                 yield return new WaitForSeconds(charDelay);
             }
         }
+        // Attesa prima di mostrare il bottone
+        yield return new WaitForSeconds(buttonDelay);
+
+        if (continueButton != null && buttonCanvasGroup != null)
+        {
+            continueButton.SetActive(true);
+            yield return StartCoroutine(FadeInButton());
+        }
     }
 
     //Pulse poi Hover infinito
@@ -150,5 +174,23 @@ public class WordByWordText : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    IEnumerator FadeInButton()
+    {
+        float elapsed = 0f;
+        buttonCanvasGroup.interactable = false;
+        buttonCanvasGroup.blocksRaycasts = false;
+
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            buttonCanvasGroup.alpha = Mathf.Clamp01(elapsed / fadeDuration);
+            yield return null;
+        }
+
+        buttonCanvasGroup.alpha = 1f;
+        buttonCanvasGroup.interactable = true;
+        buttonCanvasGroup.blocksRaycasts = true;
     }
 }
