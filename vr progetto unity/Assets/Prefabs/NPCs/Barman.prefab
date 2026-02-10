@@ -1963,20 +1963,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - clip: {fileID: 0}
-      text: 
-    - clip: {fileID: 0}
-      text: 
-    puzzles:
-    - {fileID: 0}
+    - clip: {fileID: 8300000, guid: 95d09d483c936b0498067df0c57764b1, type: 3}
+      text: "Cosa posso servirle? Ah\u2026 mi scuso\u2026 lei deve essere il detective"
+    - clip: {fileID: 8300000, guid: 7cecc70197a0bf546bdba4f144a3cc9d, type: 3}
+      text: "Il signor Briggs era un uomo perbene.Sempre elegante era solito indossare
+        un orologio d\u2019oro, una catena e degli occhiali raffinati. "
+    - clip: {fileID: 8300000, guid: 3b07a0f9534879144bd09d1d25c5ba20, type: 3}
+      text: "Se quegli oggetti preziosi non sono con lui\u2026 allora qualcuno potrebbe
+        aver architettato tutto questo per rubarglieli. Ma da dove potrebbe essere
+        scappato? C\u2019\xE8 solo un ultimo vagone su questo treno, proprio dietro
+        la porta in fondo a questa carrozza \u2026 ma nessuno ci pu\xF2 entrare"
+    puzzles: []
     delay:
       time: 1
       index: 0
     itemToAnnotateAfterDialog: 020000000300000004000000
     progressToUnlockAfterDialog: 2
   - frasi:
-    - clip: {fileID: 0}
-      text: 
+    - clip: {fileID: 8300000, guid: ad8d27dac5c2a1346a9297e704077506, type: 3}
+      text: Per qualsiasi cosa chieda pure
     puzzles: []
     delay:
       time: 0
