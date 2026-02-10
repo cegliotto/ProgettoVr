@@ -43,6 +43,7 @@ public class UiManager : MonoBehaviour
 
     public IEnumerator nextDialogue(int dialogueId, List<Dialogo> dialogue, AudioSource source,  Animator animator, String nextScene = null)
     {
+        MusicManager.Instance.DuckForDialogue(0.3f);
         DialogueBox.gameObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null); //check
         currentDialogue = dialogue[0];
@@ -121,6 +122,7 @@ public class UiManager : MonoBehaviour
         DialogueBox.gameObject.SetActive(false);
         currentDialogue = null;
         currentDialogueIndex = 0;
+        MusicManager.Instance.UnduckAfterDialogue(0.4f);
         //InputManager.Instance.EnablePause();
         //InputManager.Instance.EnableAllInputs();
     }
