@@ -1105,6 +1105,7 @@ MonoBehaviour:
   solved: 0
   unlocked: 0
   animator: {fileID: 443510509}
+  playSound: 0
 --- !u!1 &58951872
 GameObject:
   m_ObjectHideFlags: 0
@@ -5479,15 +5480,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2434792971799905649, guid: eb9979b27c50afc4f97f3793fbd2a748, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.366
+      value: -0.393
       objectReference: {fileID: 0}
     - target: {fileID: 2434792971799905649, guid: eb9979b27c50afc4f97f3793fbd2a748, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58368003
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 2434792971799905649, guid: eb9979b27c50afc4f97f3793fbd2a748, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.518
+      value: -7.751
       objectReference: {fileID: 0}
     - target: {fileID: 2434792971799905649, guid: eb9979b27c50afc4f97f3793fbd2a748, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6520,6 +6521,7 @@ MonoBehaviour:
   solved: 0
   unlocked: 1
   animator: {fileID: 0}
+  playSound: 0
   movableNightTable: {fileID: 240594531}
   necklace: {fileID: 5774536919676650515}
 --- !u!114 &240594533
@@ -27074,6 +27076,7 @@ MonoBehaviour:
   solved: 0
   unlocked: 0
   animator: {fileID: 0}
+  playSound: 0
 --- !u!1001 &1002068344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28536,11 +28539,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1 &1053736027 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1300204833339754593, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
-  m_PrefabInstance: {fileID: 1821367442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1059208356
 GameObject:
   m_ObjectHideFlags: 0
@@ -48724,10 +48722,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 96405426}
     m_Modifications:
-    - target: {fileID: 73845788689589163, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 739fff89f0242ff43bf34e4ce1df4628, type: 2}
     - target: {fileID: 1300204833339754593, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
       propertyPath: m_Name
       value: puzzle_cabinet_startUp
@@ -48772,18 +48766,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6344486688145114514, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 739fff89f0242ff43bf34e4ce1df4628, type: 2}
-    - target: {fileID: 8167991198532526057, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 739fff89f0242ff43bf34e4ce1df4628, type: 2}
     - target: {fileID: 9045943359678651004, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
-      propertyPath: glow
-      value: 
-      objectReference: {fileID: 1821367445}
+      propertyPath: playSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9045943359678651004, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
       propertyPath: puzzleObj
       value: 
@@ -48799,10 +48785,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1300204833339754593, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1821367445}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
 --- !u!4 &1821367443 stripped
 Transform:
@@ -48814,28 +48797,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9045943359678651004, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
   m_PrefabInstance: {fileID: 1821367442}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053736027}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a5e5a8765e12894b92afcfd1d15c5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleInteraction
---- !u!114 &1821367445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053736027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0116419e9a5124dbf6a883793371e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GlowUntilSolved
-  glowIntensity: 8
-  speed: 6
-  puzzleID: PuzzleCabinet
-  puzzleInteraction: {fileID: 0}
 --- !u!1001 &1822124104
 PrefabInstance:
   m_ObjectHideFlags: 0

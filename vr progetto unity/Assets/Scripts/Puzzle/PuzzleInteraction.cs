@@ -25,6 +25,9 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     [SerializeField] protected Animator animator;
     public PuzzleType GetPuzzleType() => puzzleType;
 
+    private AudioSource audioSource;
+    [SerializeField] private bool playSound;
+
     private void Awake()
     {
         if (animator == null)
@@ -32,6 +35,8 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
             animator = GetComponent<Animator>();
         }
         if (glow != null){ glow.enabled = false; }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void Start() {
@@ -66,6 +71,10 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
 
         this.solved = true; // lo segno come completato
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+        if(playSound && audioSource != null) {
+            audioSource.Play();
+        }
 
 
         // Una volta completato assegno al puzzle il layer Ignore Raycast
