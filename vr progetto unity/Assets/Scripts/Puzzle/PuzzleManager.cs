@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private AudioListener mainListener;
     private Camera puzzleCamera = null;
     private AudioListener puzzleListener = null;
+    GameObject pointer = null;
     private GameObject puzzleObj = null;
     private Player.PlayerInfo savedPlayerInfo; // Informazioni di posizione e orientamento del player per il cambio di scena
 
@@ -55,6 +57,8 @@ public class PuzzleManager : MonoBehaviour
         puzzleObj = puzzleObjRef;
         puzzleObj.SetActive(true);
 
+        pointer = UiManager.Instance.gameObject.transform.Find("Canvas/pointer").gameObject;
+        pointer.SetActive(false);
         puzzleCamera = puzzleCameraRef;
         puzzleListener = puzzleListenerRef;
         mainCamera.enabled = false;
@@ -83,6 +87,9 @@ public class PuzzleManager : MonoBehaviour
         //     LevelLoader.Instance.LoadNextScene(trainSceneName);
         // else
         //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
+
+        pointer.SetActive(true);
+
         mainCamera.enabled = true;
         puzzleCamera.enabled = false;
         mainListener.enabled = true;
@@ -140,6 +147,8 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         //     LevelLoader.Instance.LoadNextScene(trainSceneName);
         // else
         //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
+        pointer.SetActive(true);
+        
         mainCamera.enabled = true;
         puzzleCamera.enabled = false;
         mainListener.enabled = true;
