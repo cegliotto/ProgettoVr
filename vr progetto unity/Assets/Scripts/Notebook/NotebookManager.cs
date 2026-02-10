@@ -137,6 +137,9 @@ public class NotebookManager : MonoBehaviour {
             this.notebookHolder.transform.rotation = Player.Instance.notebookHolder.transform.rotation;
 
             if (Keyboard.current.iKey.wasPressedThisFrame) {
+                if (Player.Instance.playerState == Player.PlayerState.Dialog)
+                    return;
+
                 if (notebookHolder.gameObject.activeSelf) {
 
                     if (!IsContentAnimating)
