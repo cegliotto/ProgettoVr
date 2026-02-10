@@ -1101,6 +1101,7 @@ MonoBehaviour:
   puzzleListener: {fileID: 872356403}
   puzzleObj: {fileID: 129160294}
   puzzleType: 1
+  glow: {fileID: 0}
   solved: 0
   unlocked: 0
   animator: {fileID: 443510509}
@@ -6515,6 +6516,7 @@ MonoBehaviour:
   puzzleListener: {fileID: 848667222}
   puzzleObj: {fileID: 1417593889}
   puzzleType: 3
+  glow: {fileID: 0}
   solved: 0
   unlocked: 1
   animator: {fileID: 0}
@@ -27068,6 +27070,7 @@ MonoBehaviour:
   puzzleListener: {fileID: 100787158}
   puzzleObj: {fileID: 19291136}
   puzzleType: 4
+  glow: {fileID: 1125852802}
   solved: 0
   unlocked: 0
   animator: {fileID: 0}
@@ -48777,6 +48780,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 739fff89f0242ff43bf34e4ce1df4628, type: 2}
+    - target: {fileID: 9045943359678651004, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
+      propertyPath: glow
+      value: 
+      objectReference: {fileID: 1821367445}
     - target: {fileID: 9045943359678651004, guid: 76b050c58765aa541b6524d11d6bbbac, type: 3}
       propertyPath: puzzleObj
       value: 
