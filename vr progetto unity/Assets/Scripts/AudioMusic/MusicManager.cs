@@ -11,7 +11,15 @@ public class MusicManager : MonoBehaviour
     [Header("Fade")]
     [SerializeField] private float defaultFadeDuration = 1.5f;
 
-    private Coroutine fadeRoutine;
+    [Header("Ducking (Dialogue)")]
+    [Tooltip("Volume normale della musica quando non c'è dialogo.")]
+    [SerializeField] private float normalMusicVolume = 1f;
+
+    [Tooltip("Volume della musica durante il dialogo (duck).")]
+    [Range(0f, 1f)]
+    [SerializeField] private float duckedMusicVolume = 0.25f;
+
+    private Coroutine routine;
 
     private void Awake()
     {
@@ -26,56 +34,99 @@ public class MusicManager : MonoBehaviour
 
         if (musicSource == null)
             musicSource = GetComponent<AudioSource>();
+
+        // Impostazione sicurezza
+        if (musicSource != null)
+        {
+            musicSource.spatialBlend = 0f; // 2D
+            musicSource.playOnAwake = false;
+            musicSource.loop = true;
+        }
     }
 
-    
-    /// Play con fade-out della clip corrente (se presente) + fade-in della nuova.
-    
+    // ---------- PLAY ----------
+
     public void PlayMusic(AudioClip newClip, float targetVolume = 1f, float fadeDuration = -1f)
     {
-        if (newClip == null) return;
+        if (newClip == null || musicSource == null) return;
         if (musicSource.clip == newClip && musicSource.isPlaying) return;
 
         if (fadeDuration < 0f) fadeDuration = defaultFadeDuration;
 
-        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
-        fadeRoutine = StartCoroutine(FadeToClip(newClip, targetVolume, fadeDuration));
+        // aggiorna volume "normale" di riferimento
+        normalMusicVolume = Mathf.Clamp01(targetVolume);
+
+        if (routine != null) StopCoroutine(routine);
+        routine = StartCoroutine(FadeToClip(newClip, normalMusicVolume, fadeDuration));
     }
 
-    /// Play immediato (senza fade-in).
-    
     public void PlayMusicImmediate(AudioClip newClip, float volume = 1f)
     {
-        if (newClip == null) return;
+        if (newClip == null || musicSource == null) return;
 
-        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+        normalMusicVolume = Mathf.Clamp01(volume);
 
-        musicSource.volume = volume;
+        if (routine != null) StopCoroutine(routine);
+
+        musicSource.volume = normalMusicVolume;
         musicSource.clip = newClip;
         musicSource.Play();
     }
-    
-    /// Fade-out e stop (scena senza musica / inizio scena silenziosa).
+
+    // ---------- STOP ----------
+
     public void FadeOutAndStop(float fadeDuration = -1f)
     {
+        if (musicSource == null) return;
         if (fadeDuration < 0f) fadeDuration = defaultFadeDuration;
 
-        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
-        fadeRoutine = StartCoroutine(FadeOutStopRoutine(fadeDuration));
+        if (routine != null) StopCoroutine(routine);
+        routine = StartCoroutine(FadeOutStopRoutine(fadeDuration));
     }
 
-    
-    /// Stop immediato (senza fade).
     public void StopImmediate()
     {
-        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+        if (musicSource == null) return;
+
+        if (routine != null) StopCoroutine(routine);
         musicSource.Stop();
         musicSource.clip = null;
     }
 
+    // ---------- DUCKING ----------
+
+    /// <summary>
+    /// Abbassa la musica (duck) con un fade. Chiamalo quando inizia il dialogo.
+    /// </summary>
+    public void DuckForDialogue(float fadeDuration = 0.25f)
+    {
+        if (musicSource == null) return;
+
+        if (routine != null) StopCoroutine(routine);
+        routine = StartCoroutine(FadeVolume(musicSource.volume, duckedMusicVolume, fadeDuration));
+    }
+
+    /// <summary>
+    /// Riporta la musica al volume normale con un fade. Chiamalo quando finisce il dialogo.
+    /// </summary>
+    public void UnduckAfterDialogue(float fadeDuration = 0.35f)
+    {
+        if (musicSource == null) return;
+
+        if (routine != null) StopCoroutine(routine);
+        routine = StartCoroutine(FadeVolume(musicSource.volume, normalMusicVolume, fadeDuration));
+    }
+
+    /// <summary>
+    /// Se vuoi impostare al volo quanto deve essere basso il duck (es. dialoghi più o meno importanti).
+    /// </summary>
+    public void SetDuckedVolume(float v) => duckedMusicVolume = Mathf.Clamp01(v);
+
+    // ---------- ROUTINES ----------
+
     private IEnumerator FadeToClip(AudioClip newClip, float targetVolume, float duration)
     {
-        // Se c'è musica in corso, fade-out
+        // Fade out se sta suonando
         if (musicSource.isPlaying && musicSource.volume > 0f)
         {
             float startVol = musicSource.volume;
@@ -87,16 +138,16 @@ public class MusicManager : MonoBehaviour
             musicSource.volume = 0f;
         }
 
-        // Cambia clip e play
         musicSource.clip = newClip;
         musicSource.Play();
 
-        // Fade-in
+        // Fade in
         for (float t = 0f; t < duration; t += Time.unscaledDeltaTime)
         {
             musicSource.volume = Mathf.Lerp(0f, targetVolume, t / duration);
             yield return null;
         }
+
         musicSource.volume = targetVolume;
     }
 
@@ -109,7 +160,6 @@ public class MusicManager : MonoBehaviour
         }
 
         float startVol = musicSource.volume;
-
         for (float t = 0f; t < duration; t += Time.unscaledDeltaTime)
         {
             musicSource.volume = Mathf.Lerp(startVol, 0f, t / duration);
@@ -119,5 +169,22 @@ public class MusicManager : MonoBehaviour
         musicSource.volume = 0f;
         musicSource.Stop();
         musicSource.clip = null;
+    }
+
+    private IEnumerator FadeVolume(float from, float to, float duration)
+    {
+        if (duration <= 0f)
+        {
+            musicSource.volume = to;
+            yield break;
+        }
+
+        for (float t = 0f; t < duration; t += Time.unscaledDeltaTime)
+        {
+            musicSource.volume = Mathf.Lerp(from, to, t / duration);
+            yield return null;
+        }
+
+        musicSource.volume = to;
     }
 }
