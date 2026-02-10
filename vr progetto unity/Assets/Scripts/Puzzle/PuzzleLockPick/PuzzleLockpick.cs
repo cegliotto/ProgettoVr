@@ -51,6 +51,8 @@ public class PuzzleLockpick : PuzzleBase
     [Header("Audio")]
     [SerializeField] private AudioSource scrapeSource;
     [SerializeField] private AudioSource oneShotSource;
+    [SerializeField] private AudioSource finalOneShotSource;
+
     [SerializeField] private AudioClip scrapeLoop;
     [SerializeField] private AudioClip pinClick;
     [SerializeField] private AudioClip successFinal;
@@ -220,7 +222,7 @@ public class PuzzleLockpick : PuzzleBase
 
             if (currentPinIndex == 5)
             {
-                PlayOneShot(successFinal);
+                PlayFinalOneShot(successFinal);
                 PuzzleCompleted();
             }
         }
@@ -268,6 +270,12 @@ public class PuzzleLockpick : PuzzleBase
     {
         if (oneShotSource == null || clip == null) return;
         oneShotSource.PlayOneShot(clip);
+    }
+
+    private void PlayFinalOneShot(AudioClip clip)
+    {
+        if (finalOneShotSource == null || clip == null) return;
+        finalOneShotSource.PlayOneShot(clip);
     }
 
     protected override void PuzzleCompleted()
