@@ -18,6 +18,7 @@ public class LevelLoader : MonoBehaviour {
     }
 
     public void LoadNextScene(string sceneName) {
+        InputManager.Instance.SetInputEnabled(false); // disattivo input di mouse e movimento. Li riattivo in Start() del Player
         StartCoroutine(LoadLevel(sceneName));
     }
 
