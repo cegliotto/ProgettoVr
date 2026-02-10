@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class GestoreMenu : MonoBehaviour
 {
+    private void Start() {
+        if (CursorManager.Instance == null) return;
+
+        CursorManager.Instance.SetContext(CursorContext.UI); // Setto contesto UI
+    }
     public void EsciDalGioco()
     {
         Debug.Log("Il giocatore ha premuto Esci");
