@@ -18,7 +18,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     [SerializeField] private AudioListener puzzleListener;
     [SerializeField] private GameObject puzzleObj;
     [SerializeField] protected PuzzleType puzzleType; // Necessario per identificare il puzzle
-    
+    [SerializeField] public GlowUntilSolved glow;
 
     public bool solved = false;
     public bool unlocked;
@@ -31,6 +31,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         {
             animator = GetComponent<Animator>();
         }
+        if (glow != null){ glow.enabled = false; }
     }
 
     protected virtual void Start() {

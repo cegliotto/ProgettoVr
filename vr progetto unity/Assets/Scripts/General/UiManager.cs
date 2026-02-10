@@ -71,6 +71,7 @@ public class UiManager : MonoBehaviour
             if (currentDialogue.puzzles != null){
                 foreach (PuzzleInteraction puzzle in currentDialogue.puzzles) {
                     puzzle.unlocked = true; // Segno come sbloccato
+                    if (puzzle.glow != null){ puzzle.glow.enabled = true; }
                     // lo segno anche in puzzle manager per coerenza al cambio di scena
                     if(PuzzleManager.Instance != null) {
                         PuzzleManager.Instance.AddUnlockedPuzzle(puzzle.GetPuzzleType());
