@@ -128,7 +128,9 @@ public class UiManager : MonoBehaviour
     }
 
     private void SetTalkingAnimation(int dialogueId, bool value, Animator anim) {
-        if (value == true && dialogueId != 3) { // Solo la signora e' seduta
+        Pendolare pendolare = anim.GetComponent<Pendolare>();
+
+        if (value && dialogueId != 3 && pendolare != null && !pendolare.sitted) {
             Vector3 dir = Player.Instance.transform.position - anim.transform.position;
             dir.y = 0f;
 
@@ -136,12 +138,10 @@ public class UiManager : MonoBehaviour
                 anim.transform.rotation = Quaternion.LookRotation(dir);
         }
 
-        if (anim.gameObject.GetComponent<BarMan>() == null) {
+        if (anim.GetComponent<BarMan>() == null)
             anim.SetBool("isTalking", value);
-        }
-        else {
-            anim.gameObject.GetComponent<BarMan>().SetTalking(value);
-        }
+        else
+            anim.GetComponent<BarMan>().SetTalking(value);
     }
     #endregion
 }

@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 7669335506718802696}
   - component: {fileID: 3103436858856514575}
   - component: {fileID: 9199731121875895752}
+  - component: {fileID: 6940554835525641640}
   m_Layer: 0
   m_Name: Pendolare
   m_TagString: Untagged
@@ -845,8 +846,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 
     progressToUnlockAfterDialog: 4
   - frasi:
-    - clip: {fileID: 0}
-      text: 
+    - clip: {fileID: 8300000, guid: eebede79bb97044a2b60990e5e6005f7, type: 3}
+      text: Buonasera Ispettore
     puzzles: []
     delay:
       time: 0
@@ -871,6 +872,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pendolare
   sittingTransform: {fileID: 0}
   gotTicket: 0
+  sitted: 0
+--- !u!114 &6940554835525641640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971590923895312411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb728d25ecb2f7349941d60977e41cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtController
+  objectLookAt: {fileID: 0}
+  headWeight: 1
+  bodyWeight: 0
+  minDistance: 0
 --- !u!1 &3147536176204696227
 GameObject:
   m_ObjectHideFlags: 0
