@@ -701,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusic
   mode: 0
   sceneMusic: {fileID: 8300000, guid: ec6d42d34b8319a4695ec0f98190b6c4, type: 3}
-  volume: 1
+  volume: 0.5
   fadeDuration: 1
 --- !u!4 &602057806
 Transform:
@@ -1315,6 +1315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   musicSource: {fileID: 0}
   defaultFadeDuration: 3
+  normalMusicVolume: 1
+  duckedMusicVolume: 0.25
 --- !u!4 &1205341142
 Transform:
   m_ObjectHideFlags: 0
