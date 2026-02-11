@@ -44,6 +44,14 @@ public class Player : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start() {
+        Invoke(nameof(EnableInput), 1f);
+    }
+
+    private void EnableInput() {
+        InputManager.Instance.SetInputEnabled(true);
+    }
+
     public void SetState(PlayerState state) {
         playerState = state;
     }

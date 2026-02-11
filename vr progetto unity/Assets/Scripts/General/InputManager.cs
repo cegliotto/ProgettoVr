@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour {
     
@@ -8,8 +9,24 @@ public class InputManager : MonoBehaviour {
     private Vector3 movement;
     private Vector2 look;
 
-    public Vector3 GetMovement() => movement;
-    public Vector2 GetMouse() => look;
+    public Vector3 GetMovement() {
+        return inputEnabled ? movement : Vector3.zero;
+    }
+
+    public Vector2 GetMouse() {
+        return inputEnabled ? look : Vector2.zero;
+    }
+
+    private bool inputEnabled = true;
+
+    public void SetInputEnabled(bool enabled) {
+        inputEnabled = enabled;
+
+        if (!enabled) {
+            movement = Vector3.zero;
+            look = Vector2.zero;
+        }
+    }
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -38,12 +55,14 @@ public class InputManager : MonoBehaviour {
         movement = Vector3.zero;
     }
 
-    private void Move_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
-        movement = new Vector3(obj.ReadValue<Vector2>().x, 0f, obj.ReadValue<Vector2>().y);
+    private void Look_performed(InputAction.CallbackContext obj) {
+        if (!inputEnabled) return;
+        look = obj.ReadValue<Vector2>();
     }
 
-    private void Look_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
-        look = obj.ReadValue<Vector2>();
+    private void Move_performed(InputAction.CallbackContext obj) {
+        if (!inputEnabled) return;
+        movement = new Vector3(obj.ReadValue<Vector2>().x, 0f, obj.ReadValue<Vector2>().y);
     }
 
     private void Look_canceled(UnityEngine.InputSystem.InputAction.CallbackContext context) {
@@ -54,6 +73,7 @@ public class InputManager : MonoBehaviour {
         if(Player.Instance != null){
             Player.Instance.playerInteract.Interact();} // Richiamo metodo di interazione del player
     }
+
 
     private void OnDisable() {
         inputActions.Player.Disable();
