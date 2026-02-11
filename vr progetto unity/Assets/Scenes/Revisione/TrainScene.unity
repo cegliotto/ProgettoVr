@@ -3178,6 +3178,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6364573917012148598, guid: 237d1ac3de19c264bad502089fba8816, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8394183694507543673, guid: 237d1ac3de19c264bad502089fba8816, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.61816
@@ -8938,7 +8942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8171143
+      value: -0.8171143
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8982,7 +8986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098502818738745051, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1212363
       objectReference: {fileID: 0}
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_Name
@@ -8991,6 +8999,10 @@ PrefabInstance:
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750143186276253651, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1392451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9032,7 +9044,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.92132264, y: 0.42409787, z: 1.9067131}
+  m_Size: {x: 0.92132264, y: 0.42409787, z: -1.906713}
   m_Center: {x: 0.33971494, y: 0.20558715, z: 0.006563703}
 --- !u!65 &330832281
 BoxCollider:
@@ -9053,7 +9065,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23626825, y: 1.2149447, z: 1.9067131}
+  m_Size: {x: 0.23626825, y: 1.2149447, z: -1.906713}
   m_Center: {x: 0.6822411, y: 0.6010106, z: 0.0065636015}
 --- !u!1 &338008963
 GameObject:
@@ -11625,7 +11637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8201418
+      value: -0.8201418
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11669,7 +11681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098502818738745051, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1212363
       objectReference: {fileID: 0}
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_Name
@@ -11678,6 +11694,10 @@ PrefabInstance:
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750143186276253651, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1392451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11719,7 +11739,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.92132264, y: 0.42409787, z: 1.9067131}
+  m_Size: {x: 0.92132264, y: 0.42409787, z: -1.906713}
   m_Center: {x: 0.33971494, y: 0.20558715, z: 0.006563703}
 --- !u!65 &394237556
 BoxCollider:
@@ -11740,7 +11760,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23626825, y: 1.2149447, z: 1.9067131}
+  m_Size: {x: 0.23626825, y: 1.2149447, z: -1.906713}
   m_Center: {x: 0.6822411, y: 0.6010106, z: 0.0065636015}
 --- !u!1 &399796043
 GameObject:
@@ -32448,7 +32468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8171143
+      value: -0.8171143
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32492,7 +32512,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098502818738745051, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1212363
       objectReference: {fileID: 0}
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_Name
@@ -32501,6 +32525,10 @@ PrefabInstance:
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750143186276253651, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1392451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32542,7 +32570,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.92132264, y: 0.42409787, z: 1.9067131}
+  m_Size: {x: 0.92132264, y: 0.42409787, z: -1.906713}
   m_Center: {x: 0.33971494, y: 0.20558715, z: 0.006563703}
 --- !u!65 &1189996535
 BoxCollider:
@@ -32563,7 +32591,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23626825, y: 1.2149447, z: 1.9067131}
+  m_Size: {x: 0.23626825, y: 1.2149447, z: -1.906713}
   m_Center: {x: 0.6822411, y: 0.6010106, z: 0.0065636015}
 --- !u!1 &1190944573
 GameObject:
@@ -33293,7 +33321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8171143
+      value: -0.8171143
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33337,7 +33365,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098502818738745051, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1212363
       objectReference: {fileID: 0}
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_Name
@@ -33346,6 +33378,10 @@ PrefabInstance:
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750143186276253651, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1392451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33387,7 +33423,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.92132264, y: 0.42409787, z: 1.9067131}
+  m_Size: {x: 0.92132264, y: 0.42409787, z: -1.906713}
   m_Center: {x: 0.33971494, y: 0.20558715, z: 0.006563703}
 --- !u!65 &1232747791
 BoxCollider:
@@ -33408,7 +33444,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23626825, y: 1.2149447, z: 1.9067131}
+  m_Size: {x: 0.23626825, y: 1.2149447, z: -1.906713}
   m_Center: {x: 0.6822411, y: 0.6010106, z: 0.0065636015}
 --- !u!1 &1234207720 stripped
 GameObject:
@@ -37510,7 +37546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8171143
+      value: -0.8171143
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37554,7 +37590,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098502818738745051, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1212363
       objectReference: {fileID: 0}
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_Name
@@ -37563,6 +37603,10 @@ PrefabInstance:
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750143186276253651, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1392451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37604,7 +37648,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.92132264, y: 0.42409787, z: 1.9067131}
+  m_Size: {x: 0.92132264, y: 0.42409787, z: -1.906713}
   m_Center: {x: 0.33971494, y: 0.20558715, z: 0.006563703}
 --- !u!65 &1413510965
 BoxCollider:
@@ -37625,7 +37669,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23626825, y: 1.2149447, z: 1.9067131}
+  m_Size: {x: 0.23626825, y: 1.2149447, z: -1.906713}
   m_Center: {x: 0.6822411, y: 0.6010106, z: 0.0065636015}
 --- !u!1001 &1416625019
 PrefabInstance:
@@ -39383,7 +39427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8171143
+      value: -0.8171143
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39427,7 +39471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169751916703171397, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098502818738745051, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1212363
       objectReference: {fileID: 0}
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_Name
@@ -39436,6 +39484,10 @@ PrefabInstance:
     - target: {fileID: 6270820956127708891, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750143186276253651, guid: 3d3081f3b813b444f871f06f02500718, type: 3}
+      propertyPath: m_Size.z
+      value: -0.1392451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39477,7 +39529,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.92132264, y: 0.42409787, z: 1.9067131}
+  m_Size: {x: 0.92132264, y: 0.42409787, z: -1.906713}
   m_Center: {x: 0.33971494, y: 0.20558715, z: 0.006563703}
 --- !u!65 &1495516052
 BoxCollider:
@@ -39498,7 +39550,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.23626825, y: 1.2149447, z: 1.9067131}
+  m_Size: {x: 0.23626825, y: 1.2149447, z: -1.906713}
   m_Center: {x: 0.6822411, y: 0.6010106, z: 0.0065636015}
 --- !u!1001 &1496262659
 PrefabInstance:
