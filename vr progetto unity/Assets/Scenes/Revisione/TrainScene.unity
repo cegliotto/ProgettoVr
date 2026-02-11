@@ -9848,6 +9848,10 @@ PrefabInstance:
       value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 470402686998751572, guid: 942795be196b0204fb5d6b4c751d2487, type: 3}
+      propertyPath: pinLockedColor
+      value: 
+      objectReference: {fileID: 2100000, guid: c2c6573ed879a934e88aff3e76a999f3, type: 2}
+    - target: {fileID: 470402686998751572, guid: 942795be196b0204fb5d6b4c751d2487, type: 3}
       propertyPath: pinLockedColor.b
       value: 0.66278267
       objectReference: {fileID: 0}
@@ -9859,6 +9863,10 @@ PrefabInstance:
       propertyPath: pinLockedColor.r
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 470402686998751572, guid: 942795be196b0204fb5d6b4c751d2487, type: 3}
+      propertyPath: pinUnlockedColor
+      value: 
+      objectReference: {fileID: 2100000, guid: d36cad92a63c9b54d88575acab88550b, type: 2}
     - target: {fileID: 470402686998751572, guid: 942795be196b0204fb5d6b4c751d2487, type: 3}
       propertyPath: finalOneShotSource
       value: 
@@ -9899,6 +9907,10 @@ PrefabInstance:
       propertyPath: 'pinVisuals.Array.data[3]'
       value: 
       objectReference: {fileID: 545623418}
+    - target: {fileID: 1229395856200056752, guid: 942795be196b0204fb5d6b4c751d2487, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1555994838461342906, guid: 942795be196b0204fb5d6b4c751d2487, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4

@@ -58,8 +58,8 @@ public class PuzzleLockpick : PuzzleBase
     [SerializeField] private AudioClip successFinal;
 
     [Header("Cubi")]
-    [SerializeField] private Color pinLockedColor;
-    [SerializeField] private Color pinUnlockedColor;
+    [SerializeField] private Material pinLockedColor;
+    [SerializeField] private Material pinUnlockedColor;
     [SerializeField] private Renderer[] pinVisuals;
 
     private float baseRakeY;
@@ -79,7 +79,7 @@ public class PuzzleLockpick : PuzzleBase
         pinSet = new bool[4];
 
         for (int i = 0; i < pinVisuals.Length; i++)
-            pinVisuals[i].material.color = pinLockedColor;
+            pinVisuals[i].material = pinLockedColor;
 
         baseRakeY = rake.localPosition.y;
 
@@ -208,7 +208,7 @@ public class PuzzleLockpick : PuzzleBase
         if (currentZone.IsTensionInRange(tension))
         {
             pinSet[currentPinIndex - 1] = true;
-            pinVisuals[currentPinIndex - 1].material.color = pinUnlockedColor;
+            pinVisuals[currentPinIndex - 1].material = pinUnlockedColor;
 
             PlayOneShot(pinClick);
             currentZone.Flash();
