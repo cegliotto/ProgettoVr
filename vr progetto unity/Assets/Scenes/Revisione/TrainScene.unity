@@ -16133,7 +16133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897492777129347551, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20653,7 +20653,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &749701398
 Transform:
@@ -54261,7 +54261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4818842356660578634, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181556563310845685, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5181556563310845685, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
       propertyPath: m_CastShadows
@@ -54269,6 +54273,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5181556563310845685, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
       propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181556563310845685, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
+      propertyPath: m_StaticShadowCaster
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5440477731426845803, guid: 5c4b5e8f42313d14aa5a132c43b1690a, type: 3}
