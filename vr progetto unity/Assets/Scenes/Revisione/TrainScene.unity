@@ -33352,6 +33352,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9154577009457824722, guid: fee69006eff45234eb9e8ea8aa897469, type: 3}
   m_PrefabInstance: {fileID: 1252921897}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1263859512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5610059703417647132, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
+  m_PrefabInstance: {fileID: 1611332026}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1263859514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263859512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09aa269b231478d4cacce8e03caaba1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RenderQueue
 --- !u!1001 &1264582592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42607,6 +42624,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4256938338753293858, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1611332033}
+    - targetCorrespondingSourceObject: {fileID: 5610059703417647132, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263859514}
   m_SourcePrefab: {fileID: 100100000, guid: 58f4834e2a3fe0a489f22ded26e3301d, type: 3}
 --- !u!4 &1611332027 stripped
 Transform:
