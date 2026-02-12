@@ -130,8 +130,9 @@ public class UiManager : MonoBehaviour
 
     private void SetTalkingAnimation(int dialogueId, bool value, Animator anim) {
         Pendolare pendolare = anim.GetComponent<Pendolare>();
+        bool isPendolareSitted = pendolare != null && pendolare.sitted;
 
-        if (value && dialogueId != 3 && pendolare != null && !pendolare.sitted) {
+        if (value && dialogueId != 3 && !isPendolareSitted) {
             Vector3 dir = Player.Instance.transform.position - anim.transform.position;
             dir.y = 0f;
 
