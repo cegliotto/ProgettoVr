@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7232015990073501225}
-  - component: {fileID: 3638178740663396803}
+  - component: {fileID: 3584931579580738186}
   m_Layer: 2
   m_Name: NotebookHolder
   m_TagString: Untagged
@@ -179,7 +179,7 @@ Transform:
   - {fileID: 854467357016366171}
   m_Father: {fileID: 784142706762432742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &3638178740663396803
+--- !u!82 &3584931579580738186
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,7 +192,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
   mainCamera: {fileID: 0}
+  mainListener: {fileID: 0}
   isPlayingPuzzle: 0
 --- !u!114 &2746161576063884296
 MonoBehaviour:
@@ -417,7 +418,7 @@ MonoBehaviour:
   notebookCamera: {fileID: 2735709465008845794}
   notebookTransform: {fileID: 6187290868158076180}
   IsContentAnimating: 0
-  audioSource: {fileID: 3638178740663396803}
+  audioSource: {fileID: 3584931579580738186}
   paperWriteClip: {fileID: 8300000, guid: 35af8a01bba77364e95c074133835455, type: 3}
   longPaperWriteClip: {fileID: 8300000, guid: 475890454536f7c46a0b0b81bab97741, type: 3}
   openingClosingNotebookClip: {fileID: 8300000, guid: 112b1fbd1701693439b8054d6a935486, type: 3}
@@ -637,6 +638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   musicSource: {fileID: 0}
   defaultFadeDuration: 1.5
+  normalMusicVolume: 1
+  duckedMusicVolume: 0.25
 --- !u!1001 &2027251533577250529
 PrefabInstance:
   m_ObjectHideFlags: 0
