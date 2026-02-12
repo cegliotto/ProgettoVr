@@ -18,7 +18,7 @@ public class CharacterByCharacterIntroText : MonoBehaviour
 
     void Awake()
     {
-        // Nascondi tutto all'inizio
+        // si nasconde tutto all'inizio
         if (continueButton != null)
             continueButton.SetActive(false);
 

@@ -39,7 +39,7 @@ public class WordByWordText : MonoBehaviour
 
     void Awake()
     {
-        // Nascondi tutto all'inizio
+        // si nasconde tutto all'inizio
         if (continueButton != null)
             continueButton.SetActive(false);
 
@@ -130,7 +130,7 @@ public class WordByWordText : MonoBehaviour
         // Pulse
         yield return StartCoroutine(PulseRoutine(obj));
 
-        //Avvia l'oscillazione passando la posizione ATTUALE dell'oggetto per evitare salti improvvisi
+        // si avvia l'oscillazione passando la posizione ATTUALE dell'oggetto per evitare salti improvvisi
         StartCoroutine(HoverRoutine(obj));
     }
 
@@ -157,7 +157,7 @@ public class WordByWordText : MonoBehaviour
 
         // Variabile per far entrare l'oscillazione gradualmente 
         float motionIntensity = 0f;
-        float fadeInSpeed = 0.5f; //In 2 secondi l'oscillazione arriva a pieno regime
+        float fadeInSpeed = 0.5f; //In 2 secondi l'oscillazione arriva a regime
 
         while (obj != null && obj.activeInHierarchy)
         {

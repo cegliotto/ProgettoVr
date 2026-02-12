@@ -44,7 +44,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    // ---------- PLAY ----------
+    // PLAY
 
     public void PlayMusic(AudioClip newClip, float targetVolume = 1f, float fadeDuration = -1f)
     {
@@ -73,7 +73,7 @@ public class MusicManager : MonoBehaviour
         musicSource.Play();
     }
 
-    // ---------- STOP ----------
+    //STOP
 
     public void FadeOutAndStop(float fadeDuration = -1f)
     {
@@ -93,11 +93,7 @@ public class MusicManager : MonoBehaviour
         musicSource.clip = null;
     }
 
-    // ---------- DUCKING ----------
-
-    /// <summary>
-    /// Abbassa la musica (duck) con un fade. Chiamalo quando inizia il dialogo.
-    /// </summary>
+    // Abbassa la musica (duck) con un fade. Chiamalo quando inizia il dialogo.
     public void DuckForDialogue(float fadeDuration = 0.25f)
     {
         if (musicSource == null) return;
@@ -106,9 +102,7 @@ public class MusicManager : MonoBehaviour
         routine = StartCoroutine(FadeVolume(musicSource.volume, duckedMusicVolume, fadeDuration));
     }
 
-    /// <summary>
-    /// Riporta la musica al volume normale con un fade. Chiamalo quando finisce il dialogo.
-    /// </summary>
+    // Riporta la musica al volume normale con un fade. Chiamalo quando finisce il dialogo.
     public void UnduckAfterDialogue(float fadeDuration = 0.35f)
     {
         if (musicSource == null) return;
@@ -117,12 +111,9 @@ public class MusicManager : MonoBehaviour
         routine = StartCoroutine(FadeVolume(musicSource.volume, normalMusicVolume, fadeDuration));
     }
 
-    /// <summary>
-    /// Se vuoi impostare al volo quanto deve essere basso il duck (es. dialoghi più o meno importanti).
-    /// </summary>
+    // Se vuoi impostare al volo quanto deve essere basso il duck (es. dialoghi più o meno importanti).
     public void SetDuckedVolume(float v) => duckedMusicVolume = Mathf.Clamp01(v);
 
-    // ---------- ROUTINES ----------
 
     private IEnumerator FadeToClip(AudioClip newClip, float targetVolume, float duration)
     {

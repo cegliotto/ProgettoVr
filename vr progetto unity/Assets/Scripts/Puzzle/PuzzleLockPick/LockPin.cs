@@ -1,10 +1,9 @@
 using UnityEngine;
 
-/// <summary>
-/// Rappresenta una "zona pin" astratta della serratura.
-/// Quando il rake entra in questa zona, il puzzle controller
-/// verifica se la tensione è corretta per settare il pin.
-/// </summary>
+
+// Rappresenta una "zona pin" astratta della serratura.
+// Quando il rake entra in questa zona, il puzzle controller
+// verifica se la tensione è corretta per settare il pin.
 public class LockPinZone : MonoBehaviour
 {
     [Header("Pin Settings")]

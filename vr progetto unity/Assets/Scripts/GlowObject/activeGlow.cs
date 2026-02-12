@@ -7,7 +7,6 @@ public class GlowOnUnlock : MonoBehaviour
     [SerializeField] private float glowIntensity = 2f;
     [SerializeField] private float speed = 2f;
 
-    // Cambiamo il riferimento per puntare allo script di raccolta
     private PickUpItem pickUpScript;
 
     void Start()
@@ -18,7 +17,6 @@ public class GlowOnUnlock : MonoBehaviour
         // Salva il colore base (nero o spento)
         baseColor = mat.GetColor("_EmissionColor");
 
-        // Cerca il componente PickUpItem che ha la variabile canPickedUp
         pickUpScript = GetComponent<PickUpItem>();
 
         if (pickUpScript == null)
@@ -27,17 +25,17 @@ public class GlowOnUnlock : MonoBehaviour
 
     void Update()
     {
-        // Controlla la variabile canPickedUp (settata in NotebookItems.cs)
+        // Controllo la variabile canPickedUp (settata in NotebookItems.cs)
         if (pickUpScript == null || !pickUpScript.canPickedUp)
         {
-            // Se non è attivo, manteniamo il colore base (spento)
+            // Se non è attivo, mantengo il colore base (spento)
             mat.SetColor("_EmissionColor", Color.black);
             return;
         }
 
         // Se canPickedUp è true, l'oggetto inizia a lampeggiare
         float emission = Mathf.PingPong(Time.time * speed, glowIntensity);
-        Color finalColor = Color.white * Mathf.LinearToGammaSpace(emission); // Usiamo bianco o baseColor per l'intensità
+        Color finalColor = Color.white * Mathf.LinearToGammaSpace(emission); // bianco o baseColor per l'intensità
         mat.SetColor("_EmissionColor", finalColor);
     }
 }

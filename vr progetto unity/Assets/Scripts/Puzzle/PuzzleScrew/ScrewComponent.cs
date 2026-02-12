@@ -35,7 +35,7 @@ public class ScrewComponent : MonoBehaviour
 
         clicks++;
 
-        // --- GESTIONE AUDIO ---
+        // gestione audio
         if (clicks >= 2)
         {
             IsRemoved = true;
@@ -48,7 +48,7 @@ public class ScrewComponent : MonoBehaviour
                 audioSource.PlayOneShot(screwRotateClip);
         }
 
-        // --- AVVIO ANIMAZIONE (Chiamata UNA sola volta) ---
+        // avvio animazione
         StartCoroutine(RotateAndLift(180f, moveStep));
     }
 

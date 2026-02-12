@@ -172,7 +172,7 @@ public class NotebookManager : MonoBehaviour {
 
     private IEnumerator BusyRoutine(float duration) {
         IsContentAnimating = true;
-        // WaitForSecondsRealtime assicura che funzioni anche se metti il gioco in pausa
+
         yield return new WaitForSecondsRealtime(duration);
         IsContentAnimating = false;
     }
@@ -402,11 +402,11 @@ public class NotebookManager : MonoBehaviour {
         CanvasGroup toLeft = toPair.pageLeft.GetComponent<CanvasGroup>();
         CanvasGroup toRight = toPair.pageRIght.GetComponent<CanvasGroup>();
 
-        // Imposto alpha iniziali
+        // alpha iniziali
         toLeft.alpha = 0f;
         toRight.alpha = 0f;
 
-        // Fade OUT corrente + Fade IN successiva (in parallelo)
+        // Fade OUT corrente + Fade IN successiva
         StartCoroutine(Utils.FadeCanvasGroup(fromLeft, 1f, 0f, pageFadeDuration));
         StartCoroutine(Utils.FadeCanvasGroup(fromRight, 1f, 0f, pageFadeDuration));
         StartCoroutine(Utils.FadeCanvasGroup(toLeft, 0f, 1f, pageFadeDuration));
@@ -414,7 +414,7 @@ public class NotebookManager : MonoBehaviour {
 
         yield return new WaitForSeconds(pageFadeDuration);
 
-        // Spengo definitivamente la vecchia coppia
+        // disattivo la vecchia coppia
         fromPair.HidePair();
     }
 

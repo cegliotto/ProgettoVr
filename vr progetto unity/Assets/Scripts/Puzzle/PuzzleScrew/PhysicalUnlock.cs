@@ -11,16 +11,15 @@ public class PhysicalUnlock : MonoBehaviour
         StartCoroutine(AnimateMove());
     }
 
-    // Sostituisci la coroutine esistente in PhysicalUnlock.cs con questa
     private IEnumerator AnimateMove()
     {
         Vector3 startPos = transform.position;
 
-        // Calcoliamo la lunghezza reale basandoci sul collider o mesh
+        // si calcola la lunghezza reale basandoci sul collider o mesh
         float length = 1.0f;
         if (TryGetComponent<Collider>(out Collider col))
         {
-            length = col.bounds.size.z; // Usa l'asse che rappresenta la lunghezza
+            length = col.bounds.size.z;
         }
 
         // Sposta di 1.5 volte la lunghezza calcolata

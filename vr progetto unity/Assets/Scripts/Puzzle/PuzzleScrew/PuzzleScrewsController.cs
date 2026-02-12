@@ -47,7 +47,7 @@ public class PuzzleScrewsController : PuzzleBase
         {
             if (!s.IsRemoved) return;
         }
-        // Qui non c'è più l'audio globale, passa direttamente al completamento
+
         PuzzleCompleted();
     }
 

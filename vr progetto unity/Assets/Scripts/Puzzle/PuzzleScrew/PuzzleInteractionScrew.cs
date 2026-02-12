@@ -17,14 +17,14 @@ public class PuzzleInteractionScrew : PuzzleInteraction, IInteractable
 
     public override void StartSolvedAnimation()
     {
-        base.StartSolvedAnimation(); // Imposta solved = true
+        base.StartSolvedAnimation(); 
 
         if (movableNightTable != null)
         {
-            // Forza l'attivazione del comodino se necessario
+            // Forza l'attivazione del comodino
             movableNightTable.SetActive(true);
 
-            // CERCA lo script PhysicalUnlock e avvia l'animazione
+            // crea lo script PhysicalUnlock e avvia l'animazione
             if (movableNightTable.TryGetComponent<PhysicalUnlock>(out PhysicalUnlock unlock))
             {
                 unlock.Unlock();

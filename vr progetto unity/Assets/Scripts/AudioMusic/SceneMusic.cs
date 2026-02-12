@@ -6,7 +6,7 @@ public class SceneMusic : MonoBehaviour
     {
         PlayThisMusic,   // Fade-out eventuale + fade-in di questa clip
         Silence,         // Fade-out e stop (scena senza musica)
-        DoNothing        // Non tocca la musica (continua quella precedente)
+        DoNothing        // Non tocca la musica
     }
 
     [Header("On Scene Start")]
@@ -32,7 +32,6 @@ public class SceneMusic : MonoBehaviour
                 break;
 
             case OnSceneStartMode.DoNothing:
-                // lascia com'è
                 break;
         }
     }

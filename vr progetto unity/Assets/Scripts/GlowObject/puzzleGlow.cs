@@ -22,7 +22,7 @@ public class GlowUntilSolved : MonoBehaviour
         for (int i = 0; i < mats.Length; i++)
         {
             mats[i].EnableKeyword("_EMISSION");
-            // Salviamo il colore di emissione ORIGINALE (quello spento o di default)
+            // si salva il colore di emissione iniziale (quello spento o di default)
             baseColors[i] = mats[i].GetColor("_EmissionColor");
         }
 
@@ -39,7 +39,7 @@ public class GlowUntilSolved : MonoBehaviour
 
     void Update()
     {
-        // Se è già stato risolto o fermato, non fare nulla
+        // Se è già stato risolto o fermato, non si fa niente
         if (isStopped || completedPuzzles.Contains(puzzleID)) return;
 
         if (puzzleInteraction != null && puzzleInteraction.solved)
@@ -49,13 +49,13 @@ public class GlowUntilSolved : MonoBehaviour
             return;
         }
 
-        // Il trucco: sommiamo l'emissione al colore base invece di moltiplicare solo
+        // si somma l'emissione al colore base invece di moltiplicare solo
         float emission = Mathf.PingPong(Time.time * speed, glowIntensity);
 
         for (int i = 0; i < mats.Length; i++)
         {
-            // Usiamo una logica di aggiunta: ColoreBase + (Bianco * intensità)
-            // Questo garantisce che quando l'intensità è 0, torni al baseColor
+            //  ColoreBase + (Bianco * intensità)
+            // quando l'intensità è 0 si torna al baseColor
             Color finalColor = baseColors[i] + (Color.white * Mathf.LinearToGammaSpace(emission));
             mats[i].SetColor("_EmissionColor", finalColor);
         }

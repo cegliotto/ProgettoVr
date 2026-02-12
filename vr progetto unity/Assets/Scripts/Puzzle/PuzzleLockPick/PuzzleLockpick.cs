@@ -97,17 +97,17 @@ public class PuzzleLockpick : PuzzleBase
 
     protected override void PuzzleBehaviour()
     {
-        // Tensione SEMPRE gestita (anche in stuck, ma senza aumento se serve)
+        // Tensione sempre gestita (anche in stuck, ma senza aumento se serve)
         bool allowIncrease = stuckTimer <= 0f;
 
         if (stuckTimer > 0f)
             stuckTimer -= Time.deltaTime;
 
         HandleTensionInput(allowIncrease);
-        HandleRakeDrag();          // ✅ il rake NON si “blocca” mai
+        HandleRakeDrag();          // il rake non si “blocca” mai
         UpdateTorsionVisual();
 
-        // Se sei in stuck, blocca solo il set pin (non il movimento)
+        // Se in stuck, blocca solo il set pin (non il movimento)
         if (stuckTimer > 0f)
             return;
 
@@ -150,7 +150,7 @@ public class PuzzleLockpick : PuzzleBase
         if (ignoreMouseFrames > 0)
         {
             ignoreMouseFrames--;
-            lastMouseY = Input.mousePosition.y; // evita accumulo delta
+            lastMouseY = Input.mousePosition.y; // per evitare accumulo delta
             return;
         }
 
@@ -158,7 +158,7 @@ public class PuzzleLockpick : PuzzleBase
         float deltaPixels = mouseY - lastMouseY;
         lastMouseY = mouseY;
 
-        // ✅ Anti-spike: se Unity “salta” il cursore o cambia focus, qui lo smorzi
+        // se Unity skippa il cursore o cambia focus, qui si smorza
         deltaPixels = Mathf.Clamp(deltaPixels, -maxDeltaPixelsPerFrame, maxDeltaPixelsPerFrame);
 
         float speed01 = Mathf.Clamp01(Mathf.Abs(deltaPixels) / Mathf.Max(1f, accelPixelsForMax));
@@ -192,16 +192,15 @@ public class PuzzleLockpick : PuzzleBase
         if (currentZone == null) return;
         if (currentZone.pinIndex != currentPinIndex) return;
 
-        // Rispetta davvero setWhileDragging:
-        // - true: set mentre trascini (mouse tenuto) oppure al click
-        // - false: SOLO al click (mouse down)
+        
+        // true -> set mentre si tiene premuto oppure al click
+        // false -> solo al click 
         if (!setWhileDragging)
         {
             if (!Input.GetMouseButtonDown(0)) return;
         }
         else
         {
-            // se vuoi che richieda almeno “tenere premuto”, lascia così:
             if (!Input.GetMouseButton(0)) return;
         }
 
@@ -216,7 +215,7 @@ public class PuzzleLockpick : PuzzleBase
             currentPinIndex++;
             currentZone = null;
 
-            // ✅ Previene scatti immediati dopo il set
+            // Previene scatti immediati dopo il set
             ignoreMouseFrames = Mathf.Max(ignoreMouseFramesAfterPinSet, 0);
             lastMouseY = Input.mousePosition.y;
 
@@ -289,7 +288,7 @@ public class PuzzleLockpick : PuzzleBase
         PuzzleManager.Instance.ExitFromPuzzle();
     }
 
-    // Chiamalo da OnTriggerEnter
+    //chiamato da ontrigger
     public void SetZone(Collider other)
     {
         var zone = other.GetComponent<LockPinZone>();
@@ -299,7 +298,7 @@ public class PuzzleLockpick : PuzzleBase
             currentZone = zone;
     }
 
-    // ✅ IMPORTANTE: chiamalo da OnTriggerStay per aggiornare zona anche senza re-enter
+    // chiamato da OnTriggerStay per aggiornare zona anche senza re-enter
     public void StayZone(Collider other)
     {
         var zone = other.GetComponent<LockPinZone>();
@@ -309,7 +308,7 @@ public class PuzzleLockpick : PuzzleBase
             currentZone = zone;
     }
 
-    // Chiamalo da OnTriggerExit
+    // Chiamato da OnTriggerExit
     public void ClearZone(Collider other)
     {
         var zone = other.GetComponent<LockPinZone>();
