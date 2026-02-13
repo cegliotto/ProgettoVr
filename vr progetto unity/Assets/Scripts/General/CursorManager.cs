@@ -27,8 +27,13 @@ public class CursorManager : MonoBehaviour {
 
             case CursorContext.UI:
                 Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                Cursor.visible = false;
                 break;
         }
+    }
+
+    private void Update() {
+        GameObject cursorImage = GameObject.FindGameObjectWithTag("Cursor");
+        cursorImage.transform.position = Input.mousePosition;
     }
 }

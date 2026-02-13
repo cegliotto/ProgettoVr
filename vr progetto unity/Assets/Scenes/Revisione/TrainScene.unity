@@ -15827,6 +15827,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 919210863}
     m_Modifications:
+    - target: {fileID: 502608379709513921, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2399453246122743423, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.02593
@@ -15865,6 +15869,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2831638160322511068, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273847330191344881, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4540681599351065205, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
@@ -15974,6 +15982,10 @@ PrefabInstance:
     - target: {fileID: 7323972201031022609, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323972201031022609, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
+      propertyPath: m_TagString
+      value: Pointer
       objectReference: {fileID: 0}
     - target: {fileID: 7487404050128367601, guid: 7959bcc3365de44288c1dcd001ba1e30, type: 3}
       propertyPath: m_text

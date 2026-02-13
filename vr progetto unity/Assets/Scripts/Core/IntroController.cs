@@ -8,7 +8,10 @@ public class IntroController : MonoBehaviour
     private void Start()
     {
         //if (startButton != null)
-            //startButton.SetActive(true);
+        //startButton.SetActive(true);
+
+        if (CursorManager.Instance != null)
+            CursorManager.Instance.SetContext(CursorContext.UI);
     }
 
     public void StartGame()

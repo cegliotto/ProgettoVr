@@ -177,8 +177,29 @@ public class NotebookManager : MonoBehaviour {
         IsContentAnimating = false;
     }
 
+    private void ShowPointer() {
+        GameObject pointer = GameObject.FindGameObjectWithTag("Pointer");
+        GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
+        if (pointer != null) {
+            pointer.GetComponent<Image>().color = new Color(1f, 0f, 0f, 0.85f);
+            cursor.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+        }
+    }
+
+    private void HidePointer() {
+        GameObject pointer = GameObject.FindGameObjectWithTag("Pointer");
+        GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
+
+        if (pointer != null) {
+            pointer.GetComponent<Image>().color = new Color(1f, 0f, 0f, 0f);
+            cursor.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        }
+    }
+
     public void OpenNotebook(int specificPageIndex = -1) {
         if (notebookHolder.gameObject.activeSelf || isNotebookClosing) return;
+
+        HidePointer();
 
         isNotebookClosing = false;
 
@@ -237,6 +258,8 @@ public class NotebookManager : MonoBehaviour {
 
     public void CloseNotebook() {
         if (!notebookHolder.gameObject.activeSelf || isNotebookClosing) return;
+
+        ShowPointer();
 
         PlayOpenCloseNotebookSound();
         isNotebookClosing = true;
