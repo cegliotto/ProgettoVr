@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CursorContext {
     Gameplay,
@@ -23,11 +24,13 @@ public class CursorManager : MonoBehaviour {
             case CursorContext.Gameplay:
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                HideCursor();
                 break;
 
             case CursorContext.UI:
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = false;
+                ShowCursor();
                 break;
         }
     }
@@ -35,5 +38,15 @@ public class CursorManager : MonoBehaviour {
     private void Update() {
         GameObject cursorImage = GameObject.FindGameObjectWithTag("Cursor");
         cursorImage.transform.position = Input.mousePosition;
+    }
+
+    private void ShowCursor() {
+        GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
+        cursor.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+    }
+
+    private void HideCursor() {
+        GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
+        cursor.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
     }
 }

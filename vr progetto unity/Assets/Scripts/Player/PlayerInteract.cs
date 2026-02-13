@@ -42,9 +42,10 @@ public class PlayerInteract : MonoBehaviour {
     }
 
     GameObject lastObj;
-    Queue<string> oldLayer = new Queue<string>();
+    private Dictionary<Renderer, uint> originalRenderingLayers = new();
+    [SerializeField] private RenderingLayerMask outlineLayer;
     bool hasHit = false;
-    [SerializeField] Material outlineMat;
+    //[SerializeField] Material outlineMat;
 
     private void CheckInteraction() {
         // si ricava posizione del centro dello schermo
@@ -61,27 +62,18 @@ public class PlayerInteract : MonoBehaviour {
 
                 lastObj = hitInfo.collider.gameObject;
 
-                MeshFilter mf = lastObj.GetComponent<MeshFilter>();
-                if (mf != null) {
-                    // Vector3 center = mf.mesh.bounds.center; // object space
-                    // outlineMat.SetVector("pivot", center);
-                    Vector3 worldCenter = CalculateCombinedCenter(lastObj);
-                    outlineMat.SetVector("pivot", worldCenter);
-                }
-
                 if ((lastObj.TryGetComponent<GrabbableItem>(out var g) && g.isActiveAndEnabled) ||
                     (lastObj.TryGetComponent<PickUpItem>(out var p) && p.isActiveAndEnabled) ||
                     (lastObj.TryGetComponent<DialogueTrigger>(out var d) && d.isActiveAndEnabled) ||
                     (lastObj.TryGetComponent<PuzzleInteraction>(out var pi) && pi.isActiveAndEnabled && pi.unlocked)
                     ) {
                     //setta al game object e tutti i suoi figli il layer outline e memorizza i layer precedenti
-                    oldLayer.Enqueue(LayerMask.LayerToName(hitInfo.collider.gameObject.layer));
-                    hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("OutLine");
+                    Renderer[] renderers = lastObj.GetComponentsInChildren<Renderer>();
 
-                    if (hitInfo.transform.childCount > 0) {
-                        foreach (Transform child in hitInfo.transform) {
-                            oldLayer.Enqueue(LayerMask.LayerToName(child.gameObject.layer));
-                            child.gameObject.layer = LayerMask.NameToLayer("OutLine");
+                    foreach (Renderer rend in renderers) {
+                        if (!originalRenderingLayers.ContainsKey(rend)) {
+                            originalRenderingLayers[rend] = rend.renderingLayerMask;
+                            rend.renderingLayerMask |= outlineLayer.value;
                         }
                     }
                 }
@@ -105,21 +97,15 @@ public class PlayerInteract : MonoBehaviour {
     }
 
     public void outlineCleanup() {
-        //probabilmente has hit non serve ma il codice è più leggibile
         hasHit = false;
-        if (lastObj != null && oldLayer.Count > 0) {
-            //restituisce all'oggetto e tutti i figli i layer precedenti
-            lastObj.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
-            if (lastObj.transform.childCount > 0) {
-                foreach (Transform child in lastObj.transform) {
-                    child.gameObject.layer = LayerMask.NameToLayer(oldLayer.Dequeue());
-                }
-            }
-            //rimuove riferimento all'oggetto e 
-            lastObj = null;
-            oldLayer.Clear();
+
+        foreach (var kvp in originalRenderingLayers) {
+            if (kvp.Key != null)
+                kvp.Key.renderingLayerMask = kvp.Value;
         }
 
+        originalRenderingLayers.Clear();
+        lastObj = null;
     }
 
     public void TryGrab(GrabbableItem obj) {

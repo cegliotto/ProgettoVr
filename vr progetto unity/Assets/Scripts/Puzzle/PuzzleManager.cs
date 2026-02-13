@@ -47,8 +47,9 @@ public class PuzzleManager : MonoBehaviour
         currentPuzzle = puzzle; // Mi segno il puzzle corrente
 
         // Per puzzleSafeMultiple
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        if(CursorManager.Instance != null) {
+            CursorManager.Instance.SetContext(CursorContext.UI);
+        }
 
         // // caricamento della scena mediante levelLoader per fade-in / fade-out
         // if (LevelLoader.Instance != null)
@@ -77,10 +78,11 @@ public class PuzzleManager : MonoBehaviour
     // A puzzle non completato, utente vuole solo tornare a scena del treno
     public void ExitFromPuzzle() {
         // Per puzzleSafeMultiple
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (CursorManager.Instance != null) {
+            CursorManager.Instance.SetContext(CursorContext.Gameplay);
+        }
 
-        if(Player.Instance != null) {
+        if (Player.Instance != null) {
             Player.Instance.playerState = Player.PlayerState.Idle;
         }
         if (Pendolare.Instance.gotTicket && Pendolare.Instance != null)
@@ -127,8 +129,9 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     // A puzzle completato
     public void CompletePuzzle() {
         // Per puzzleSafeMultiple
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (CursorManager.Instance != null) {
+            CursorManager.Instance.SetContext(CursorContext.Gameplay);
+        }
 
         // imposto il currentPuzzle come solved
         if (!solvedPuzzles.Contains(currentPuzzle)) {
