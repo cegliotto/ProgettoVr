@@ -35,7 +35,7 @@ public class NotebookItems : MonoBehaviour {
 
             var audioSource = NotebookManager.Instance.GetComponent<AudioSource>();
 
-            MusicManager.Instance.PlayMusicImmediate(suspanceMusic, 1f);
+            MusicManager.Instance.PlayMusicImmediate(suspanceMusic, 0.3f);
 
         }
 

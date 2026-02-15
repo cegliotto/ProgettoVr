@@ -1313,8 +1313,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   dialogue:
   - frasi:
-    - {fileID: 8300000, guid: c0a4bcc42b255442f9a66411200e7afc, type: 3}
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -1322,7 +1324,8 @@ MonoBehaviour:
     itemToAnnotateAfterDialog: 
     progressToUnlockAfterDialog: 4
   - frasi:
-    - {fileID: 8300000, guid: 0ab2ed05021ca4aeb9c4969ee0ea0f62, type: 3}
+    - clip: {fileID: 0}
+      text: 
     puzzles: []
     delay:
       time: 0
@@ -1332,6 +1335,7 @@ MonoBehaviour:
   source: {fileID: 0}
   animator: {fileID: 0}
   nextScene: TrainScene
+  dialogueId: 0
 --- !u!1 &5238378363274379040
 GameObject:
   m_ObjectHideFlags: 0
