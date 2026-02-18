@@ -1772,13 +1772,13 @@ PrefabInstance:
       addedObject: {fileID: 82085141}
     - targetCorrespondingSourceObject: {fileID: 252477152057534872, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 82085143}
+      addedObject: {fileID: 82085150}
+    - targetCorrespondingSourceObject: {fileID: 4138240319887456456, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 82085147}
     - targetCorrespondingSourceObject: {fileID: 4138240319887456456, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 82085140}
-    - targetCorrespondingSourceObject: {fileID: 4138240319887456456, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 82085142}
   m_SourcePrefab: {fileID: 100100000, guid: f257c9c073efe8c49a6b044cbb53d48b, type: 3}
 --- !u!4 &82085137 stripped
 Transform:
@@ -1839,7 +1839,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1862522981755737666, guid: bf79e7a14e0c7084787333f2db3fac64, type: 3}
---- !u!114 &82085142
+--- !u!114 &82085147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1848,12 +1848,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 82085138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 62e810723faa94f4dbca0cf12afd7b8f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 3
-  speed: 5
---- !u!114 &82085143
+  m_EditorClassIdentifier: Assembly-CSharp::bagGlow
+  glowIntensity: 2
+  speed: 2
+  stopItem: 4
+--- !u!114 &82085150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1862,11 +1863,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 82085139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d868e548fc4af64f874cec07d730fc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 62e810723faa94f4dbca0cf12afd7b8f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleGlow
-  glowIntensity: 3
-  speed: 5
+  m_EditorClassIdentifier: Assembly-CSharp::bagGlow
+  glowIntensity: 2
+  speed: 2
+  stopItem: 4
 --- !u!1 &86810369
 GameObject:
   m_ObjectHideFlags: 0
