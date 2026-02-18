@@ -6539,6 +6539,7 @@ GameObject:
   - component: {fileID: 1140589011}
   - component: {fileID: 1140589010}
   - component: {fileID: 1140589009}
+  - component: {fileID: 1140589012}
   m_Layer: 0
   m_Name: Finestre oscurate (1)
   m_TagString: Untagged
@@ -6639,6 +6640,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140589007}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1140589012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140589007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09aa269b231478d4cacce8e03caaba1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RenderQueue
 --- !u!4 &1146086586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2948764791989479032, guid: 546a1fd3f6de746f7bc8ec590fc80b77, type: 3}
@@ -10640,6 +10653,7 @@ GameObject:
   - component: {fileID: 2057868147}
   - component: {fileID: 2057868146}
   - component: {fileID: 2057868145}
+  - component: {fileID: 2057868148}
   m_Layer: 0
   m_Name: Finestre oscurate
   m_TagString: Untagged
@@ -10740,6 +10754,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057868143}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2057868148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057868143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09aa269b231478d4cacce8e03caaba1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RenderQueue
 --- !u!1 &2096856315
 GameObject:
   m_ObjectHideFlags: 0
