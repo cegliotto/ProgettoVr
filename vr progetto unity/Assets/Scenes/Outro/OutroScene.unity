@@ -478,7 +478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ESCI
+  m_text: EXIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcbc8869730a669428e25d435c96a09e, type: 2}
   m_sharedMaterial: {fileID: 9150378183714732163, guid: bcbc8869730a669428e25d435c96a09e, type: 2}
@@ -1771,29 +1771,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WordByWordText
   textComponent: {fileID: 1698775319}
-  fullText: "Il 9 luglio 1864, sul treno serale della North London Railway, ebbe
-    luogo il primo omicidio mai avvenuto su una ferrovia britannica. La vittima fu
-    Thomas Briggs, rispettabile impiegato di banca.  Il suo biglietto ferroviario,
-    rinvenuto e riconosciuto, confermo' la sua presenza a bordo quella sera. Accanto
-    al sangue furono trovati anche un bastone e una borsa, entrambi identificati
-    come proprieta' di Briggs. Mancavano pero' alcuni oggetti di valore: un orologio,
-    una catena d'oro e degli occhiali d'oro, successivamente rintracciati grazie
-    alle parole di un testimone. Poco dopo, nella cabina del treno dell'omicidio,
-    venne trovato un cappello di castoro nero, risultato poi appartenere a Franz
-    Muller, che aveva commissionato il suo acquisto a una donna di Londra, testimone
-    cruciale per la risoluzione del caso. Tale cappello divenne l\u2019indizio decisivo.
-    Tutte le prove condussero a Franz Muller, che venne arrestato, processato e riconosciuto
-    colpevole dell\u2019omicidio di Thomas Briggs."
+  fullText: 'On 9 July 1864, on the evening train of the North London Railway, the
+    first murder ever to occur on a British railway took place. The victim was Thomas
+    Briggs, a respectable bank clerk.  His train ticket, found and recognised, confirmed
+    his presence on board that evening. Also found alongside the blood were a stick
+    and a bag, both identified as Briggs'' property. However, some valuable objects
+    were missing: a watch, a gold chain and some gold glasses, later traced thanks
+    to the words of a witness. Shortly afterwards, in the cabin of the murder train,
+    a black beaver hat was found, later found to belong to Franz Muller, who had
+    commissioned its purchase to a woman from London, a crucial witness in solving
+    the case. This hat became the decisive clue. All the evidence led to Franz Muller,
+    who was arrested, tried and found guilty of the murder of Thomas Briggs.'
   charDelay: 0.03
   cluePause: 2
   clues:
-  - biglietto ferroviario,
-  - bastone
-  - borsa,
-  - orologio,
-  - catena d'oro
-  - occhiali d'oro,
-  - cappello di castoro nero,
+  - train ticket,
+  - stick
+  - bag,
+  - watch,
+  - gold chain
+  - gold glasses,
+  - black beaver hat
   clueObjects:
   - {fileID: 1816674529}
   - {fileID: 2084177086}

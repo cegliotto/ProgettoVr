@@ -17,45 +17,39 @@ public class PuzzleManager : MonoBehaviour
     GameObject pointer = null;
     GameObject fadeIn = null;
     private GameObject puzzleObj = null;
-    private Player.PlayerInfo savedPlayerInfo; // Informazioni di posizione e orientamento del player per il cambio di scena
-
+    private Player.PlayerInfo savedPlayerInfo; // position and orientation of the player
 
     private PuzzleType currentPuzzle;
-    private List<PuzzleType> solvedPuzzles; // Lista che contiene SOLO i puzzle risolti
-    private List<PuzzleType> unlockedPuzzles; // Lista che contiene SOLO i puzzle unlocked
+    private List<PuzzleType> solvedPuzzles; // ONLY solved puzzle 
+    private List<PuzzleType> unlockedPuzzles; // ONLY unlocked puzzle
 
     public bool isPlayingPuzzle;
 
     private void Awake() {
-        if(Instance != null) { // Se c'e' gia' istanza 
+        if(Instance != null) { 
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // per non distruggerlo al cambio di scena
+        DontDestroyOnLoad(gameObject); // only one, don't destroy
 
         puzzleCamera = null;
         solvedPuzzles = new List<PuzzleType>();
         unlockedPuzzles = new List<PuzzleType>();
     }
 
-    public void StartPuzzle(GameObject puzzleObjRef,Camera puzzleCameraRef, AudioListener puzzleListenerRef ,PuzzleType puzzle) { // Richiamata in puzzleInteraction, dove passo il nome della scena
+    public void StartPuzzle(GameObject puzzleObjRef, Camera puzzleCameraRef, AudioListener puzzleListenerRef, PuzzleType puzzle) { 
         if(Player.Instance != null) {
-            savedPlayerInfo = Player.Instance.SaveInfo(); // Salvo nella variabile specificata le info di posizione e orientamento del player
+            savedPlayerInfo = Player.Instance.SaveInfo(); // Position and orientation saved
             Player.Instance.playerState = Player.PlayerState.Pause;
         }
-        currentPuzzle = puzzle; // Mi segno il puzzle corrente
+        currentPuzzle = puzzle;
 
-        // Per puzzleSafeMultiple
         if(CursorManager.Instance != null) {
             CursorManager.Instance.SetContext(CursorContext.UI);
         }
 
-        // // caricamento della scena mediante levelLoader per fade-in / fade-out
-        // if (LevelLoader.Instance != null)
-        //     LevelLoader.Instance.LoadNextScene(puzzleCamera); // effettuo il load della scena
-        // else
-        //     SceneManager.LoadScene(puzzleCamera, LoadSceneMode.Single);
+        // upload scene with levelLoader for fade-in / fade-out
         puzzleObj = puzzleObjRef;
         puzzleObj.SetActive(true);
 
@@ -72,12 +66,12 @@ public class PuzzleManager : MonoBehaviour
         mainListener.enabled = false;
         puzzleListener.enabled = true;
 
-        isPlayingPuzzle = true; // Richiamato in notebook manager per evitare di aprire il notebook durante il puzzle
+        isPlayingPuzzle = true; // you can't open the notebook during puzzle
     }
 
-    // A puzzle non completato, utente vuole solo tornare a scena del treno
+    // exit with puzzle unsolved
     public void ExitFromPuzzle() {
-        // Per puzzleSafeMultiple
+        // For puzzleSafeMultiple
         if (CursorManager.Instance != null) {
             CursorManager.Instance.SetContext(CursorContext.Gameplay);
         }
@@ -91,9 +85,9 @@ public class PuzzleManager : MonoBehaviour
         }
         //SceneManager.sceneLoaded += OnTrainSceneLoadedExit;
         // if (LevelLoader.Instance != null)
-        //     LevelLoader.Instance.LoadNextScene(trainSceneName);
+        // LevelLoader.Instance.LoadNextScene(trainSceneName);
         // else
-        //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
+        // SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
 
         if (fadeIn != null){ fadeIn.SetActive(true); }
         if (pointer != null){ pointer.SetActive(true); }
@@ -110,35 +104,34 @@ public class PuzzleManager : MonoBehaviour
         isPlayingPuzzle = false;
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene changed");
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        mainListener = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>();
+    }
 
-private void OnEnable()
-{
-    SceneManager.sceneLoaded += OnSceneLoaded;
-}
-private void OnDisable()
-{
-    SceneManager.sceneLoaded -= OnSceneLoaded;
-}
-private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-{
-    Debug.Log("Cambio scena");
-    mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-    mainListener = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>();
-}
-
-    // A puzzle completato
+    // when puzzle is completed
     public void CompletePuzzle() {
-        // Per puzzleSafeMultiple
+        // For puzzleSafeMultiple
         if (CursorManager.Instance != null) {
             CursorManager.Instance.SetContext(CursorContext.Gameplay);
         }
 
-        // imposto il currentPuzzle come solved
+        // set the currentPuzzle as solved
         if (!solvedPuzzles.Contains(currentPuzzle)) {
             solvedPuzzles.Add(currentPuzzle);
         }
         else {
-            Debug.LogWarning("NON DOVREI POTER COMPLETARE LO STESSO PUZZLE 2 VOLTE");
+            Debug.LogWarning("I SHOULD NOT BE ABLE TO COMPLETE THE SAME PUZZLE TWICE");
         }
 
         if(Player.Instance != null) {
@@ -147,15 +140,15 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         
         if (Pendolare.Instance.gotTicket && Pendolare.Instance != null)
         {
-            Pendolare.Instance.MoveAndSit();    
+            Pendolare.Instance.MoveAndSit(); 
         }
-        // carico scena treno
-        //SceneManager.sceneLoaded += OnTrainSceneLoadedCompleted; // Sottoscrivo evento -> in modo che quando la scena viene caricata
-        // // caricamento della scena mediante levelLoader per fade-in / fade-out
+        
+        //SceneManager.sceneLoaded += OnTrainSceneLoadedCompleted; // Subscribe to event -> so that when the scene is loaded
+        // // loading the scene via levelLoader for fade-in / fade-out
         // if(LevelLoader.Instance != null)
-        //     LevelLoader.Instance.LoadNextScene(trainSceneName);
+        // LevelLoader.Instance.LoadNextScene(trainSceneName);
         // else
-        //     SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
+        // SceneManager.LoadScene(trainSceneName, LoadSceneMode.Single);
         if (fadeIn != null){ fadeIn.SetActive(true); }
         if (pointer != null){ pointer.SetActive(true); }
         
@@ -163,7 +156,6 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         puzzleCamera.enabled = false;
         mainListener.enabled = true;
         puzzleListener.enabled = false;
-
 
         if (puzzleCamera != null){ puzzleCamera = null; }
 
@@ -176,45 +168,44 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     }
 
     private void OnTrainSceneLoadedExit(Scene arg0, LoadSceneMode arg1) {
-        SceneManager.sceneLoaded -= OnTrainSceneLoadedExit; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
-        // Aggiorno info del plyaer in modo che vada nella posizione prima del caricamento della scena
-        StartCoroutine(RestorePlayerRoutine());
+        SceneManager.sceneLoaded -= OnTrainSceneLoadedExit; 
+        
+        StartCoroutine(RestorePlayerRoutine()); // coroutine to restore player position and orientation
     }
 
     private void OnTrainSceneLoadedCompleted() {
-        //SceneManager.sceneLoaded -= OnTrainSceneLoadedCompleted; // tolgo sottoscrizione, in modo da evitrare problemi con altre scene
+        //SceneManager.sceneLoaded -= OnTrainSceneLoadedCompleted; 
 
-        // far partire animazione di oggetto specifico
+        // start animation of objects
         PuzzleInteraction[] puzzles = FindObjectsByType<PuzzleInteraction>(FindObjectsSortMode.None);
 
         foreach(PuzzleInteraction puzzle in puzzles) {
             if(puzzle.GetPuzzleType() == currentPuzzle) {
-                // fai partire animazione
+                // start animation
                 puzzle.StartSolvedAnimation();
             }
         }
 
-        // Aggiorno info del player in modo che vada nella posizione prima del caricamento della scena
+        // update player info
         StartCoroutine(RestorePlayerRoutine());
     }
 
     private IEnumerator RestorePlayerRoutine() {
-        // Al fine di evitare movimento della camera durante schermo nero
-        // blocco inizialmente il player
+        
         if (Player.Instance != null) {
             Player.Instance.playerState = Player.PlayerState.Pause;
             Player.Instance.LoadInfo(savedPlayerInfo);
         }
 
-        // relativo a tempo impiegato da level loader
+        // level loader time
         float waitTime = 1.1f;
         yield return new WaitForSeconds(waitTime);
 
-        // dopo che il caricamento e' finito riattivo il player
+        // player reactivation
         if (Player.Instance != null) {
-            // Ricarico nuovamente le informazioni per sicurezza
+           
             Player.Instance.LoadInfo(savedPlayerInfo);
-            // sblocco il player
+           
             Player.Instance.playerState = Player.PlayerState.Idle;
         }
     }

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public enum PuzzleType {
     PuzzleCabinet,
     PuzzleDoor,
@@ -9,16 +8,16 @@ public enum PuzzleType {
     PuzzleSeatLever
 }
 
-// Script usato per l'interazione con il player
+// used for user interactions
 public class PuzzleInteraction : MonoBehaviour, IInteractable
 {
-    [Tooltip("Nome della scena da carica per far partire il puzzle specifico")]
+    [Tooltip("Next Scene Name")]
     //[SerializeField] protected string puzzleSceneName;
     [SerializeField] private Camera puzzleCamera;
     [SerializeField] private AudioListener puzzleListener;
     [SerializeField] private GameObject puzzleObj;
-    [SerializeField] protected PuzzleType puzzleType; // Necessario per identificare il puzzle
-    [SerializeField] public GlowUntilSolved glow;
+    [SerializeField] protected PuzzleType puzzleType; // which puzzle
+    [SerializeField] public GlowUntilSolved glow; 
 
     public bool solved = false;
     public bool unlocked;
@@ -44,8 +43,8 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
             if (PuzzleManager.Instance.isPuzzleUnlocked(this.puzzleType)) {
                 unlocked = true;
             }
-            if (PuzzleManager.Instance.isPuzzleSolved(this.puzzleType)) { // Se puzzle e' gia' risolto
-                StartSolvedAnimation(); // Imposto come risolto
+            if (PuzzleManager.Instance.isPuzzleSolved(this.puzzleType)) { 
+                StartSolvedAnimation(); // puzzle solved
             }
         }
     }
@@ -54,33 +53,27 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         if (!enabled) return;
         if (solved) return;
 
-        //Debug.Log($"Interazione con {puzzleSceneName}");
-
         if (PuzzleManager.Instance != null) {
-            PuzzleManager.Instance.StartPuzzle(puzzleObj, puzzleCamera, puzzleListener , puzzleType); // Carico la scena relativa a questo puzzle
+            PuzzleManager.Instance.StartPuzzle(puzzleObj, puzzleCamera, puzzleListener , puzzleType); // update the related scene
         }
         else {
-            Debug.Log("Puzzle manager non trovato");
+            Debug.Log("Puzzle manager not found");
         }
     }
 
     public virtual void StartSolvedAnimation() {
-        if(animator != null) { // Se ha un animazione associata al completamento
-            animator.SetTrigger("completed"); // Necessario che animazione si chiami completed in caso
+        if(animator != null) { // if there is an animation after solved
+            animator.SetTrigger("completed"); 
         }
 
-        this.solved = true; // lo segno come completato
+        this.solved = true; 
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 
         if(playSound && audioSource != null) {
             audioSource.Play();
         }
 
-
-        // Una volta completato assegno al puzzle il layer Ignore Raycast
-        // in modo che, ad esempio per la cabinet, il raycast non venga bloccato dalla cabinet quando si cerca
-        // di prendere la borsa
-
+        // so as not to block the grip of other objects
         int layer = LayerMask.NameToLayer("Ignore Raycast");
         if (layer != -1) {
             gameObject.layer = layer;

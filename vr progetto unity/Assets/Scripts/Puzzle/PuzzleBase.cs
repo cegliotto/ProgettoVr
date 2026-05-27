@@ -1,8 +1,10 @@
+//abstract class
 using UnityEngine;
 
 public abstract class PuzzleBase : MonoBehaviour
 {
-    protected abstract void PuzzleBehaviour(); // Comportamento del puzzle
-    protected abstract void PuzzleCompleted();
-    protected abstract void ExitPuzzle(); // Uscire dal puzzle non ancora completato
+    //mandatory logic for each puzzle
+    protected abstract void PuzzleBehaviour(); 
+    protected abstract void PuzzleCompleted(); //when it is completed
+    protected abstract void ExitPuzzle(); // when ESC
 }

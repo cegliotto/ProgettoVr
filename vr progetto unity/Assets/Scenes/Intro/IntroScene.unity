@@ -176,9 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Indaga
-
-'
+  m_text: Investigate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcbc8869730a669428e25d435c96a09e, type: 2}
   m_sharedMaterial: {fileID: 9150378183714732163, guid: bcbc8869730a669428e25d435c96a09e, type: 2}
@@ -205,13 +203,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -416,16 +414,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WordByWordIntroText
   textComponent: {fileID: 342757060}
-  fullText: 'Sabato 9 luglio 1864
+  fullText: 'Saturday 9 July 1864
 
-    Ispettore Tanner, e'' d''urgenza necessario
-    il vostro intervento presso la stazione ferroviaria di Hackney, poiche'' vi si
-    stanno verificando eventi di natura estremamente allarmente. Deve salire sul
-    treno della North London Railway che arriva ad Hackney alle 22:11, partito da
-    Fenchurch Street alle 21:50.
+    Inspector Tanner, your intervention is urgently
+    required at Hackney Railway Station as events of an extremely alarming nature
+    are occurring there. He must board the North London Railway train which arrives
+    in Hackney at 10.11pm, leaving Fenchurch Street at 9.50pm.
 
 
-    Con Rispetto'
+
+    With Respect'
   charDelay: 0.05
   continueButton: {fileID: 868189002}
   buttonCanvasGroup: {fileID: 868189008}

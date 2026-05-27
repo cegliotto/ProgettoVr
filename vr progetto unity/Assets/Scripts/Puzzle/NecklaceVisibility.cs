@@ -4,18 +4,18 @@ public class NecklaceVisibility : MonoBehaviour
 {
     void Start()
     {
-        // si verifica se il PuzzleManager esiste nella scena
+        // checks if the PuzzleManager exists in the scene
         if (PuzzleManager.Instance != null)
         {
-            // si conrolla se il puzzle delle viti è già stato risolto
+            // checks if the screws puzzle has been solved
             bool isSolved = PuzzleManager.Instance.isPuzzleSolved(PuzzleType.PuzzleScrews);
 
-            // si attiva o disattiva la collana in base allo stato del puzzle
+            // activates or deactivates the necklace based on the puzzle state
             gameObject.SetActive(isSolved);
         }
         else
         {
-            // Se il manager non è presente si nasconde l'oggetto per sicurezza
+            // manager not found -> hidden object
             gameObject.SetActive(false);
         }
     }

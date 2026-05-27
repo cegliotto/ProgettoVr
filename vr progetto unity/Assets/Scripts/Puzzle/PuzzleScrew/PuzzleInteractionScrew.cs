@@ -1,8 +1,9 @@
+// communication between objects
 using UnityEngine;
 
 public class PuzzleInteractionScrew : PuzzleInteraction, IInteractable
 {
-    [SerializeField] private GameObject movableNightTable; // Night table che puo' essere spostato
+    [SerializeField] private GameObject movableNightTable; // Night table that can be moved
     [SerializeField] private GameObject necklace;
 
     protected override void Start()
@@ -21,10 +22,10 @@ public class PuzzleInteractionScrew : PuzzleInteraction, IInteractable
 
         if (movableNightTable != null)
         {
-            // Forza l'attivazione del comodino
+            // Forces the activation of the night table
             movableNightTable.SetActive(true);
 
-            // crea lo script PhysicalUnlock e avvia l'animazione
+            // Gets the PhysicalUnlock component and starts the animation
             if (movableNightTable.TryGetComponent<PhysicalUnlock>(out PhysicalUnlock unlock))
             {
                 unlock.Unlock();
@@ -35,7 +36,7 @@ public class PuzzleInteractionScrew : PuzzleInteraction, IInteractable
             necklace.SetActive(true);
         }
 
-        // Disattiva le viti interagibili nella scena principale
+        // Deactivates the interactable screws in the main scene
         // this.gameObject.SetActive(false);
     }
 }

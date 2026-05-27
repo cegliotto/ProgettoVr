@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ScrewComponent : MonoBehaviour
 {
-
     [SerializeField] private float duration = 0.3f;
     [SerializeField] private float moveStep = 0.02f;
 
@@ -35,7 +34,7 @@ public class ScrewComponent : MonoBehaviour
 
         clicks++;
 
-        // gestione audio
+        // Audio management
         if (clicks >= 2)
         {
             IsRemoved = true;
@@ -48,7 +47,7 @@ public class ScrewComponent : MonoBehaviour
                 audioSource.PlayOneShot(screwRotateClip);
         }
 
-        // avvio animazione
+        // Animation start
         StartCoroutine(RotateAndLift(180f, moveStep));
     }
 
@@ -61,6 +60,7 @@ public class ScrewComponent : MonoBehaviour
 
         while (angle < angleTotal)
         {
+            // deltaTime -> frame-rate independent
             float stepAngle = (angleTotal / duration) * Time.deltaTime;
             float stepLift = (liftAmount / duration) * Time.deltaTime;
 
@@ -80,8 +80,8 @@ public class ScrewComponent : MonoBehaviour
 
         if (IsRemoved)
         {
-            // Aspetta un istante per far finire il suono prima di disattivare l'oggetto
-            yield return new WaitForSeconds(0.2f); // Leggermente aumentato per sicurezza
+            // Wait an instant to let the sound finish playing before deactivating the object
+            yield return new WaitForSeconds(0.2f); // Slightly increased for safety
             gameObject.SetActive(false);
         }
     }

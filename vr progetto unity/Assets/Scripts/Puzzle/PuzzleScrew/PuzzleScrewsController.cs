@@ -23,6 +23,7 @@ public class PuzzleScrewsController : PuzzleBase
 
     private void HandleMouseInteraction()
     {
+        // Raycasting 
         Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {

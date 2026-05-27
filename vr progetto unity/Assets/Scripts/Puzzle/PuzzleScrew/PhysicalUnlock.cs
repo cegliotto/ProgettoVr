@@ -15,14 +15,15 @@ public class PhysicalUnlock : MonoBehaviour
     {
         Vector3 startPos = transform.position;
 
-        // si calcola la lunghezza reale basandoci sul collider o mesh
+        // Calculates the real length based on the collider or mesh
         float length = 1.0f;
         if (TryGetComponent<Collider>(out Collider col))
         {
+            // adaptable to various sizes
             length = col.bounds.size.z;
         }
 
-        // Sposta di 1.5 volte la lunghezza calcolata
+        // Moves by 1.5 times the calculated length
         float finalDistance = length * moveDistance;
         Vector3 endPos = transform.position + (transform.forward * finalDistance);
 
